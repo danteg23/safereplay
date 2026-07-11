@@ -898,7 +898,7 @@ input:focus-visible {
   .fixture-main {
     grid-template-columns: 130px minmax(260px, 1fr) 28px;
     gap: 24px;
-    padding: 18px 0;
+    padding: 18px 86px 18px 0;
   }
 
   .fixture-time strong {

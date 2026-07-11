@@ -106,9 +106,9 @@ test("provider handoff is allowlisted and does not accept arbitrary URLs", async
   assert.equal(redditSearch.status, 302);
   assert.match(redditSearch.headers.get("location"), /^https:\/\/www\.reddit\.com\/r\/footballhighlights\/search\//u);
 
-  const score808 = await request("/go/live-score808");
-  assert.equal(score808.status, 302);
-  assert.equal(score808.headers.get("location"), "https://www.score808live.tv/");
+  const retiredScore808 = await request("/go/live-score808");
+  assert.equal(retiredScore808.status, 404);
+  assert.equal(retiredScore808.headers.get("location"), undefined);
 
   const retiredRbtv = await request("/go/live-rbtv");
   assert.equal(retiredRbtv.status, 404);
@@ -116,7 +116,19 @@ test("provider handoff is allowlisted and does not accept arbitrary URLs", async
 
   const totalsportek = await request("/go/live-totalsportek");
   assert.equal(totalsportek.status, 302);
-  assert.equal(totalsportek.headers.get("location"), "https://totalsportek.com/");
+  assert.equal(totalsportek.headers.get("location"), "https://totalsportek.cat/");
+
+  const exactTotalSportek = await request("/go/live-totalsportek-spain-belgium");
+  assert.equal(exactTotalSportek.status, 302);
+  assert.equal(exactTotalSportek.headers.get("location"), "https://totalsportek.cat/game/spain-vs-belgium-2144565976");
+
+  const exactCamel = await request("/go/live-camel-aalesund-molde");
+  assert.equal(exactCamel.status, 302);
+  assert.equal(exactCamel.headers.get("location"), "https://www.camel1.tv/football/aalesund-fk-vs-molde/live/6ypq3nhv7w0xmd7");
+
+  const livsports = await request("/go/live-livsports-schedule");
+  assert.equal(livsports.status, 302);
+  assert.equal(livsports.headers.get("location"), "https://livsports.dpdns.org/schedule");
 
   const unknown = await request("/go/https:%2F%2Fevil.example");
   assert.equal(unknown.status, 404);
@@ -141,7 +153,7 @@ test("public YouTube page stays covered and permits only the privacy-enhanced fr
   assert.match(response.headers.get("content-security-policy"), /frame-src https:\/\/www\.youtube-nocookie\.com/);
   assert.doesNotMatch(response.headers.get("content-security-policy"), /frame-src '\*'|frame-src https:\/\/www\.youtube\.com/);
   assert.match(response.body, /Thumbnail and title hidden/);
-  assert.match(response.body, /v2\.css\?v=20260711-9/);
+  assert.match(response.body, /v2\.css\?v=20260711-10/);
   assert.match(response.body, /Thumbnail and title hidden/);
   assert.match(response.body, /tap the play symbol/);
   assert.match(response.body, /lab-covered-panel-top/);

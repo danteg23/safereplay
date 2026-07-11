@@ -302,8 +302,13 @@ const staticSourcesByFixture = {
 };
 
 const staticDestinations = {
-  "live-score808": "https://www.score808live.tv/",
-  "live-totalsportek": "https://totalsportek.com/",
+  "live-totalsportek": "https://totalsportek.cat/",
+  "live-totalsportek-spain-belgium": "https://totalsportek.cat/game/spain-vs-belgium-2144565976",
+  "live-totalsportek-norway-england": "https://totalsportek.cat/game/norway-vs-england-7445162393",
+  "live-camel-football": "https://www.camel1.tv/",
+  "live-camel-eliteserien": "https://www.camel1.tv/r/league/Norwegian%20Eliteserien",
+  "live-camel-aalesund-molde": "https://www.camel1.tv/football/aalesund-fk-vs-molde/live/6ypq3nhv7w0xmd7",
+  "live-livsports-schedule": "https://livsports.dpdns.org/schedule",
   "aleph-arena-youtube": "https://www.youtube.com/@AlephArena",
   "france-morocco-reddit": "https://www.reddit.com/r/footballhighlights/comments/1us2ust/france_vs_morocco_world_cup_09jul2026/",
   "france-morocco-footreplays": "https://www.footreplays.com/international/world-cup-2026/france-vs-morocco-09-07-2026/",

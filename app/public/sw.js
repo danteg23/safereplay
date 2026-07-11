@@ -1,11 +1,11 @@
-const CACHE_NAME = "safereplay-shell-v23";
+const CACHE_NAME = "safereplay-shell-v24";
 const scopeUrl = new URL(self.registration.scope);
 const scopedUrl = (path = "") => new URL(path, scopeUrl).toString();
 const SHELL = [
   "",
   "styles.css?v=20260711-1",
-  "v2.css?v=20260711-9",
-  "app.js?v=20260711-10",
+  "v2.css?v=20260711-10",
+  "app.js?v=20260711-11",
   "icons.js?v=20260711-1",
   "time-zone.js",
   "youtube-player.js?v=20260710-1",

@@ -30,10 +30,33 @@ const competitionValues = ["All", "Favorites", ...competitionOrder];
 const storageKey = "safereplay.settings.v1";
 const navigationStorageKey = "safereplay.navigation.v1";
 const LIVE_WINDOW_MS = 3 * 60 * 60 * 1000;
-const liveSources = Object.freeze([
-  { label: "Score808", redirectPath: "/go/live-score808" },
+const internationalLiveSources = Object.freeze([
   { label: "TotalSportek", redirectPath: "/go/live-totalsportek" },
+  { label: "Camel Live", redirectPath: "/go/live-camel-football" },
+  { label: "Livsports", redirectPath: "/go/live-livsports-schedule" },
 ]);
+const norwegianLiveSources = Object.freeze([
+  { label: "Camel Live", redirectPath: "/go/live-camel-eliteserien" },
+  { label: "TotalSportek", redirectPath: "/go/live-totalsportek" },
+  { label: "Livsports", redirectPath: "/go/live-livsports-schedule" },
+]);
+const fixtureLiveSourceOverrides = Object.freeze({
+  "fifa-world-cup-2026-match-98": Object.freeze([
+    { label: "TotalSportek", redirectPath: "/go/live-totalsportek-spain-belgium" },
+    { label: "Camel Live", redirectPath: "/go/live-camel-football" },
+    { label: "Livsports", redirectPath: "/go/live-livsports-schedule" },
+  ]),
+  "fifa-world-cup-2026-match-99": Object.freeze([
+    { label: "TotalSportek", redirectPath: "/go/live-totalsportek-norway-england" },
+    { label: "Camel Live", redirectPath: "/go/live-camel-football" },
+    { label: "Livsports", redirectPath: "/go/live-livsports-schedule" },
+  ]),
+  "eliteserien-official-85a8aebb-0535-4030-bd44-6c8508814657": Object.freeze([
+    { label: "Camel Live", redirectPath: "/go/live-camel-aalesund-molde" },
+    { label: "TotalSportek", redirectPath: "/go/live-totalsportek" },
+    { label: "Livsports", redirectPath: "/go/live-livsports-schedule" },
+  ]),
+});
 const commonTimeZones = Object.freeze([
   "Europe/London",
   "Europe/Paris",
@@ -219,9 +242,15 @@ function fixtureIsActionable(fixture) {
   return sourcesForFixture(fixture.id).length > 0 || fixtureIsLive(fixture);
 }
 
+function liveSourcesForFixture(fixture) {
+  return fixtureLiveSourceOverrides[fixture.id]
+    ?? (fixture.competition === "Eliteserien" ? norwegianLiveSources : internationalLiveSources);
+}
+
 function fixtureRow(fixture) {
   const actionable = fixtureIsActionable(fixture);
   const live = fixtureIsLive(fixture);
+  const primaryLiveSource = live ? liveSourcesForFixture(fixture)[0] : null;
   const copy = `
     <span class="fixture-time"><strong>${escapeHtml(fixture.kickoff)}</strong><small>${escapeHtml(fixture.competition)}</small></span>
     <span class="fixture-teams"><strong>${escapeHtml(fixture.teams[0])}</strong><strong>${escapeHtml(fixture.teams[1])}</strong></span>`;
@@ -231,7 +260,7 @@ function fixtureRow(fixture) {
         <button class="fixture-main" data-action="open-fixture" data-fixture-id="${escapeHtml(fixture.id)}" aria-label="Open ${escapeHtml(fixture.teams.join(" versus "))}">
           ${copy}<span class="fixture-chevron">${icons.chevron}</span>
         </button>` : `<div class="fixture-main">${copy}</div>`}
-      ${live ? `<a class="live-play" href="${appUrl(liveSources[0].redirectPath)}" rel="noreferrer" aria-label="Watch ${escapeHtml(fixture.teams.join(" versus "))} live">${icons.play}</a>` : ""}
+      ${primaryLiveSource ? `<a class="live-play" href="${appUrl(primaryLiveSource.redirectPath)}" rel="noreferrer" aria-label="Watch ${escapeHtml(fixture.teams.join(" versus "))} live on ${escapeHtml(primaryLiveSource.label)}">${icons.play}</a>` : ""}
     </article>`;
 }
 
@@ -336,13 +365,14 @@ function fullMatchCard(sources) {
 
 function liveCard(fixture) {
   if (!fixtureIsLive(fixture)) return "";
+  const sources = liveSourcesForFixture(fixture);
   return `
     <section class="live-card" aria-labelledby="live-heading">
       <div class="format-card-heading">
         <div><span class="live-label">Live now</span><h2 id="live-heading">Watch live</h2></div>
-        <a class="format-play" href="${appUrl(liveSources[0].redirectPath)}" rel="noreferrer" aria-label="Open live source">${icons.play}</a>
+        <a class="format-play" href="${appUrl(sources[0].redirectPath)}" rel="noreferrer" aria-label="Open ${escapeHtml(sources[0].label)} live source">${icons.play}</a>
       </div>
-      <div class="format-alternatives">${liveSources.slice(1).map((source, index) => `<a class="alternative-link" href="${appUrl(source.redirectPath)}" rel="noreferrer">Alternative ${index + 1} · ${source.label}</a>`).join("")}</div>
+      <div class="format-alternatives">${sources.slice(1).map((source, index) => `<a class="alternative-link" href="${appUrl(source.redirectPath)}" rel="noreferrer">Alternative ${index + 1} · ${source.label}</a>`).join("")}</div>
     </section>`;
 }
 

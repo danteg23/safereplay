@@ -141,24 +141,38 @@ test("community switch removes unverified alternatives while keeping verified Yo
   assert.match(root.innerHTML, /full-card is-unavailable/);
 });
 
-test("live control exists only during the live window and fallbacks live only in detail", async () => {
+test("international live control uses an exact TotalSportek match page and keeps fallbacks in detail", async () => {
   const { root, ui } = await loadUi();
   ui.setNow("2026-07-10T19:30:00Z");
   ui.setState({ selectedDate: null, screen: "matches", selectedFixtureId: null });
   ui.render();
   assert.match(root.innerHTML, /class="fixture-row has-live"/);
-  assert.match(root.innerHTML, /class="live-play" href="\/go\/live-score808"/);
-  assert.doesNotMatch(root.innerHTML, /live-totalsportek/);
+  assert.match(root.innerHTML, /class="live-play" href="\/go\/live-totalsportek-spain-belgium"/);
+  assert.doesNotMatch(root.innerHTML, /live-camel-football|live-livsports-schedule/);
 
   ui.handleAction({ dataset: { action: "open-fixture", fixtureId: "fifa-world-cup-2026-match-98" } });
   assert.match(root.innerHTML, /<span class="live-label">Live now<\/span>/);
-  assert.match(root.innerHTML, /href="\/go\/live-score808"/);
-  assert.match(root.innerHTML, /Alternative 1 · TotalSportek/);
-  assert.doesNotMatch(root.innerHTML, /RBTV/);
+  assert.match(root.innerHTML, /href="\/go\/live-totalsportek-spain-belgium"/);
+  assert.match(root.innerHTML, /Alternative 1 · Camel Live/);
+  assert.match(root.innerHTML, /Alternative 2 · Livsports/);
+  assert.doesNotMatch(root.innerHTML, /Score808|RBTV/);
 
   ui.setNow("2026-07-10T22:00:01Z");
   ui.render();
-  assert.doesNotMatch(root.innerHTML, /Live now|live-score808|live-totalsportek/);
+  assert.doesNotMatch(root.innerHTML, /Live now|live-totalsportek|live-camel|live-livsports/);
+});
+
+test("Eliteserien live control prioritizes the exact Camel match page", async () => {
+  const { root, ui } = await loadUi();
+  ui.setNow("2026-07-11T14:30:00Z");
+  ui.setState({ selectedDate: "2026-07-11", screen: "matches", selectedFixtureId: null });
+  ui.render();
+  assert.match(root.innerHTML, /class="live-play" href="\/go\/live-camel-aalesund-molde"/);
+
+  ui.handleAction({ dataset: { action: "open-fixture", fixtureId: "eliteserien-official-85a8aebb-0535-4030-bd44-6c8508814657" } });
+  assert.match(root.innerHTML, /href="\/go\/live-camel-aalesund-molde"/);
+  assert.match(root.innerHTML, /Alternative 1 · TotalSportek/);
+  assert.match(root.innerHTML, /Alternative 2 · Livsports/);
 });
 
 test("timezone is changed only from Settings and Manila/Oslo are pinned", async () => {
