@@ -30,11 +30,14 @@ desktop sidebar.
 
 Live viewing is the sole match-list play-button exception. From kickoff until the end of
 a conservative three-hour live window, show one outline play button when a configured
-live destination exists. The MVP primary destination is the Score808 homepage; the detail
-view may expose RBTV and TotalSportek homepages as quiet Alternative 1/2 links. Before
+live destination exists. Use TotalSportek as the primary international directory and
+Camel Live as the primary Eliteserien directory, with Livsports as a quiet fallback.
+Prefer an allowlisted, verified match-specific destination when one is known; otherwise
+fall back to the appropriate directory rather than guessing a match URL. The detail view
+may expose the remaining configured providers as quiet Alternative 1/2 links. Before
 kickoff and after the live window, remove every live control from both Matches and detail.
-Keep live destinations in a server-owned allowlist so a future discovery loop can replace
-homepage fallbacks with exact match URLs without changing the public UI contract.
+Keep every destination in the server-owned allowlist so discovery can replace directory
+fallbacks with exact match URLs without changing the public UI contract.
 
 Loop: inspect current state, choose the highest-yield next step, write a short strategy
 with expected operator value, approach, risks, and smallest proof, actively falsify the
