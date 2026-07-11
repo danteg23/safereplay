@@ -29,12 +29,12 @@ test("iPhone shell has safe-area metadata and registers the service worker", asy
   assert.match(html, /apple-mobile-web-app-capable/);
   assert.match(html, /apple-touch-icon\.png/);
   assert.match(html, /styles\.css\?v=20260711-1/);
-  assert.match(html, /v2\.css\?v=20260711-10/);
+  assert.match(html, /v2\.css\?v=20260712-1/);
   assert.match(html, /app\.js\?v=20260711-11/);
   assert.match(html, /name="safereplay-base" content="\/"/);
   assert.match(serviceWorker, /safereplay-shell-v24/);
   assert.match(serviceWorker, /styles\.css\?v=20260711-1/);
-  assert.match(serviceWorker, /v2\.css\?v=20260711-10/);
+  assert.match(serviceWorker, /v2\.css\?v=20260712-1/);
   assert.match(serviceWorker, /app\.js\?v=20260711-11/);
   assert.match(serviceWorker, /time-zone\.js/);
   assert.match(app, /navigator\.serviceWorker\.register\(appUrl\("sw\.js"\)\)/);

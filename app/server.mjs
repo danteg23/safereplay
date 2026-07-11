@@ -414,7 +414,7 @@ export function youtubePlayerDocument(record) {
     <title>${escapeHtml(record.teams.join(" vs "))} · SafeReplay</title>
     <link rel="icon" href="/brand-mark.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css?v=20260711-1" />
-    <link rel="stylesheet" href="/v2.css?v=20260711-10" />
+    <link rel="stylesheet" href="/v2.css?v=20260712-1" />
     <script type="module" src="/youtube-proof-player.js?v=20260711-9"></script>
   </head>
   <body class="youtube-watch-page">

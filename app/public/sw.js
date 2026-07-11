@@ -4,7 +4,7 @@ const scopedUrl = (path = "") => new URL(path, scopeUrl).toString();
 const SHELL = [
   "",
   "styles.css?v=20260711-1",
-  "v2.css?v=20260711-10",
+  "v2.css?v=20260712-1",
   "app.js?v=20260711-11",
   "icons.js?v=20260711-1",
   "time-zone.js",

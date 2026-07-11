@@ -161,7 +161,7 @@ test("public YouTube page stays covered and permits only the privacy-enhanced fr
   assert.match(response.headers.get("content-security-policy"), /frame-src https:\/\/www\.youtube-nocookie\.com/);
   assert.doesNotMatch(response.headers.get("content-security-policy"), /frame-src '\*'|frame-src https:\/\/www\.youtube\.com/);
   assert.match(response.body, /Thumbnail and title hidden/);
-  assert.match(response.body, /v2\.css\?v=20260711-10/);
+  assert.match(response.body, /v2\.css\?v=20260712-1/);
   assert.match(response.body, /Thumbnail and title hidden/);
   assert.match(response.body, /tap the play symbol/);
   assert.match(response.body, /lab-covered-panel-top/);
