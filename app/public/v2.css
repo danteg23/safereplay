@@ -1126,8 +1126,8 @@ input:focus-visible {
 }
 
 .youtube-watch-page .lab-covered-shield {
-  --covered-play-hole-width: 88px;
-  --covered-play-hole-height: 62px;
+  --covered-play-hole-width: 70px;
+  --covered-play-hole-height: 50px;
   position: absolute;
   inset: 0;
   width: auto;

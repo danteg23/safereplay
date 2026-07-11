@@ -52,6 +52,8 @@ test("private playback probe stays covered until YouTube reports playing", async
 
 test("public covered player fully removes the shield after playback and keeps desktop-only fullscreen", async () => {
   const styles = await readFile(new URL("v2.css", publicRoot), "utf8");
+  assert.match(styles, /--covered-play-hole-width:\s*70px/);
+  assert.match(styles, /--covered-play-hole-height:\s*50px/);
   assert.match(styles, /\.youtube-watch-page \.lab-covered-player\.is-playing \.lab-covered-shield\s*{[^}]*visibility:\s*hidden/s);
   assert.match(styles, /@media \(max-width:\s*899px\)[\s\S]*?\[data-proof-fullscreen\]\s*{\s*display:\s*none;/s);
 });
