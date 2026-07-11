@@ -187,8 +187,16 @@ This is the intended scheduler command. It performs one bounded format-aware que
 selected fixture, reuses the private six-hour cache, reports only counts and connector
 status, and fails closed if the SSH execution route or its `youtube.readonly` scope is
 missing. It does not use AI: matching and spoiler blocking are deterministic. The static
-friend deployment is independent of this optional refresh scheduler; publishing a newly
-reviewed catalogue still requires a tested repository push.
+friend deployment is independent of the private review queue; publishing a newly reviewed
+video still requires a tested repository push.
+
+The production VPS runs `scripts/vps-refresh-and-deploy.sh` twice daily. It uses the same
+authenticated YouTube capability directly on that VPS, keeps the private candidate queue
+and cache there, runs the full test suite, and pushes only a changed neutral fixture-feed
+snapshot. That push triggers the GitHub Pages deployment. A failed feed, search, test, or
+non-fast-forward update stops without publishing. New video candidates are deliberately
+not auto-promoted: the covered player hides metadata, but exact identity, embedding, free
+playback, and region availability still need evidence before a friend-facing link appears.
 
 ### Compare YouTube playback workarounds
 

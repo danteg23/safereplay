@@ -93,3 +93,29 @@ test("remote executor forwards a validated relevance language for preferred broa
   await executor.search({ ...parameters, relevanceLanguage: "no" });
   assert.match(calls[1].at(-1), /--relevance-language.*no/);
 });
+
+test("VPS-local executor uses the authenticated binary directly without SSH", async (t) => {
+  const directory = await mkdtemp(join(tmpdir(), "safereplay-local-youtube-"));
+  t.after(() => rm(directory, { force: true, recursive: true }));
+  const calls = [];
+  const executor = createRemoteYouTubeExecutor({
+    cacheUrl: pathToFileURL(join(directory, "cache.json")),
+    execFileImpl: async (file, args) => {
+      calls.push({ args, file });
+      if (args[0] === "scope-status") return { stdout: "youtube.readonly: true\n" };
+      return { stdout: JSON.stringify(rawResponse()) };
+    },
+    local: true,
+  });
+
+  await executor.verify();
+  await executor.search({ ...parameters, relevanceLanguage: "no" });
+
+  assert.equal(calls.length, 2);
+  assert.equal(calls[0].file, "/home/claude/.local/bin/google-youtube");
+  assert.deepEqual(calls[0].args, ["scope-status"]);
+  assert.equal(calls[1].file, "/home/claude/.local/bin/google-youtube");
+  assert.equal(calls[1].args[0], "--json");
+  assert.ok(calls[1].args.includes("--relevance-language"));
+  assert.ok(!calls[1].args.includes("ssh"));
+});

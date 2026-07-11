@@ -61,8 +61,10 @@ LLM. `npm run refresh:daily:remote -- --region=PH` performs the same sequence th
 Daniel's existing authenticated `youtube.readonly` route on `vps-claude`, with bounded
 fixture queries, six-hour cache reuse, and neutral count-only output. This is the intended
 daily scheduler command. A friend-safe static GitHub Pages build and deployment workflow
-are implemented; the first production deployment is the remaining hosting gate. The
-scheduler is not configured yet.
+is live. A user-scoped VPS scheduler refreshes official fixture feeds and the private
+YouTube review queue twice daily, runs the full test suite, and publishes only changed
+neutral fixture data through a fast-forward repository push. Video promotion remains
+evidence-gated rather than automatic.
 The approved local journey deliberately omits Watched/history. Only neutral navigation
 and user settings persist; provider metadata, destinations, titles, thumbnails, and
 results remain outside browser state. This behavior is automated-test and Browser/IAB

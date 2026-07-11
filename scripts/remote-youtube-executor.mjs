@@ -38,6 +38,7 @@ async function loadCache(cacheUrl) {
 export function createRemoteYouTubeExecutor({
   cacheUrl = new URL("../.private/youtube-search-cache.json", import.meta.url),
   execFileImpl = execFile,
+  local = process.env.SAFEREPLAY_YOUTUBE_LOCAL === "1",
   now = () => Date.now(),
 } = {}) {
   let cachePromise = null;
@@ -51,12 +52,17 @@ export function createRemoteYouTubeExecutor({
     },
     async verify() {
       try {
-        const { stdout } = await execFileImpl("ssh", [
-          "-o", "BatchMode=yes",
-          "-o", "ConnectTimeout=10",
-          "vps-claude",
-          `${REMOTE_BINARY} scope-status`,
-        ], { maxBuffer: 256 * 1_024, timeout: 15_000 });
+        const { stdout } = local
+          ? await execFileImpl(REMOTE_BINARY, ["scope-status"], {
+            maxBuffer: 256 * 1_024,
+            timeout: 15_000,
+          })
+          : await execFileImpl("ssh", [
+            "-o", "BatchMode=yes",
+            "-o", "ConnectTimeout=10",
+            "vps-claude",
+            `${REMOTE_BINARY} scope-status`,
+          ], { maxBuffer: 256 * 1_024, timeout: 15_000 });
         if (!/^youtube\.readonly:\s*true$/mu.test(stdout)) throw new Error();
       } catch {
         throw new RemoteYouTubeRouteMissingError();
@@ -83,13 +89,20 @@ export function createRemoteYouTubeExecutor({
       if (typeof parameters.relevanceLanguage === "string" && /^[a-z]{2}$/u.test(parameters.relevanceLanguage)) {
         commandArguments.push("--relevance-language", parameters.relevanceLanguage);
       }
-      const command = [REMOTE_BINARY, ...commandArguments].map(remoteQuote).join(" ");
       let stdout;
       try {
-        ({ stdout } = await execFileImpl("ssh", ["vps-claude", command], {
-          maxBuffer: 4 * 1_024 * 1_024,
-          timeout: 30_000,
-        }));
+        if (local) {
+          ({ stdout } = await execFileImpl(REMOTE_BINARY, commandArguments, {
+            maxBuffer: 4 * 1_024 * 1_024,
+            timeout: 30_000,
+          }));
+        } else {
+          const command = [REMOTE_BINARY, ...commandArguments].map(remoteQuote).join(" ");
+          ({ stdout } = await execFileImpl("ssh", ["vps-claude", command], {
+            maxBuffer: 4 * 1_024 * 1_024,
+            timeout: 30_000,
+          }));
+        }
       } catch {
         throw new RemoteYouTubeRouteMissingError();
       }
