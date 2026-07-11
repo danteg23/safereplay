@@ -168,12 +168,14 @@ public catalogue.
 npm run refresh:daily -- --region=PH
 ```
 
-This runs fixture discovery first, then checks the 11 feed-ready YouTube channels. Safe
-fixture fields update automatically; YouTube candidates stay in the git-ignored private
-review queue until metadata, thumbnail, free access, and playback are safe enough to
-surface. The job is deterministic and does not use an LLM. On macOS, thumbnail text can
-additionally be screened with local Vision OCR. A VPS scheduler can run the command once
-per day. Restart the
+This runs fixture discovery first, resolves exact live-match pages from the ordinary
+TotalSportek and Camel Live directories, then checks the 11 feed-ready YouTube channels.
+Live discovery requires one unambiguous two-team match on an allowlisted HTTPS host; if
+that proof is absent, the app keeps the appropriate general-directory fallback. Safe
+fixture fields and verified live destinations update automatically. YouTube candidates
+stay in the git-ignored private review queue until metadata, thumbnail, free access, and
+playback are safe enough to surface. The job is deterministic and does not use an LLM.
+On macOS, thumbnail text can additionally be screened with local Vision OCR. Restart the
 app process after a successful refresh so it loads the new catalogue.
 
 To use Daniel's existing authenticated YouTube search capability on `vps-claude`, while
@@ -192,11 +194,12 @@ video still requires a tested repository push.
 
 The production VPS runs `scripts/vps-refresh-and-deploy.sh` twice daily. It uses the same
 authenticated YouTube capability directly on that VPS, keeps the private candidate queue
-and cache there, runs the full test suite, and pushes only a changed neutral fixture-feed
-snapshot. That push triggers the GitHub Pages deployment. A failed feed, search, test, or
-non-fast-forward update stops without publishing. New video candidates are deliberately
-not auto-promoted: the covered player hides metadata, but exact identity, embedding, free
-playback, and region availability still need evidence before a friend-facing link appears.
+and cache there, discovers exact TotalSportek/Camel live pages, runs the full test suite,
+and pushes only changed neutral fixtures or allowlisted live destinations. That push
+triggers the GitHub Pages deployment. A failed feed, search, test, or non-fast-forward
+update stops without publishing. New video candidates are deliberately not auto-promoted:
+the covered player hides metadata, but exact identity, embedding, free playback, and
+region availability still need evidence before a friend-facing replay link appears.
 
 ### Compare YouTube playback workarounds
 

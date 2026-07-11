@@ -17,6 +17,10 @@ test("daily refresh updates fixtures before the private YouTube review queue", a
         fixtureCount: 14,
       };
     },
+    liveSourceDiscovery: async (options) => {
+      calls.push(["live", options]);
+      return { failures: [], linksFound: 3, providersChecked: 2, publicSnapshotUpdated: true };
+    },
     youtubeDiscovery: async (options) => {
       calls.push(["youtube", options]);
       return {
@@ -27,16 +31,18 @@ test("daily refresh updates fixtures before the private YouTube review queue", a
     },
   });
 
-  assert.deepEqual(calls.map(([name]) => name), ["fixtures", "youtube"]);
+  assert.deepEqual(calls.map(([name]) => name), ["fixtures", "live", "youtube"]);
   assert.deepEqual(calls[0][1], {
     argv: ["--save-private", "--save-catalogue"],
     checkedAt: "2026-07-10",
   });
-  assert.deepEqual(calls[1][1].argv, ["--region=NO", "--save-private"]);
-  assert.equal(calls[1][1].checkedAt, "2026-07-10");
+  assert.deepEqual(calls[1][1], { checkedAt: "2026-07-10T00:00:00.000Z", save: true });
+  assert.deepEqual(calls[2][1].argv, ["--region=NO", "--save-private"]);
+  assert.equal(calls[2][1].checkedAt, "2026-07-10");
   assert.deepEqual(report, {
     checkedAt: "2026-07-10",
     fixtures: { feedsChecked: 2, fixturesFound: 14, publicSnapshotUpdated: true },
+    live: { failures: 0, linksFound: 3, providersChecked: 2, publicSnapshotUpdated: true },
     region: "NO",
     restartRequired: true,
     youtube: {
@@ -59,6 +65,7 @@ test("daily refresh fails closed before YouTube when the fixture snapshot is inc
       feeds: [],
       fixtureCount: 0,
     }),
+    liveSourceDiscovery: async () => { throw new Error("must not run"); },
     youtubeDiscovery: async () => { youtubeCalled = true; },
   }), /refused an incomplete fixture snapshot/);
   assert.equal(youtubeCalled, false);
@@ -75,6 +82,12 @@ test("daily refresh can use the authenticated remote YouTube route without expos
       feeds: ["fixture-feed"],
       fixtureCount: 12,
     }),
+    liveSourceDiscovery: async () => ({
+      failures: [{ code: "live_source_unavailable", provider: "camel" }],
+      linksFound: 2,
+      providersChecked: 2,
+      publicSnapshotUpdated: true,
+    }),
     youtubeDiscovery: async (options) => {
       youtubeOptions = options;
       return {
@@ -90,5 +103,11 @@ test("daily refresh can use the authenticated remote YouTube route without expos
   assert.equal(report.youtube.connector, "remote_search");
   assert.equal(report.youtube.cacheHits, 11);
   assert.equal(report.youtube.remoteSearches, 1);
+  assert.deepEqual(report.live, {
+    failures: 1,
+    linksFound: 2,
+    providersChecked: 2,
+    publicSnapshotUpdated: true,
+  });
   assert.doesNotMatch(JSON.stringify(report), /private raw title|title|description|thumbnail|youtube\.com/i);
 });

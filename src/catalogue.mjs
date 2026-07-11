@@ -6,6 +6,7 @@ import {
 } from "./catalogue-projection.mjs";
 import { sanitizeFixtureSnapshot } from "./fixture-sanitizer.mjs";
 import { mergeFixtureSnapshots } from "./fixture-snapshot-set.mjs";
+import { validateLiveDestinationSnapshot } from "./live-source-discovery.mjs";
 import { validatePublicCatalogue } from "./public-contract.mjs";
 
 const officialSnapshot = JSON.parse(
@@ -21,6 +22,12 @@ const sourceRegistry = JSON.parse(
 const itemRegistry = JSON.parse(
   readFileSync(new URL("../config/item-candidates.json", import.meta.url), "utf8"),
 );
+const liveDestinationSnapshot = JSON.parse(
+  readFileSync(new URL("../config/live-destinations.json", import.meta.url), "utf8"),
+);
+validateLiveDestinationSnapshot(liveDestinationSnapshot, {
+  fixtureIds: snapshot.fixtures.map(({ id }) => id),
+});
 
 function worldCupReplaySources({
   prefix,
@@ -374,6 +381,17 @@ const fixtureIds = snapshot.fixtures.map((fixture) => fixture.id);
 const surfaceProjection = buildSurfaceProjection(itemRegistry, sourceRegistry, { fixtureIds });
 const sourcesByFixture = mergeSurfaceRecords(fixtureIds, staticSourcesByFixture, surfaceProjection);
 
+function dynamicLiveDestinations(fixtures) {
+  const destinations = {};
+  for (const fixture of fixtures) {
+    const exact = liveDestinationSnapshot.sourcesByFixture?.[fixture.id] ?? {};
+    destinations[`live-totalsportek-${fixture.id}`] = exact.totalsportek ?? staticDestinations["live-totalsportek"];
+    destinations[`live-camel-${fixture.id}`] = exact.camel
+      ?? staticDestinations[fixture.competition === "Eliteserien" ? "live-camel-eliteserien" : "live-camel-football"];
+  }
+  return destinations;
+}
+
 const fixtures = sanitizeFixtureSnapshot(snapshot, {
   favoriteTeams: ["Manchester City", "Arsenal", "Barcelona", "Norway"],
   availabilityByFixture: Object.fromEntries(Object.entries(sourcesByFixture)
@@ -395,5 +413,6 @@ export function getPublicCatalogue() {
 }
 
 export const providerDestinations = Object.freeze({
+  ...dynamicLiveDestinations(snapshot.fixtures),
   ...mergeProviderDestinations(staticDestinations, surfaceProjection.destinations),
 });

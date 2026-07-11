@@ -54,17 +54,20 @@ both teams for `highlights` and `full match` alternatives. A real 2026-07-11 PH 
 the expanded 12-fixture window saved five private candidates, including a fresh official
 FIFA Short for France–Morocco and an Aleph Full/manual-review candidate for Spain–Belgium.
 The registry currently spans 30 source definitions; 11 exact YouTube channels are
-feed-ready. `npm run refresh:daily -- --region=PH` now performs the fixture refresh and
-YouTube discovery in a fail-closed deterministic sequence. It updates neutral fixtures
-and the private YouTube review queue, then requires the app process to restart. It uses no
+feed-ready. `npm run refresh:daily -- --region=PH` now performs fixture refresh, strict
+exact-link discovery from the allowlisted TotalSportek and Camel Live directories, and
+YouTube discovery in a fail-closed deterministic sequence. It updates neutral fixtures,
+allowlisted live destinations, and the private YouTube review queue, then requires the app
+process to restart. Exact live discovery accepts only one unambiguous two-team path and
+otherwise retains the general-directory fallback. It uses no
 LLM. `npm run refresh:daily:remote -- --region=PH` performs the same sequence through
 Daniel's existing authenticated `youtube.readonly` route on `vps-claude`, with bounded
 fixture queries, six-hour cache reuse, and neutral count-only output. This is the intended
 daily scheduler command. A friend-safe static GitHub Pages build and deployment workflow
-is live. A user-scoped VPS scheduler refreshes official fixture feeds and the private
-YouTube review queue twice daily, runs the full test suite, and publishes only changed
-neutral fixture data through a fast-forward repository push. Video promotion remains
-evidence-gated rather than automatic.
+is live. A user-scoped VPS scheduler refreshes official fixture feeds, exact live links,
+and the private YouTube review queue twice daily, runs the full test suite, and publishes
+only changed neutral fixture/live data through a fast-forward repository push. Video
+replay promotion remains evidence-gated rather than automatic.
 The approved local journey deliberately omits Watched/history. Only neutral navigation
 and user settings persist; provider metadata, destinations, titles, thumbnails, and
 results remain outside browser state. This behavior is automated-test and Browser/IAB

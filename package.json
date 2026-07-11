@@ -9,6 +9,7 @@
     "discover:fixtures": "node scripts/discover-fixtures.mjs",
     "discover:youtube": "node scripts/discover-youtube.mjs",
     "discover:youtube:remote": "node scripts/discover-youtube.mjs --remote-search",
+    "discover:live": "node scripts/discover-live-sources.mjs",
     "refresh:daily": "node scripts/refresh-daily.mjs",
     "refresh:daily:remote": "node scripts/refresh-daily.mjs --remote-search",
     "scan:youtube-thumbnails": "node scripts/scan-youtube-thumbnails.mjs",

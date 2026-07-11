@@ -16,12 +16,12 @@ git merge --ff-only --quiet origin/main
 SAFEREPLAY_YOUTUBE_LOCAL=1 npm run refresh:daily:remote -- --region=PH
 npm test
 
-if git diff --quiet -- config/fixture-feed-snapshot.json; then
-  printf '%s SafeReplay refresh completed; no public fixture changes\n' "$(date -u +%FT%TZ)"
+if git diff --quiet -- config/fixture-feed-snapshot.json config/live-destinations.json; then
+  printf '%s SafeReplay refresh completed; no public catalogue changes\n' "$(date -u +%FT%TZ)"
   exit 0
 fi
 
-git add config/fixture-feed-snapshot.json
-git commit -m "chore: refresh SafeReplay fixtures"
+git add config/fixture-feed-snapshot.json config/live-destinations.json
+git commit -m "chore: refresh SafeReplay catalogue"
 git push origin main
-printf '%s SafeReplay fixture refresh published\n' "$(date -u +%FT%TZ)"
+printf '%s SafeReplay catalogue refresh published\n' "$(date -u +%FT%TZ)"

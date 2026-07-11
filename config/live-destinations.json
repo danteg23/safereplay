@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-07-11T16:44:10.795Z",
+  "sourcesByFixture": {
+    "eliteserien-official-380dd2ad-ac62-4cf2-bf66-1e4c185871ba": {
+      "camel": "https://www.camel1.tv/football/tromso-il-vs-valerenga-fotball-elite/live/y0or5jh8z343qwz"
+    },
+    "eliteserien-official-85a8aebb-0535-4030-bd44-6c8508814657": {
+      "camel": "https://www.camel1.tv/football/aalesund-fk-vs-molde/live/6ypq3nhv7w0xmd7"
+    },
+    "eliteserien-official-f783179e-52b0-4f0c-a9cd-24bf40f566d0": {
+      "camel": "https://www.camel1.tv/football/kfum-oslo-vs-bodo-glimt/pxwrxlhyxjppryk"
+    },
+    "fifa-world-cup-2026-match-100": {
+      "camel": "https://www.camel1.tv/football/argentina-vs-switzerland/zp5rzghgw3e6q82",
+      "totalsportek": "https://totalsportek.cat/game/argentina-vs-switzerland-7938421891"
+    },
+    "fifa-world-cup-2026-match-98": {
+      "totalsportek": "https://totalsportek.cat/game/spain-vs-belgium-2144565976"
+    },
+    "fifa-world-cup-2026-match-99": {
+      "camel": "https://www.camel1.tv/football/norway-vs-england/23xmvkh60yz0qg8",
+      "totalsportek": "https://totalsportek.cat/game/norway-vs-england-7445162393"
+    }
+  }
+}

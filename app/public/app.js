@@ -31,32 +31,15 @@ const storageKey = "safereplay.settings.v1";
 const navigationStorageKey = "safereplay.navigation.v1";
 const LIVE_WINDOW_MS = 3 * 60 * 60 * 1000;
 const internationalLiveSources = Object.freeze([
-  { label: "TotalSportek", redirectPath: "/go/live-totalsportek" },
-  { label: "Camel Live", redirectPath: "/go/live-camel-football" },
+  { label: "TotalSportek", provider: "totalsportek" },
+  { label: "Camel Live", provider: "camel" },
   { label: "Livsports", redirectPath: "/go/live-livsports-schedule" },
 ]);
 const norwegianLiveSources = Object.freeze([
-  { label: "Camel Live", redirectPath: "/go/live-camel-eliteserien" },
-  { label: "TotalSportek", redirectPath: "/go/live-totalsportek" },
+  { label: "Camel Live", provider: "camel" },
+  { label: "TotalSportek", provider: "totalsportek" },
   { label: "Livsports", redirectPath: "/go/live-livsports-schedule" },
 ]);
-const fixtureLiveSourceOverrides = Object.freeze({
-  "fifa-world-cup-2026-match-98": Object.freeze([
-    { label: "TotalSportek", redirectPath: "/go/live-totalsportek-spain-belgium" },
-    { label: "Camel Live", redirectPath: "/go/live-camel-football" },
-    { label: "Livsports", redirectPath: "/go/live-livsports-schedule" },
-  ]),
-  "fifa-world-cup-2026-match-99": Object.freeze([
-    { label: "TotalSportek", redirectPath: "/go/live-totalsportek-norway-england" },
-    { label: "Camel Live", redirectPath: "/go/live-camel-football" },
-    { label: "Livsports", redirectPath: "/go/live-livsports-schedule" },
-  ]),
-  "eliteserien-official-85a8aebb-0535-4030-bd44-6c8508814657": Object.freeze([
-    { label: "Camel Live", redirectPath: "/go/live-camel-aalesund-molde" },
-    { label: "TotalSportek", redirectPath: "/go/live-totalsportek" },
-    { label: "Livsports", redirectPath: "/go/live-livsports-schedule" },
-  ]),
-});
 const commonTimeZones = Object.freeze([
   "Europe/London",
   "Europe/Paris",
@@ -243,8 +226,11 @@ function fixtureIsActionable(fixture) {
 }
 
 function liveSourcesForFixture(fixture) {
-  return fixtureLiveSourceOverrides[fixture.id]
-    ?? (fixture.competition === "Eliteserien" ? norwegianLiveSources : internationalLiveSources);
+  const sources = fixture.competition === "Eliteserien" ? norwegianLiveSources : internationalLiveSources;
+  return sources.map((source) => ({
+    label: source.label,
+    redirectPath: source.redirectPath ?? `/go/live-${source.provider}-${fixture.id}`,
+  }));
 }
 
 function fixtureRow(fixture) {

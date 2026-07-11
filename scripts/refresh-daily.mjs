@@ -1,6 +1,7 @@
 import { fileURLToPath } from "node:url";
 
 import { runFixtureDiscovery } from "./discover-fixtures.mjs";
+import { runLiveSourceDiscovery } from "./discover-live-sources.mjs";
 import { runYouTubeDiscovery } from "./discover-youtube.mjs";
 
 function regionArgument(argv) {
@@ -22,6 +23,7 @@ export async function runDailyRefresh({
   argv = process.argv.slice(2),
   checkedAt = new Date().toISOString().slice(0, 10),
   fixtureDiscovery = runFixtureDiscovery,
+  liveSourceDiscovery = runLiveSourceDiscovery,
   youtubeDiscovery = runYouTubeDiscovery,
 } = {}) {
   const region = regionArgument(argv);
@@ -32,6 +34,8 @@ export async function runDailyRefresh({
   if (!fixtures.catalogueSnapshotSaved || fixtures.failures.length > 0) {
     throw new Error("daily refresh refused an incomplete fixture snapshot");
   }
+
+  const live = await liveSourceDiscovery({ checkedAt: `${checkedAt}T00:00:00.000Z`, save: true });
 
   const youtube = await youtubeDiscovery({
     apiKey: process.env.YOUTUBE_API_KEY ?? null,
@@ -45,6 +49,12 @@ export async function runDailyRefresh({
       feedsChecked: fixtures.feeds.length,
       fixturesFound: fixtures.fixtureCount,
       publicSnapshotUpdated: true,
+    },
+    live: {
+      failures: live.failures.length,
+      linksFound: live.linksFound,
+      providersChecked: live.providersChecked,
+      publicSnapshotUpdated: live.publicSnapshotUpdated,
     },
     region,
     restartRequired: true,

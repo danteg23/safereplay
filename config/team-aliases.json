@@ -19,7 +19,7 @@
   "Ivory Coast": ["Côte d'Ivoire", "Elfenbenskysten"],
   "Argentina": ["Argentine", "Argentinien", "La Albiceleste"],
   "Egypt": ["Egypten", "Égypte", "Ägypten", "Egipto"],
-  "Aalesund": ["Ålesund", "AaFK"],
+  "Aalesund": ["Ålesund", "Aalesund FK", "AaFK"],
   "Bodø/Glimt": ["Bodo Glimt"],
   "Brann": ["SK Brann"],
   "Fredrikstad": ["FFK", "Fredrikstad FK"],
@@ -33,5 +33,5 @@
   "Start": ["IK Start"],
   "Tromsø": ["Tromso", "Tromsø IL"],
   "Viking": ["Viking FK"],
-  "Vålerenga": ["Vålerenga Fotball"]
+  "Vålerenga": ["Vålerenga Fotball", "Vålerenga Fotball Elite"]
 }

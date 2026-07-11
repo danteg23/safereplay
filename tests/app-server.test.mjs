@@ -126,6 +126,14 @@ test("provider handoff is allowlisted and does not accept arbitrary URLs", async
   assert.equal(exactCamel.status, 302);
   assert.equal(exactCamel.headers.get("location"), "https://www.camel1.tv/football/aalesund-fk-vs-molde/live/6ypq3nhv7w0xmd7");
 
+  const discoveredTotalSportek = await request("/go/live-totalsportek-fifa-world-cup-2026-match-99");
+  assert.equal(discoveredTotalSportek.status, 302);
+  assert.equal(discoveredTotalSportek.headers.get("location"), "https://totalsportek.cat/game/norway-vs-england-7445162393");
+
+  const discoveredCamel = await request("/go/live-camel-fifa-world-cup-2026-match-99");
+  assert.equal(discoveredCamel.status, 302);
+  assert.equal(discoveredCamel.headers.get("location"), "https://www.camel1.tv/football/norway-vs-england/23xmvkh60yz0qg8");
+
   const livsports = await request("/go/live-livsports-schedule");
   assert.equal(livsports.status, 302);
   assert.equal(livsports.headers.get("location"), "https://livsports.dpdns.org/schedule");
