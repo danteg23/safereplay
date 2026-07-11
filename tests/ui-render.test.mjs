@@ -148,17 +148,17 @@ test("live control exists only during the live window and fallbacks live only in
   ui.render();
   assert.match(root.innerHTML, /class="fixture-row has-live"/);
   assert.match(root.innerHTML, /class="live-play" href="\/go\/live-score808"/);
-  assert.doesNotMatch(root.innerHTML, /live-rbtv|live-totalsportek/);
+  assert.doesNotMatch(root.innerHTML, /live-totalsportek/);
 
   ui.handleAction({ dataset: { action: "open-fixture", fixtureId: "fifa-world-cup-2026-match-98" } });
   assert.match(root.innerHTML, /<span class="live-label">Live now<\/span>/);
   assert.match(root.innerHTML, /href="\/go\/live-score808"/);
-  assert.match(root.innerHTML, /Alternative 1 · RBTV/);
-  assert.match(root.innerHTML, /Alternative 2 · TotalSportek/);
+  assert.match(root.innerHTML, /Alternative 1 · TotalSportek/);
+  assert.doesNotMatch(root.innerHTML, /RBTV/);
 
   ui.setNow("2026-07-10T22:00:01Z");
   ui.render();
-  assert.doesNotMatch(root.innerHTML, /Live now|live-score808|live-rbtv|live-totalsportek/);
+  assert.doesNotMatch(root.innerHTML, /Live now|live-score808|live-totalsportek/);
 });
 
 test("timezone is changed only from Settings and Manila/Oslo are pinned", async () => {

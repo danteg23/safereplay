@@ -32,7 +32,6 @@ const navigationStorageKey = "safereplay.navigation.v1";
 const LIVE_WINDOW_MS = 3 * 60 * 60 * 1000;
 const liveSources = Object.freeze([
   { label: "Score808", redirectPath: "/go/live-score808" },
-  { label: "RBTV", redirectPath: "/go/live-rbtv" },
   { label: "TotalSportek", redirectPath: "/go/live-totalsportek" },
 ]);
 const commonTimeZones = Object.freeze([

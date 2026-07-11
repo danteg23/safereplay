@@ -303,7 +303,6 @@ const staticSourcesByFixture = {
 
 const staticDestinations = {
   "live-score808": "https://www.score808live.tv/",
-  "live-rbtv": "https://rbtv77.com/",
   "live-totalsportek": "https://totalsportek.com/",
   "aleph-arena-youtube": "https://www.youtube.com/@AlephArena",
   "france-morocco-reddit": "https://www.reddit.com/r/footballhighlights/comments/1us2ust/france_vs_morocco_world_cup_09jul2026/",

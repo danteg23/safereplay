@@ -110,9 +110,9 @@ test("provider handoff is allowlisted and does not accept arbitrary URLs", async
   assert.equal(score808.status, 302);
   assert.equal(score808.headers.get("location"), "https://www.score808live.tv/");
 
-  const rbtv = await request("/go/live-rbtv");
-  assert.equal(rbtv.status, 302);
-  assert.equal(rbtv.headers.get("location"), "https://rbtv77.com/");
+  const retiredRbtv = await request("/go/live-rbtv");
+  assert.equal(retiredRbtv.status, 404);
+  assert.equal(retiredRbtv.headers.get("location"), undefined);
 
   const totalsportek = await request("/go/live-totalsportek");
   assert.equal(totalsportek.status, 302);
