@@ -1,0 +1,513 @@
+[
+  {
+    "id": "aleph-arena-youtube",
+    "name": "Aleph Arena",
+    "baseUrl": "https://www.youtube.com/@AlephArena",
+    "channelHandle": "@AlephArena",
+    "channelId": "UC_agrcVM7uQcIi5q4MrWAaQ",
+    "channelIdentityEvidenceUrl": "https://www.youtube.com/channel/UC_agrcVM7uQcIi5q4MrWAaQ",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.prnewswire.com/news-releases/aleph-launches-first-of-its-kind-multichannel-distribution-model-to-redefine-the-fifa-world-cup-2026-fan-experience-in-the-philippines-302796546.html",
+    "formats": ["full", "short", "partial"],
+    "access": "mixed_free",
+    "discovery": ["youtube_channel"],
+    "regions": [{ "code": "PH", "status": "claimed_available", "checkedAt": "2026-07-10" }],
+    "spoilerBaseline": { "listing": "unknown", "preplay": "unsafe", "player": "unsafe", "postplay": "unsafe" },
+    "requiresItemScan": true,
+    "stage": "candidate"
+  },
+  {
+    "id": "fifa-youtube",
+    "name": "FIFA on YouTube",
+    "baseUrl": "https://www.youtube.com/@FIFA",
+    "channelHandle": "@FIFA",
+    "channelId": "UCpcTrCXblq78GZrTUTLWeBw",
+    "channelIdentityEvidenceUrl": "https://www.youtube.com/channel/UCpcTrCXblq78GZrTUTLWeBw",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://blog.youtube/news-and-events/fifa-world-cup-2026-youtube-partnership/",
+    "formats": ["full", "extended", "short"],
+    "access": "free",
+    "discovery": ["youtube_channel"],
+    "regions": [
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unsafe", "player": "unsafe", "postplay": "unsafe" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "premier-league-youtube",
+    "name": "Premier League on YouTube",
+    "baseUrl": "https://www.youtube.com/PremierLeague",
+    "channelHandle": "@premierleague",
+    "channelId": "UCG5qGWdu8nIRZqJ_GgDwQ-w",
+    "channelIdentityEvidenceUrl": "https://www.youtube.com/channel/UCG5qGWdu8nIRZqJ_GgDwQ-w",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.premierleague.com/en/news/2168405",
+    "formats": ["extended", "short"],
+    "access": "free",
+    "discovery": ["youtube_channel"],
+    "regions": [
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unsafe", "player": "unsafe", "postplay": "unsafe" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "laliga-youtube",
+    "name": "LALIGA on YouTube",
+    "baseUrl": "https://www.youtube.com/LaLiga",
+    "channelHandle": "@LaLiga",
+    "channelId": "UCTv-XvfzLX3i4IGWAm4sbmA",
+    "channelIdentityEvidenceUrl": "https://www.youtube.com/channel/UCTv-XvfzLX3i4IGWAm4sbmA",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.laliga.com/en-ES/news/la-liga-channel-surpasses-100-million-youtube-views",
+    "formats": ["extended", "short"],
+    "access": "free",
+    "discovery": ["youtube_channel"],
+    "regions": [
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unsafe", "player": "unsafe", "postplay": "unsafe" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "ligue-1-youtube",
+    "name": "Ligue 1 on YouTube",
+    "baseUrl": "https://www.youtube.com/@Ligue1",
+    "channelHandle": "@Ligue1",
+    "channelId": "UC58LMAlfwtGRNR6Xpd4DlSA",
+    "channelIdentityEvidenceUrl": "https://www.youtube.com/channel/UC58LMAlfwtGRNR6Xpd4DlSA",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.lfp.fr/article/lancement-de-ligue-1-vintage",
+    "formats": ["extended", "short"],
+    "access": "free",
+    "discovery": ["youtube_channel"],
+    "regions": [
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unsafe", "player": "unsafe", "postplay": "unsafe" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "uefa-youtube",
+    "name": "UEFA on YouTube",
+    "baseUrl": "https://www.youtube.com/UEFA",
+    "channelHandle": "@UEFA",
+    "channelId": "UCyGa1YEx9ST66rYrJTGIKOw",
+    "channelIdentityEvidenceUrl": "https://www.youtube.com/channel/UCyGa1YEx9ST66rYrJTGIKOw",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.uefa.com/news-media/news/0254-0d7dcc9ee9d3-f9e8e126d310-1000--uefa-com-launches-youtube-channel/",
+    "formats": ["extended", "short"],
+    "access": "free",
+    "discovery": ["youtube_channel"],
+    "regions": [
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unsafe", "player": "unsafe", "postplay": "unsafe" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "fifa-plus",
+    "name": "FIFA+",
+    "baseUrl": "https://www.plus.fifa.com/en/catalogue/archive",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.plus.fifa.com/en/catalogue/archive",
+    "formats": ["full", "extended", "short"],
+    "access": "free_account",
+    "discovery": ["web_catalogue"],
+    "regions": [
+      { "code": "PH", "status": "login_required", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unknown", "preplay": "unknown", "player": "unknown", "postplay": "unknown" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "uefa-tv",
+    "name": "UEFA.tv",
+    "baseUrl": "https://www.uefa.tv/",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.uefa.com/uefatv-faq/",
+    "formats": ["extended", "short"],
+    "access": "free_account",
+    "discovery": ["web_catalogue", "provider_app"],
+    "regions": [
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unknown", "preplay": "unknown", "player": "unknown", "postplay": "unknown" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "premier-league-archive",
+    "name": "Premier League Archive",
+    "baseUrl": "https://www.premierleague.com/en/welcome/the-archive/overview",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.premierleague.com/en/welcome/the-archive/overview",
+    "formats": ["full", "mini", "extended", "short"],
+    "access": "free_account",
+    "discovery": ["web_catalogue"],
+    "regions": [
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unknown", "preplay": "unknown", "player": "unknown", "postplay": "unknown" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "eliteserien-video",
+    "name": "Eliteserien Video",
+    "baseUrl": "https://www.eliteserien.no/video",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.eliteserien.no/video",
+    "formats": ["short"],
+    "access": "free",
+    "discovery": ["web_catalogue"],
+    "regions": [
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "claimed_available", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unknown", "player": "unknown", "postplay": "unknown" },
+    "requiresItemScan": true,
+    "stage": "candidate"
+  },
+  {
+    "id": "nff-tv",
+    "name": "NFF TV",
+    "baseUrl": "https://www.fotball.no/nfftv/",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.fotball.no/nfftv/",
+    "formats": ["short"],
+    "access": "free",
+    "discovery": ["web_catalogue"],
+    "regions": [
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "claimed_available", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unknown", "player": "unknown", "postplay": "unknown" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "true-highlights",
+    "name": "True Highlights",
+    "baseUrl": "https://truehighlights.com/",
+    "provenance": "aggregator",
+    "formats": ["short"],
+    "access": "free",
+    "discovery": ["web_catalogue"],
+    "regions": [{ "code": "PH", "status": "playback_observed", "checkedAt": "2026-07-10" }],
+    "spoilerBaseline": { "listing": "safe_observed", "preplay": "item_dependent", "player": "unsafe", "postplay": "unsafe" },
+    "requiresItemScan": true,
+    "stage": "candidate"
+  },
+  {
+    "id": "spoilsports",
+    "name": "SpoilSports",
+    "baseUrl": "https://spoilsports.net/",
+    "provenance": "aggregator",
+    "formats": ["short"],
+    "access": "free",
+    "discovery": ["web_catalogue"],
+    "regions": [{ "code": "PH", "status": "geo_blocked_sample", "checkedAt": "2026-07-10" }],
+    "spoilerBaseline": { "listing": "safe_observed", "preplay": "safe_observed", "player": "unknown", "postplay": "unknown" },
+    "requiresItemScan": true,
+    "stage": "candidate"
+  },
+  {
+    "id": "sports-is-cinema",
+    "name": "Sports Is Cinema",
+    "baseUrl": "https://sportsiscinema.com/football",
+    "provenance": "aggregator",
+    "formats": ["full", "extended", "short"],
+    "access": "free",
+    "discovery": ["web_catalogue"],
+    "regions": [{ "code": "PH", "status": "catalogue_observed", "checkedAt": "2026-07-10" }],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unknown", "player": "unknown", "postplay": "unknown" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "reddit-footballhighlights",
+    "name": "r/footballhighlights",
+    "baseUrl": "https://www.reddit.com/r/footballhighlights/",
+    "provenance": "community_unverified",
+    "formats": ["full", "halves", "mini", "extended", "short", "partial"],
+    "access": "mixed_free",
+    "discovery": ["reddit_thread", "search_index"],
+    "regions": [
+      { "code": "PH", "status": "catalogue_observed", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "item_dependent", "preplay": "item_dependent", "player": "item_dependent", "postplay": "item_dependent" },
+    "requiresItemScan": true,
+    "stage": "candidate"
+  },
+  {
+    "id": "footreplays",
+    "name": "FootReplays",
+    "baseUrl": "https://www.footreplays.com/",
+    "provenance": "community_unverified",
+    "formats": ["full", "halves", "short"],
+    "access": "free",
+    "discovery": ["web_catalogue", "search_index"],
+    "regions": [{ "code": "PH", "status": "catalogue_observed", "checkedAt": "2026-07-10" }],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "safe_observed", "player": "unknown", "postplay": "unknown" },
+    "requiresItemScan": true,
+    "stage": "candidate"
+  },
+  {
+    "id": "refooty",
+    "name": "ReFooty",
+    "baseUrl": "https://refooty.com/",
+    "provenance": "community_unverified",
+    "formats": ["full", "halves", "short"],
+    "access": "mixed_free",
+    "discovery": ["web_catalogue"],
+    "regions": [{ "code": "PH", "status": "playback_observed", "checkedAt": "2026-07-10" }],
+    "spoilerBaseline": { "listing": "item_dependent", "preplay": "unsafe", "player": "item_dependent", "postplay": "unsafe" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "allsportszone",
+    "name": "AllSportsZone",
+    "baseUrl": "https://allsportszone.com/",
+    "provenance": "community_unverified",
+    "formats": ["full"],
+    "access": "free",
+    "discovery": ["web_catalogue"],
+    "regions": [{ "code": "PH", "status": "catalogue_observed", "checkedAt": "2026-07-10" }],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unsafe", "player": "unknown", "postplay": "unknown" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "fullmatch-replay-org",
+    "name": "FullMatch-Replay.org",
+    "baseUrl": "https://www.fullmatch-replay.org/",
+    "provenance": "community_unverified",
+    "formats": ["full", "short"],
+    "access": "unknown",
+    "discovery": ["web_catalogue", "search_index"],
+    "regions": [{ "code": "PH", "status": "untested", "checkedAt": "2026-07-10" }],
+    "spoilerBaseline": { "listing": "unknown", "preplay": "unknown", "player": "unknown", "postplay": "unknown" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "soccerfull-net",
+    "name": "SoccerFull.net",
+    "baseUrl": "https://soccerfull.net/",
+    "provenance": "community_unverified",
+    "formats": ["full"],
+    "access": "unknown",
+    "discovery": ["web_catalogue", "search_index"],
+    "regions": [{ "code": "PH", "status": "untested", "checkedAt": "2026-07-10" }],
+    "spoilerBaseline": { "listing": "unknown", "preplay": "unknown", "player": "unknown", "postplay": "unknown" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "sbs-on-demand-world-cup",
+    "name": "SBS On Demand — World Cup",
+    "baseUrl": "https://www.sbs.com.au/ondemand/sports-series/fifa-world-cup-2026/fifa-world-cup-2026-full-matches",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.sbs.com.au/ondemand/sports-series/fifa-world-cup-2026/fifa-world-cup-2026-full-matches",
+    "formats": ["full", "mini", "extended", "short"],
+    "access": "free_account",
+    "discovery": ["web_catalogue", "provider_app"],
+    "regions": [
+      { "code": "AU", "status": "claimed_available", "checkedAt": "2026-07-10" },
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unknown", "preplay": "unknown", "player": "unknown", "postplay": "unknown" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "rte-world-cup",
+    "name": "RTÉ — World Cup",
+    "baseUrl": "https://www.rte.ie/video/",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.rte.ie/video/id/34728/",
+    "formats": ["short"],
+    "access": "free",
+    "discovery": ["web_catalogue", "search_index"],
+    "regions": [
+      { "code": "IE", "status": "claimed_available", "checkedAt": "2026-07-10" },
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unknown", "player": "unknown", "postplay": "unknown" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "zee5-world-cup",
+    "name": "ZEE5 — World Cup",
+    "baseUrl": "https://www.zee5.com/sports/football/fifa-world-cup/",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://vod.fifa.com/tournament-organisation/commercial/fifa-tv/media-releases/z-announce-agreement-world-cup-2026-major-fifa-tournaments-india-2034",
+    "formats": ["full", "extended", "short"],
+    "access": "paid",
+    "discovery": ["web_catalogue", "search_index", "provider_app"],
+    "regions": [
+      { "code": "IN", "status": "claimed_available", "checkedAt": "2026-07-10" },
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unknown", "player": "unknown", "postplay": "unknown" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "fox-sports-world-cup",
+    "name": "FOX Sports — World Cup",
+    "baseUrl": "https://www.foxsports.com/watch/",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://inside.fifa.com/tournament-organisation/commercial/fifa-tv/media-releases/world-cup-2026-broadcast-partnerships-global-benchmark-record-reach-innovation",
+    "formats": ["extended", "short"],
+    "access": "unknown",
+    "discovery": ["web_catalogue", "search_index"],
+    "regions": [
+      { "code": "US", "status": "claimed_available", "checkedAt": "2026-07-10" },
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unknown", "player": "unknown", "postplay": "unknown" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "itvx-world-cup",
+    "name": "ITVX — World Cup",
+    "baseUrl": "https://www.itv.com/watch/fifa-world-cup-2026-highlights/",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://ipt.fifa.com/about-fifa/commercial/news/uk-media-rights-2026-2030-world-cups-bbc-itv",
+    "formats": ["full", "short"],
+    "access": "free_account",
+    "discovery": ["web_catalogue", "search_index", "provider_app"],
+    "regions": [
+      { "code": "GB", "status": "claimed_available", "checkedAt": "2026-07-10" },
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unknown", "preplay": "unknown", "player": "unknown", "postplay": "unknown" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "manchester-city-youtube",
+    "name": "Manchester City on YouTube",
+    "baseUrl": "https://www.youtube.com/@mancity",
+    "channelHandle": "@mancity",
+    "channelId": "UCkzCjdRMrW2vXLx8mvPVLdQ",
+    "channelIdentityEvidenceUrl": "https://www.youtube.com/channel/UCkzCjdRMrW2vXLx8mvPVLdQ",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.mancity.com/meta/media/j1pf5kya/mcfc-supporter-charter-2025-2026.pdf",
+    "formats": ["extended", "short"],
+    "access": "free",
+    "discovery": ["youtube_channel"],
+    "regions": [
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unsafe", "player": "unsafe", "postplay": "unsafe" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "arsenal-youtube",
+    "name": "Arsenal on YouTube",
+    "baseUrl": "https://www.youtube.com/@arsenal",
+    "channelHandle": "@arsenal",
+    "channelId": "UCpryVRk_VDudG8SHXgWcG0w",
+    "channelIdentityEvidenceUrl": "https://www.youtube.com/channel/UCpryVRk_VDudG8SHXgWcG0w",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.arsenal.com/sites/default/files/documents/Arsenal_Holdings_plc_Annual_Review_201516_0.pdf",
+    "formats": ["extended", "short"],
+    "access": "free",
+    "discovery": ["youtube_channel"],
+    "regions": [
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unsafe", "player": "unsafe", "postplay": "unsafe" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "manchester-united-youtube",
+    "name": "Manchester United on YouTube",
+    "baseUrl": "https://www.youtube.com/ManUtd",
+    "channelHandle": "@manutd",
+    "channelId": "UC6yW44UGJJBvYTlfC7CRg2Q",
+    "channelIdentityEvidenceUrl": "https://www.youtube.com/channel/UC6yW44UGJJBvYTlfC7CRg2Q",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.manutd.com/ko/news/detail/manchester-united-launch-official-youtube-channel",
+    "formats": ["extended", "short"],
+    "access": "free",
+    "discovery": ["youtube_channel"],
+    "regions": [
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unsafe", "player": "unsafe", "postplay": "unsafe" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "barcelona-youtube",
+    "name": "FC Barcelona on YouTube",
+    "baseUrl": "https://www.youtube.com/FCBarcelona",
+    "channelHandle": "@FCBarcelona",
+    "channelId": "UC14UlmYlSNiQCBe9Eookf_A",
+    "channelIdentityEvidenceUrl": "https://www.youtube.com/channel/UC14UlmYlSNiQCBe9Eookf_A",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.fcbarcelona.com/en/news/700811/live-on-barcavideo-facebook-youtube",
+    "formats": ["full", "extended", "short"],
+    "access": "free",
+    "discovery": ["youtube_channel"],
+    "regions": [
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unsafe", "player": "unsafe", "postplay": "unsafe" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "tv2-sport-youtube",
+    "name": "TV 2 Sport on YouTube",
+    "baseUrl": "https://www.youtube.com/@tv2sport",
+    "channelHandle": "@tv2sport",
+    "channelId": "UC9QZZRUajPEoo1Q-V3MfvnQ",
+    "channelIdentityEvidenceUrl": "https://www.youtube.com/channel/UC9QZZRUajPEoo1Q-V3MfvnQ",
+    "provenance": "community_unverified",
+    "formats": ["extended", "short"],
+    "access": "free",
+    "discovery": ["youtube_channel", "search_index"],
+    "regions": [
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unsafe", "player": "unsafe", "postplay": "unsafe" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  }
+]

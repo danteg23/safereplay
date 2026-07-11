@@ -1,0 +1,314 @@
+[
+  {
+    "id": "brazil-norway-2026-footreplays",
+    "sourceId": "footreplays",
+    "fixtureId": "brazil-norway-2026-07-05",
+    "teams": ["Brazil", "Norway"],
+    "competition": "FIFA World Cup 2026",
+    "kickoffUtc": "2026-07-05T20:00:00Z",
+    "itemUrl": "https://www.footreplays.com/international/world-cup-2026/brazil-vs-norway-05-07-2026/",
+    "formats": ["full", "halves", "short"],
+    "access": "free",
+    "provenance": "community_unverified",
+    "metadata": {
+      "titleObserved": "Brazil vs Norway Full Match Replay - World Cup 2026",
+      "descriptionObserved": "Watch Brazil vs Norway full match replay and highlights from the World Championship round of 16.",
+      "thumbnailState": "unscanned",
+      "scanDecision": "manual_review",
+      "checkedAt": "2026-07-10"
+    },
+    "playback": {
+      "region": "PH",
+      "status": "blocked_by_popup",
+      "checkedAt": "2026-07-10"
+    },
+    "destinationRisks": ["subscription_popup", "support_iframe", "surrounding_page"],
+    "stage": "candidate"
+  },
+  {
+    "id": "brazil-norway-2026-reddit-full",
+    "sourceId": "reddit-footballhighlights",
+    "fixtureId": "brazil-norway-2026-07-05",
+    "teams": ["Brazil", "Norway"],
+    "competition": "FIFA World Cup 2026",
+    "kickoffUtc": "2026-07-05T20:00:00Z",
+    "itemUrl": "https://www.reddit.com/r/footballhighlights/comments/1uodfg9/brazil_vs_norway_world_cup_05jul2026/",
+    "formats": ["full", "partial"],
+    "access": "mixed_free",
+    "provenance": "community_unverified",
+    "metadata": {
+      "titleObserved": "Brazil vs Norway, World Cup, 05-Jul-2026",
+      "descriptionObserved": null,
+      "thumbnailState": "unscanned",
+      "scanDecision": "manual_review",
+      "checkedAt": "2026-07-10"
+    },
+    "playback": {
+      "region": "PH",
+      "status": "links_unverified",
+      "checkedAt": "2026-07-10"
+    },
+    "destinationRisks": ["comments", "downloads", "third_party_links", "torrents"],
+    "stage": "candidate"
+  },
+  {
+    "id": "brazil-norway-2026-reddit-mini",
+    "sourceId": "reddit-footballhighlights",
+    "fixtureId": "brazil-norway-2026-07-05",
+    "teams": ["Brazil", "Norway"],
+    "competition": "FIFA World Cup 2026",
+    "kickoffUtc": "2026-07-05T20:00:00Z",
+    "itemUrl": "https://www.reddit.com/r/footballhighlights/comments/1uojibd/2026_world_cup_mini_matches_july_6_2026/",
+    "formats": ["mini"],
+    "access": "mixed_free",
+    "provenance": "community_unverified",
+    "metadata": {
+      "titleObserved": "2026 World Cup - Mini Matches - July 6 - 2026",
+      "descriptionObserved": null,
+      "thumbnailState": "spoiler_reported",
+      "scanDecision": "block_auto_surface",
+      "checkedAt": "2026-07-10"
+    },
+    "playback": {
+      "region": "PH",
+      "status": "links_unverified",
+      "checkedAt": "2026-07-10"
+    },
+    "destinationRisks": ["comments", "downloads", "spoiler_thumbnail", "third_party_links"],
+    "stage": "blocked"
+  },
+  {
+    "id": "brazil-norway-2026-refooty",
+    "sourceId": "refooty",
+    "fixtureId": "brazil-norway-2026-07-05",
+    "teams": ["Brazil", "Norway"],
+    "competition": "FIFA World Cup 2026",
+    "kickoffUtc": "2026-07-05T20:00:00Z",
+    "itemUrl": "https://refooty.com/video/brazil-vs-norway-full-match-2026-07-05",
+    "formats": ["full", "short"],
+    "access": "mixed_free",
+    "provenance": "community_unverified",
+    "metadata": {
+      "titleObserved": "Brazil vs Norway Full Match - Watch Highlights",
+      "descriptionObserved": null,
+      "thumbnailState": "unscanned",
+      "scanDecision": "manual_review",
+      "checkedAt": "2026-07-10"
+    },
+    "playback": {
+      "region": "PH",
+      "status": "removed_404",
+      "checkedAt": "2026-07-10"
+    },
+    "destinationRisks": ["removed_item"],
+    "stage": "removed"
+  },
+  {
+    "id": "brazil-norway-1998-fifa-plus-full",
+    "sourceId": "fifa-plus",
+    "fixtureId": "brazil-norway-1998-06-23",
+    "teams": ["Brazil", "Norway"],
+    "competition": "1998 FIFA World Cup",
+    "kickoffUtc": "1998-06-23T19:00:00Z",
+    "itemUrl": "https://www.plus.fifa.com/en/content/54e0f958-88e0-4bda-9137-eddfad8f57db",
+    "formats": ["full"],
+    "access": "free_account",
+    "provenance": "verified_official",
+    "metadata": {
+      "titleObserved": "Brazil v Norway | Group A | 1998 FIFA World Cup France | Full Match Replay",
+      "descriptionObserved": "Watch the full match replay between Brazil and Norway played in Marseille on 23 June 1998.",
+      "thumbnailState": "unscanned",
+      "scanDecision": "manual_review",
+      "checkedAt": "2026-07-10"
+    },
+    "playback": {
+      "region": "PH",
+      "status": "policy_blocked",
+      "checkedAt": "2026-07-10"
+    },
+    "destinationRisks": ["account_required", "player_unverified", "surrounding_page_unverified"],
+    "stage": "candidate"
+  },
+  {
+    "id": "france-morocco-2026-footreplays",
+    "sourceId": "footreplays",
+    "fixtureId": "france-morocco-2026-07-09",
+    "teams": ["France", "Morocco"],
+    "competition": "FIFA World Cup 2026",
+    "kickoffUtc": "2026-07-09T20:00:00Z",
+    "itemUrl": "https://www.footreplays.com/international/world-cup-2026/france-vs-morocco-09-07-2026/",
+    "formats": ["full", "halves", "short"],
+    "access": "free",
+    "provenance": "community_unverified",
+    "metadata": {
+      "titleObserved": "France vs Morocco Full Match Replay - World Cup 2026",
+      "descriptionObserved": "Watch France vs Morocco full match replay, extended highlights, and key moments from the World Championship quarter-final.",
+      "thumbnailState": "spoiler_reported",
+      "scanDecision": "block_auto_surface",
+      "checkedAt": "2026-07-11"
+    },
+    "playback": {
+      "region": "PH",
+      "status": "observed",
+      "checkedAt": "2026-07-11"
+    },
+    "destinationRisks": ["spoiler_thumbnail", "ad_popup", "surrounding_page"],
+    "stage": "candidate"
+  },
+  {
+    "id": "france-morocco-2026-reddit-full",
+    "sourceId": "reddit-footballhighlights",
+    "fixtureId": "france-morocco-2026-07-09",
+    "teams": ["France", "Morocco"],
+    "competition": "FIFA World Cup 2026",
+    "kickoffUtc": "2026-07-09T20:00:00Z",
+    "itemUrl": "https://www.reddit.com/r/footballhighlights/comments/1us2ust/france_vs_morocco_world_cup_09jul2026/",
+    "formats": ["full", "partial"],
+    "access": "mixed_free",
+    "provenance": "community_unverified",
+    "metadata": {
+      "titleObserved": "France vs Morocco, World Cup, 09-Jul-2026",
+      "descriptionObserved": null,
+      "thumbnailState": "unscanned",
+      "scanDecision": "manual_review",
+      "checkedAt": "2026-07-10"
+    },
+    "playback": {
+      "region": "PH",
+      "status": "links_unverified",
+      "checkedAt": "2026-07-10"
+    },
+    "destinationRisks": ["comments", "downloads", "spoiler_thumbnail_report", "third_party_links", "torrents"],
+    "stage": "candidate"
+  },
+  {
+    "id": "brazil-norway-2026-fox-extended",
+    "sourceId": "fox-sports-world-cup",
+    "fixtureId": "brazil-norway-2026-07-05",
+    "teams": ["Brazil", "Norway"],
+    "competition": "FIFA World Cup 2026",
+    "kickoffUtc": "2026-07-05T20:00:00Z",
+    "itemUrl": "https://www.foxsports.com/watch/fmc-73lxyqyb7s8ni4nn",
+    "formats": ["extended"],
+    "access": "unknown",
+    "provenance": "verified_official",
+    "metadata": {
+      "titleObserved": "Brazil vs Norway Extended Highlights | 2026 FIFA World Cup | Round of 16",
+      "descriptionObserved": "Full-game extended highlights between Brazil and Norway in the 2026 FIFA World Cup.",
+      "thumbnailState": "unscanned",
+      "scanDecision": "manual_review",
+      "checkedAt": "2026-07-10"
+    },
+    "playback": {
+      "region": "PH",
+      "status": "policy_blocked",
+      "checkedAt": "2026-07-10"
+    },
+    "destinationRisks": ["browser_policy_blocked", "player_unverified", "region_unverified", "surrounding_page_unsafe"],
+    "stage": "candidate"
+  },
+  {
+    "id": "brazil-norway-2026-itvx-short",
+    "sourceId": "itvx-world-cup",
+    "fixtureId": "brazil-norway-2026-07-05",
+    "teams": ["Brazil", "Norway"],
+    "competition": "FIFA World Cup 2026",
+    "kickoffUtc": "2026-07-05T20:00:00Z",
+    "itemUrl": "https://www.itv.com/watch/fifa-world-cup-2026-highlights/10a7595/10a7595a0091",
+    "formats": ["short"],
+    "access": "free_account",
+    "provenance": "verified_official",
+    "metadata": {
+      "titleObserved": "Brazil v Norway - FIFA World Cup 2026 Highlights",
+      "descriptionObserved": "Highlights of the 2026 FIFA World Cup Round of 16 match between Brazil and Norway.",
+      "thumbnailState": "unscanned",
+      "scanDecision": "manual_review",
+      "checkedAt": "2026-07-10"
+    },
+    "playback": {
+      "region": "PH",
+      "status": "policy_blocked",
+      "checkedAt": "2026-07-10"
+    },
+    "destinationRisks": ["account_may_be_required", "browser_policy_blocked", "player_unverified", "region_unverified"],
+    "stage": "candidate"
+  },
+  {
+    "id": "brazil-norway-2026-sbs-short",
+    "sourceId": "sbs-on-demand-world-cup",
+    "fixtureId": "brazil-norway-2026-07-05",
+    "teams": ["Brazil", "Norway"],
+    "competition": "FIFA World Cup 2026",
+    "kickoffUtc": "2026-07-05T20:00:00Z",
+    "itemUrl": "https://www.sbs.com.au/sport/video/fifa-world-cup-2026-highlights-brazil-v-norway-round-of-16/j5p5kjs7f",
+    "formats": ["short"],
+    "access": "free_account",
+    "provenance": "verified_official",
+    "metadata": {
+      "titleObserved": "FIFA World Cup 2026: Highlights: Brazil v Norway: Round of 16",
+      "descriptionObserved": "Three-minute highlights from the FIFA World Cup 2026 Round of 16 match between Brazil and Norway.",
+      "thumbnailState": "unscanned",
+      "scanDecision": "manual_review",
+      "checkedAt": "2026-07-10"
+    },
+    "playback": {
+      "region": "PH",
+      "status": "policy_blocked",
+      "checkedAt": "2026-07-10"
+    },
+    "destinationRisks": ["browser_policy_blocked", "player_unverified", "region_unverified", "thumbnail_unscanned"],
+    "stage": "candidate"
+  },
+  {
+    "id": "brazil-norway-2026-rte-short",
+    "sourceId": "rte-world-cup",
+    "fixtureId": "brazil-norway-2026-07-05",
+    "teams": ["Brazil", "Norway"],
+    "competition": "FIFA World Cup 2026",
+    "kickoffUtc": "2026-07-05T20:00:00Z",
+    "itemUrl": "https://www.rte.ie/video/id/34728/",
+    "formats": ["short"],
+    "access": "free",
+    "provenance": "verified_official",
+    "metadata": {
+      "titleObserved": "Brazil v Norway | Highlights | FIFA World Cup 2026",
+      "descriptionObserved": "A late brace decided the match and sent the winning team through to the quarter-finals.",
+      "thumbnailState": "unscanned",
+      "scanDecision": "block_auto_surface",
+      "checkedAt": "2026-07-10"
+    },
+    "playback": {
+      "region": "PH",
+      "status": "policy_blocked",
+      "checkedAt": "2026-07-10"
+    },
+    "destinationRisks": ["browser_policy_blocked", "outcome_description", "player_unverified", "region_unverified"],
+    "stage": "blocked"
+  },
+  {
+    "id": "brazil-norway-2026-zee5-extended",
+    "sourceId": "zee5-world-cup",
+    "fixtureId": "brazil-norway-2026-07-05",
+    "teams": ["Brazil", "Norway"],
+    "competition": "FIFA World Cup 2026",
+    "kickoffUtc": "2026-07-05T20:00:00Z",
+    "itemUrl": "https://www.zee5.com/sports/football/fifa-world-cup/2026/match-clips/0-6-4z5974253/bra-vs-nor-extended-highlights-fifa-world-cup-2026/0-1-6z5998189",
+    "formats": ["extended"],
+    "access": "paid",
+    "provenance": "verified_official",
+    "metadata": {
+      "titleObserved": "Brazil vs Norway | Extended Highlights | FIFA World Cup 2026",
+      "descriptionObserved": "Extended match highlights from the FIFA World Cup 2026.",
+      "thumbnailState": "unscanned",
+      "scanDecision": "manual_review",
+      "checkedAt": "2026-07-10"
+    },
+    "playback": {
+      "region": "PH",
+      "status": "links_unverified",
+      "checkedAt": "2026-07-10"
+    },
+    "destinationRisks": ["india_only", "paid_subscription", "player_unverified", "thumbnail_unscanned"],
+    "stage": "candidate"
+  }
+]

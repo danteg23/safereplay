@@ -1,0 +1,17 @@
+{
+  "name": "SafeReplay",
+  "short_name": "SafeReplay",
+  "description": "A spoiler-safe football source finder.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f9fb",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

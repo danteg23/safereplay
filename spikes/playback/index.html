@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>SafeReplay</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="probe" aria-labelledby="probe-title">
+      <div class="probe__copy">
+        <p class="probe__context">Playback safety test</p>
+        <h1 id="probe-title">Neutral video handoff</h1>
+        <p>
+          The source is loaded only after you continue. This technical screen contains
+          no source title, image, score, comments, or runtime.
+        </p>
+      </div>
+
+      <div id="player-shell" class="player-shell" data-state="idle">
+        <div id="player-mount" class="player-mount"></div>
+        <div id="idle-state" class="idle-state">
+          <span aria-hidden="true" class="play-mark"></span>
+          <p>Ready when you are</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="start-button" type="button">Start video</button>
+        <button id="reset-button" class="secondary" type="button" disabled>Reset test</button>
+      </div>
+
+      <p id="status" class="status" role="status" aria-live="polite">Source not loaded</p>
+    </main>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

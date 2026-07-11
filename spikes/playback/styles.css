@@ -1,0 +1,152 @@
+:root {
+  color-scheme: dark;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #090b0e;
+  color: #f6f7f8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  background: #090b0e;
+}
+
+button {
+  font: inherit;
+}
+
+.probe {
+  width: min(100%, 30rem);
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: max(2rem, env(safe-area-inset-top)) 1.25rem max(2rem, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.probe__copy {
+  display: grid;
+  gap: 0.625rem;
+}
+
+.probe__context,
+.probe__copy h1,
+.probe__copy p,
+.idle-state p,
+.status {
+  margin: 0;
+}
+
+.probe__context {
+  color: #8f9cab;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.probe__copy h1 {
+  font-size: clamp(2rem, 9vw, 3rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.probe__copy > p:last-child {
+  max-width: 34rem;
+  color: #aeb7c2;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.player-shell {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border: 1px solid #29313a;
+  border-radius: 0.875rem;
+  background: #12161b;
+}
+
+.player-mount,
+.player-mount iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.idle-state {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.75rem;
+  color: #aeb7c2;
+}
+
+.player-shell[data-state="loading"] .idle-state,
+.player-shell[data-state="loaded"] .idle-state {
+  display: none;
+}
+
+.play-mark {
+  width: 0;
+  height: 0;
+  margin-left: 0.25rem;
+  border-top: 0.75rem solid transparent;
+  border-bottom: 0.75rem solid transparent;
+  border-left: 1.125rem solid #f6f7f8;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.actions button {
+  min-height: 3rem;
+  border: 1px solid #f6f7f8;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #f6f7f8;
+  color: #090b0e;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.actions .secondary {
+  border-color: #3a4551;
+  background: transparent;
+  color: #dce1e6;
+}
+
+.actions button:focus-visible {
+  outline: 3px solid #74b6ff;
+  outline-offset: 3px;
+}
+
+.actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.status {
+  min-height: 1.25rem;
+  color: #8f9cab;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 23rem) {
+  .actions {
+    grid-template-columns: 1fr;
+  }
+}

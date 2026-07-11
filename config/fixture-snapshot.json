@@ -1,0 +1,95 @@
+{
+  "sourceName": "FIFA World Cup 2026 match schedule",
+  "sourceUrl": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/match-schedule-fixtures-results-teams-stadiums",
+  "checkedAt": "2026-07-11",
+  "fixtures": [
+    {
+      "id": "iraq-norway-2026-06-16",
+      "competition": "World Cup",
+      "kickoffUtc": "2026-06-16T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Iraq",
+        "Norway"
+      ]
+    },
+    {
+      "id": "norway-senegal-2026-06-23",
+      "competition": "World Cup",
+      "kickoffUtc": "2026-06-23T00:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Norway",
+        "Senegal"
+      ]
+    },
+    {
+      "id": "norway-france-2026-06-26",
+      "competition": "World Cup",
+      "kickoffUtc": "2026-06-26T19:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Norway",
+        "France"
+      ]
+    },
+    {
+      "id": "ivory-coast-norway-2026-06-30",
+      "competition": "World Cup",
+      "kickoffUtc": "2026-06-30T17:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Ivory Coast",
+        "Norway"
+      ]
+    },
+    {
+      "id": "brazil-norway-2026-07-05",
+      "competition": "World Cup",
+      "kickoffUtc": "2026-07-05T20:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Brazil",
+        "Norway"
+      ]
+    },
+    {
+      "id": "argentina-egypt-2026-07-07",
+      "competition": "World Cup",
+      "kickoffUtc": "2026-07-07T16:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Argentina",
+        "Egypt"
+      ]
+    },
+    {
+      "id": "fifa-world-cup-2026-match-97",
+      "competition": "World Cup",
+      "kickoffUtc": "2026-07-09T20:00:00Z",
+      "scope": "senior_men",
+      "teams": ["France", "Morocco"]
+    },
+    {
+      "id": "fifa-world-cup-2026-match-98",
+      "competition": "World Cup",
+      "kickoffUtc": "2026-07-10T19:00:00Z",
+      "scope": "senior_men",
+      "teams": ["Spain", "Belgium"]
+    },
+    {
+      "id": "fifa-world-cup-2026-match-99",
+      "competition": "World Cup",
+      "kickoffUtc": "2026-07-11T21:00:00Z",
+      "scope": "senior_men",
+      "teams": ["Norway", "England"]
+    },
+    {
+      "id": "fifa-world-cup-2026-match-100",
+      "competition": "World Cup",
+      "kickoffUtc": "2026-07-12T01:00:00Z",
+      "scope": "senior_men",
+      "teams": ["Argentina", "Switzerland"]
+    }
+  ]
+}

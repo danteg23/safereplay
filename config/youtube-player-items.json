@@ -1,0 +1,152 @@
+[
+  {
+    "competition": "World Cup",
+    "fixtureId": "fifa-world-cup-2026-match-97",
+    "format": "short",
+    "id": "france-morocco-youtube-short",
+    "providerName": "Aleph Arena on YouTube",
+    "sourceId": "aleph-arena-youtube",
+    "teams": [
+      "France",
+      "Morocco"
+    ],
+    "videoId": "6FQdra9FKyQ"
+  },
+  {
+    "competition": "World Cup",
+    "fixtureId": "fifa-world-cup-2026-match-97",
+    "format": "full",
+    "id": "france-morocco-youtube-full",
+    "providerName": "Aleph Arena on YouTube",
+    "sourceId": "aleph-arena-youtube",
+    "teams": [
+      "France",
+      "Morocco"
+    ],
+    "videoId": "oEgFHQZOnSk"
+  },
+  {
+    "competition": "World Cup",
+    "durationLabel": "5:16",
+    "fixtureId": "fifa-world-cup-2026-match-98",
+    "format": "short",
+    "id": "spain-belgium-youtube-short",
+    "providerName": "Aleph Arena on YouTube",
+    "sourceId": "aleph-arena-youtube",
+    "teams": [
+      "Spain",
+      "Belgium"
+    ],
+    "videoId": "dKwl7C7xGS8"
+  },
+  {
+    "competition": "World Cup",
+    "durationLabel": "5:06",
+    "fixtureId": "iraq-norway-2026-06-16",
+    "format": "short",
+    "id": "iraq-norway-youtube-short",
+    "providerName": "Aleph Arena on YouTube",
+    "sourceId": "aleph-arena-youtube",
+    "teams": [
+      "Iraq",
+      "Norway"
+    ],
+    "videoId": "4o-pE-iqUP4"
+  },
+  {
+    "competition": "World Cup",
+    "durationLabel": "2:10",
+    "fixtureId": "norway-senegal-2026-06-23",
+    "format": "short",
+    "id": "norway-senegal-youtube-short",
+    "providerName": "FIFA on YouTube",
+    "sourceId": "fifa-youtube",
+    "teams": [
+      "Norway",
+      "Senegal"
+    ],
+    "videoId": "nlghqbCqbe0"
+  },
+  {
+    "competition": "World Cup",
+    "fixtureId": "norway-senegal-2026-06-23",
+    "format": "full",
+    "id": "norway-senegal-youtube-full",
+    "providerName": "Aleph Arena on YouTube",
+    "sourceId": "aleph-arena-youtube",
+    "teams": [
+      "Norway",
+      "Senegal"
+    ],
+    "videoId": "q4vXTZC_E0w"
+  },
+  {
+    "competition": "World Cup",
+    "durationLabel": "5:01",
+    "fixtureId": "norway-france-2026-06-26",
+    "format": "short",
+    "id": "norway-france-youtube-short",
+    "providerName": "Aleph Arena on YouTube",
+    "sourceId": "aleph-arena-youtube",
+    "teams": [
+      "Norway",
+      "France"
+    ],
+    "videoId": "E5OZhQbHMnA"
+  },
+  {
+    "competition": "World Cup",
+    "durationLabel": "5:11",
+    "fixtureId": "ivory-coast-norway-2026-06-30",
+    "format": "short",
+    "id": "ivory-coast-norway-youtube-short",
+    "providerName": "Aleph Arena on YouTube",
+    "sourceId": "aleph-arena-youtube",
+    "teams": [
+      "Ivory Coast",
+      "Norway"
+    ],
+    "videoId": "cPn76IG52Tw"
+  },
+  {
+    "competition": "World Cup",
+    "durationLabel": "5:15",
+    "fixtureId": "brazil-norway-2026-07-05",
+    "format": "short",
+    "id": "brazil-norway-youtube-short",
+    "providerName": "Aleph Arena on YouTube",
+    "sourceId": "aleph-arena-youtube",
+    "teams": [
+      "Brazil",
+      "Norway"
+    ],
+    "videoId": "VtkBrBzaWoU"
+  },
+  {
+    "competition": "World Cup",
+    "durationLabel": "5:11",
+    "fixtureId": "argentina-egypt-2026-07-07",
+    "format": "short",
+    "id": "argentina-egypt-youtube-short",
+    "providerName": "Aleph Arena on YouTube",
+    "sourceId": "aleph-arena-youtube",
+    "teams": [
+      "Argentina",
+      "Egypt"
+    ],
+    "videoId": "wDKdBtroKKw"
+  },
+  {
+    "competition": "World Cup",
+    "fixtureId": "argentina-egypt-2026-07-07",
+    "format": "full",
+    "id": "argentina-egypt-youtube-full",
+    "providerName": "Aleph Arena on YouTube",
+    "sourceId": "aleph-arena-youtube",
+    "teams": [
+      "Argentina",
+      "Egypt"
+    ],
+    "videoId": "MfEbaLNQRus"
+  }
+]

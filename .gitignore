@@ -3,5 +3,8 @@
 .env.*
 .pnpm-store/
 .private/
+.playwright-cli/
+dist/
 node_modules/
 docs/qa/*.png
+output/playwright/

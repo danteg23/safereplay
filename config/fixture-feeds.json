@@ -1,0 +1,66 @@
+{
+  "feeds": [
+    {
+      "id": "fixture-download-epl-2026",
+      "kind": "fixture_download_json",
+      "competition": "Premier League",
+      "feedUrl": "https://fixturedownload.com/feed/json/epl-2026",
+      "state": "enabled_candidate",
+      "scope": "senior_men",
+      "selection": "priority_teams",
+      "priorityTeams": ["Arsenal", "Manchester City"],
+      "teamAliases": {
+        "Bournemouth": "AFC Bournemouth",
+        "Brighton": "Brighton & Hove Albion",
+        "Coventry": "Coventry City",
+        "Man City": "Manchester City",
+        "Man Utd": "Manchester United"
+      },
+      "checkedAt": "2026-07-10",
+      "evidenceUrl": "https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season/"
+    },
+    {
+      "id": "fixture-download-la-liga-2026",
+      "kind": "fixture_download_json",
+      "competition": "La Liga",
+      "feedUrl": "https://fixturedownload.com/feed/json/la-liga-2026",
+      "state": "withheld",
+      "blockReason": "date_mismatch_with_official_source",
+      "scope": "senior_men",
+      "selection": "priority_teams",
+      "priorityTeams": ["Barcelona"],
+      "teamAliases": {
+        "FC Barcelona": "Barcelona"
+      },
+      "checkedAt": "2026-07-10",
+      "evidenceUrl": "https://www.laliga.com/en-GB/clubs/fc-barcelona/next-matches"
+    },
+    {
+      "id": "fixture-download-ligue-1-2026",
+      "kind": "fixture_download_json",
+      "competition": "Ligue 1",
+      "feedUrl": "https://fixturedownload.com/feed/json/ligue-1-2026",
+      "state": "withheld",
+      "blockReason": "date_mismatch_with_official_source",
+      "scope": "senior_men",
+      "selection": "all",
+      "priorityTeams": [],
+      "teamAliases": {},
+      "checkedAt": "2026-07-10",
+      "evidenceUrl": "https://www.lfp.fr/article/ligue-1-mc-donald-s-le-calendrier-de-la-saison-2026-2027"
+    },
+    {
+      "id": "eliteserien-official-calendar-2026",
+      "kind": "official_ical",
+      "competition": "Eliteserien",
+      "feedUrl": "https://www.eliteserien.no/terminliste/subscribe",
+      "state": "enabled_candidate",
+      "scope": "senior_men",
+      "selection": "all",
+      "priorityTeams": [],
+      "teamAliases": {},
+      "checkedAt": "2026-07-10",
+      "evidenceUrl": "https://www.eliteserien.no/terminliste"
+    }
+  ]
+}

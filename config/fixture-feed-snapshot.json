@@ -1,0 +1,906 @@
+{
+  "checkedAt": "2026-07-11",
+  "fixtures": [
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-a76adb3a-b111-4530-acb8-bf341895f3d9",
+      "kickoffUtc": "2026-07-11T12:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Fredrikstad",
+        "Lillestrøm"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-85a8aebb-0535-4030-bd44-6c8508814657",
+      "kickoffUtc": "2026-07-11T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Aalesund",
+        "Molde"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-380dd2ad-ac62-4cf2-bf66-1e4c185871ba",
+      "kickoffUtc": "2026-07-11T16:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Tromsø",
+        "Vålerenga"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-f783179e-52b0-4f0c-a9cd-24bf40f566d0",
+      "kickoffUtc": "2026-07-12T12:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "KFUM",
+        "Bodø/Glimt"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-03c73521-764d-42b3-b778-a1cdef6ab894",
+      "kickoffUtc": "2026-07-12T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Brann",
+        "Start"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-23c2232f-ce8d-4723-8639-8db4b27f26b4",
+      "kickoffUtc": "2026-07-12T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Sandefjord Fotball",
+        "HamKam"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-a3b8c060-8cb7-4425-9252-d1a592503889",
+      "kickoffUtc": "2026-07-12T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Rosenborg",
+        "Kristiansund"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-ece85614-6299-4b1c-9281-abc28bc764e1",
+      "kickoffUtc": "2026-07-12T17:15:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Sarpsborg 08",
+        "Viking"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-2352c07f-6584-494d-accd-20ee8de8529b",
+      "kickoffUtc": "2026-07-16T17:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Vålerenga",
+        "Aalesund"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-6513c36b-dfff-4df2-ae5e-15f32ca17f41",
+      "kickoffUtc": "2026-07-17T17:15:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Bodø/Glimt",
+        "Fredrikstad"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-9c8830bd-d7b9-4763-91de-d64940752004",
+      "kickoffUtc": "2026-07-18T12:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "HamKam",
+        "Tromsø"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-59c3bf51-c798-4279-8126-020086481366",
+      "kickoffUtc": "2026-07-18T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Start",
+        "Rosenborg"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-6667234d-5bd7-4ce0-b9e5-dcca823e7c69",
+      "kickoffUtc": "2026-07-18T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Kristiansund",
+        "Sarpsborg 08"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-73926f0f-357f-4f34-96b5-8d187ca0018a",
+      "kickoffUtc": "2026-07-18T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Lillestrøm",
+        "KFUM"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-b5f0bb44-8092-4b90-8c42-269799b2eefe",
+      "kickoffUtc": "2026-07-18T16:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Molde",
+        "Brann"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-f711d0a6-6ce2-4760-8a3b-c1e910e1557e",
+      "kickoffUtc": "2026-07-18T16:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Viking",
+        "Sandefjord Fotball"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-01938467-498a-408e-aada-f28d84350247",
+      "kickoffUtc": "2026-07-22T17:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Bodø/Glimt",
+        "HamKam"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-837b8b5a-c368-4f0f-8f61-93558211e23b",
+      "kickoffUtc": "2026-07-22T17:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Lillestrøm",
+        "Viking"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-e5361ec5-a615-42ab-b7ef-03e784440903",
+      "kickoffUtc": "2026-07-25T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Kristiansund",
+        "Start"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-348838f3-76b9-4b20-9e2d-defedcba6a6b",
+      "kickoffUtc": "2026-07-26T12:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Brann",
+        "Vålerenga"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-d26218cc-46a3-47d6-8e5f-eb9070ed2f80",
+      "kickoffUtc": "2026-07-26T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Sarpsborg 08",
+        "HamKam"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-dff43434-04b3-48cd-b5bf-6696e3fb159e",
+      "kickoffUtc": "2026-07-26T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Sandefjord Fotball",
+        "Bodø/Glimt"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-f59cb6b3-8c10-4e00-a81c-37272be498e2",
+      "kickoffUtc": "2026-07-26T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "KFUM",
+        "Molde"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-5f3c6a12-a1dd-4853-b1bf-d5b6917c0763",
+      "kickoffUtc": "2026-07-26T17:15:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Aalesund",
+        "Viking"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-ccc8bc8e-d08d-433d-b2f6-44aa6db8d9ac",
+      "kickoffUtc": "2026-07-27T17:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Rosenborg",
+        "Fredrikstad"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-ce0d1d39-bc2a-427c-8abf-766ff1b0af29",
+      "kickoffUtc": "2026-07-31T17:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Vålerenga",
+        "HamKam"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-e146371c-3478-4f54-b053-2a9f70995fec",
+      "kickoffUtc": "2026-07-31T19:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Bodø/Glimt",
+        "Lillestrøm"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-60970cec-14c1-4378-bdf3-5a2e577d842c",
+      "kickoffUtc": "2026-08-01T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Fredrikstad",
+        "Sandefjord Fotball"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-b4d3e5db-6664-44c9-83c6-dec9d9d1529f",
+      "kickoffUtc": "2026-08-01T16:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Start",
+        "Viking"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-787dbd92-8b6f-4eed-a0c1-0dfa43a0c7df",
+      "kickoffUtc": "2026-08-02T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Aalesund",
+        "Tromsø"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-aeef152b-cfe5-4356-acb6-5a553399ebc4",
+      "kickoffUtc": "2026-08-02T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Molde",
+        "Sarpsborg 08"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-feb9286a-ad50-43b8-b171-9db05590569e",
+      "kickoffUtc": "2026-08-02T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "KFUM",
+        "Kristiansund"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-86af0cf7-1ca5-48ae-9a37-5743b2e9d6aa",
+      "kickoffUtc": "2026-08-02T17:15:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Brann",
+        "Rosenborg"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-ddcabee0-f902-4baf-8d96-98850543a501",
+      "kickoffUtc": "2026-08-07T17:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Sandefjord Fotball",
+        "KFUM"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-4e20e233-0650-4488-9964-447c2495abee",
+      "kickoffUtc": "2026-08-08T12:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Vålerenga",
+        "Bodø/Glimt"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-09dc355e-bfad-4100-b636-b9e2fe166263",
+      "kickoffUtc": "2026-08-08T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Viking",
+        "Sarpsborg 08"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-e5bb05a1-6ea3-40ec-b077-8527591be37e",
+      "kickoffUtc": "2026-08-08T16:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Start",
+        "Fredrikstad"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-b868053c-574d-4361-b542-864e0595489d",
+      "kickoffUtc": "2026-08-09T12:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Lillestrøm",
+        "Rosenborg"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-439bdb71-13cf-49b3-89d7-2efe8ca045ed",
+      "kickoffUtc": "2026-08-09T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "HamKam",
+        "Aalesund"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-b0f12f12-38a4-46e0-af73-5e0c8207de4d",
+      "kickoffUtc": "2026-08-09T17:15:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Kristiansund",
+        "Molde"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-8fe0ec70-e9d9-4f7a-8a36-ffde0a169a88",
+      "kickoffUtc": "2026-08-14T17:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Rosenborg",
+        "Viking"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-1e047265-ba95-4b25-9d34-7d5364ad3607",
+      "kickoffUtc": "2026-08-15T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "KFUM",
+        "Lillestrøm"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-e9a9ecfd-b36f-476a-be66-37018a55993f",
+      "kickoffUtc": "2026-08-16T12:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Aalesund",
+        "Vålerenga"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-5122deda-0902-4b6d-a27b-5cafe1001e11",
+      "kickoffUtc": "2026-08-16T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Sarpsborg 08",
+        "Sandefjord Fotball"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-641554cc-a22f-41ed-ae77-bd05f3b6bc46",
+      "kickoffUtc": "2026-08-16T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Molde",
+        "Tromsø"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-f24b4b09-abec-4168-ae3a-de3af79a2030",
+      "kickoffUtc": "2026-08-16T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Brann",
+        "HamKam"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-2c2d2d7c-ad04-412e-806a-67656ea36fc3",
+      "kickoffUtc": "2026-08-16T17:15:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Fredrikstad",
+        "Kristiansund"
+      ]
+    },
+    {
+      "competition": "Premier League",
+      "id": "fixture-download-epl-2026-match-1",
+      "kickoffUtc": "2026-08-21T19:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Arsenal",
+        "Coventry City"
+      ]
+    },
+    {
+      "competition": "Premier League",
+      "id": "fixture-download-epl-2026-match-8",
+      "kickoffUtc": "2026-08-23T13:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Manchester City",
+        "AFC Bournemouth"
+      ]
+    },
+    {
+      "competition": "Premier League",
+      "id": "fixture-download-epl-2026-match-15",
+      "kickoffUtc": "2026-08-28T19:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Crystal Palace",
+        "Manchester City"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-7bc73b37-9c7a-4e04-8aee-230da19f4a0e",
+      "kickoffUtc": "2026-08-29T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Vålerenga",
+        "Molde"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-6151172d-fb5f-43a9-9b05-71f92823137a",
+      "kickoffUtc": "2026-08-29T16:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Viking",
+        "Aalesund"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-e88fdb97-b295-405a-a381-5fbacb8a3709",
+      "kickoffUtc": "2026-08-30T12:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Bodø/Glimt",
+        "Rosenborg"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-30ddfcc7-eb2c-4c66-bb3b-6090be14bc8b",
+      "kickoffUtc": "2026-08-30T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "HamKam",
+        "Kristiansund"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-3903866f-2059-41ac-9605-6a15a14b846f",
+      "kickoffUtc": "2026-08-30T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Start",
+        "KFUM"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-ac9ac26b-be35-4c17-afce-425f343d55b3",
+      "kickoffUtc": "2026-08-30T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Sandefjord Fotball",
+        "Brann"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-eca4a0d9-7807-4f27-8b31-08e59fdba050",
+      "kickoffUtc": "2026-08-30T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Tromsø",
+        "Sarpsborg 08"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-97047507-ff88-4ce8-83c3-c9a91dd28dcb",
+      "kickoffUtc": "2026-08-30T17:15:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Lillestrøm",
+        "Fredrikstad"
+      ]
+    },
+    {
+      "competition": "Premier League",
+      "id": "fixture-download-epl-2026-match-12",
+      "kickoffUtc": "2026-08-31T19:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Aston Villa",
+        "Arsenal"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-c7d400fb-8ad3-4483-8746-4587eb4eb2bf",
+      "kickoffUtc": "2026-09-04T17:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Aalesund",
+        "Start"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-f7aa1fe6-2636-40e5-9a53-695f8ecae4fa",
+      "kickoffUtc": "2026-09-04T17:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Fredrikstad",
+        "Bodø/Glimt"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-643cbf29-f325-4a8e-a681-8cf83f0b6736",
+      "kickoffUtc": "2026-09-04T19:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Sandefjord Fotball",
+        "Viking"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-2a51e262-b4b7-4bda-a032-dc5820ae64ef",
+      "kickoffUtc": "2026-09-05T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Rosenborg",
+        "HamKam"
+      ]
+    },
+    {
+      "competition": "Premier League",
+      "id": "fixture-download-epl-2026-match-28",
+      "kickoffUtc": "2026-09-05T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Manchester City",
+        "Coventry City"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-12e727de-67b0-4734-a890-ab5f949610ba",
+      "kickoffUtc": "2026-09-05T16:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Brann",
+        "Lillestrøm"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-60e30c3b-3a22-4205-aebd-985fb629f3d6",
+      "kickoffUtc": "2026-09-06T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Molde",
+        "KFUM"
+      ]
+    },
+    {
+      "competition": "Premier League",
+      "id": "fixture-download-epl-2026-match-21",
+      "kickoffUtc": "2026-09-06T15:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Arsenal",
+        "Chelsea"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-914226fc-32f3-4437-8a83-5de9310319d7",
+      "kickoffUtc": "2026-09-06T17:15:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Kristiansund",
+        "Tromsø"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-c538063d-ab31-4560-b332-35dc11291eb8",
+      "kickoffUtc": "2026-09-07T17:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Sarpsborg 08",
+        "Vålerenga"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-9b93afd6-d406-449a-b735-aeaa8e5b66f7",
+      "kickoffUtc": "2026-09-12T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Lillestrøm",
+        "Vålerenga"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-d8e02f49-ebc9-43de-95ec-b669bd6615ff",
+      "kickoffUtc": "2026-09-12T16:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Rosenborg",
+        "Tromsø"
+      ]
+    },
+    {
+      "competition": "Premier League",
+      "id": "fixture-download-epl-2026-match-39",
+      "kickoffUtc": "2026-09-12T19:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Sunderland",
+        "Arsenal"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-9b1b2d2a-a10e-4536-8a8f-12b5628abd73",
+      "kickoffUtc": "2026-09-13T12:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Viking",
+        "Kristiansund"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-1569d8e8-1b4b-4b8b-968e-912d73b3f384",
+      "kickoffUtc": "2026-09-13T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Bodø/Glimt",
+        "Sandefjord Fotball"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-4742c65c-18b6-4702-b237-272135d47ba4",
+      "kickoffUtc": "2026-09-13T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Start",
+        "Brann"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-a7103265-031f-4210-9cff-30228e14e245",
+      "kickoffUtc": "2026-09-13T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "KFUM",
+        "Aalesund"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-f16bf90d-d1e0-408f-9b31-8f34220f16b8",
+      "kickoffUtc": "2026-09-13T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "HamKam",
+        "Molde"
+      ]
+    },
+    {
+      "competition": "Premier League",
+      "id": "fixture-download-epl-2026-match-38",
+      "kickoffUtc": "2026-09-13T15:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Manchester United",
+        "Manchester City"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-c8cf7bb0-3b27-4a68-8c76-9bdaa336597a",
+      "kickoffUtc": "2026-09-13T17:15:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Fredrikstad",
+        "Sarpsborg 08"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-f9939976-9f9f-4c6a-96b1-7b9cec3b377f",
+      "kickoffUtc": "2026-09-18T17:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Sarpsborg 08",
+        "KFUM"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-d6ccdeaf-40f8-439e-b014-1ed781068fd7",
+      "kickoffUtc": "2026-09-19T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Kristiansund",
+        "Rosenborg"
+      ]
+    },
+    {
+      "competition": "Premier League",
+      "id": "fixture-download-epl-2026-match-43",
+      "kickoffUtc": "2026-09-19T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Brighton & Hove Albion",
+        "Arsenal"
+      ]
+    },
+    {
+      "competition": "Premier League",
+      "id": "fixture-download-epl-2026-match-47",
+      "kickoffUtc": "2026-09-19T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Manchester City",
+        "Sunderland"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-c303031d-7fb6-4815-a3ff-936f9e7c6e22",
+      "kickoffUtc": "2026-09-19T16:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Molde",
+        "Aalesund"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-2ee02574-0bd1-492c-80b1-cd6c7c3ea4b8",
+      "kickoffUtc": "2026-09-20T12:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Vålerenga",
+        "Fredrikstad"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-41e76981-a4f4-456d-aa5a-70f9595399e0",
+      "kickoffUtc": "2026-09-20T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Sandefjord Fotball",
+        "Start"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-5913f46d-6381-4cab-81f6-47f5c51689d5",
+      "kickoffUtc": "2026-09-20T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Tromsø",
+        "HamKam"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-d3377678-334e-4f8f-9101-6ae8cf87ff6e",
+      "kickoffUtc": "2026-09-20T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Viking",
+        "Lillestrøm"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-8a93428d-2572-4723-b1cd-a10537d05c59",
+      "kickoffUtc": "2026-09-20T17:15:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Brann",
+        "Bodø/Glimt"
+      ]
+    }
+  ],
+  "sourceName": "Fixture Download candidate feeds",
+  "sources": [
+    {
+      "feedId": "fixture-download-epl-2026",
+      "fixtureCount": 10
+    },
+    {
+      "feedId": "eliteserien-official-calendar-2026",
+      "fixtureCount": 79
+    }
+  ]
+}
