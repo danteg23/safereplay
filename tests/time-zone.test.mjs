@@ -58,3 +58,9 @@ test("midnight renders as 00:00 rather than an ambiguous 24:00", () => {
   const fixture = { kickoffUtc: "2026-07-09T16:00:00Z" };
   assert.equal(localizeFixture(fixture, "Asia/Manila").kickoff, "00:00");
 });
+
+test("an unconfirmed kickoff keeps its official date but never shows a made-up time", () => {
+  const localized = localizeFixture({ kickoffTba: true, kickoffUtc: "2026-08-16T12:00:00Z" }, "Asia/Manila");
+  assert.equal(localized.dateKey, "2026-08-16");
+  assert.equal(localized.kickoff, "TBA");
+});

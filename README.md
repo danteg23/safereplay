@@ -144,8 +144,12 @@ npm test
 ## Refresh the neutral fixture catalogue
 
 Fixture Download is enabled only for Arsenal and Manchester City EPL fixtures.
-Eliteserien uses the competition's own same-host `text/calendar` subscription. La Liga
-and Ligue 1 remain withheld after official-date mismatches.
+Eliteserien uses the competition's own same-host `text/calendar` subscription. Barcelona
+fixtures come from FC Barcelona's official structured schedule, while Ligue 1 comes from
+the official LFP calendar API. The inaccurate third-party La Liga and Ligue 1 feeds stay
+withheld. Official fixtures without a confirmed kickoff remain visible as `TBA`; the app
+never displays their date placeholder as a real time, and live/post-match discovery waits
+until the official source confirms the kickoff.
 
 Preview a neutral private snapshot:
 
@@ -161,7 +165,7 @@ npm run discover:fixtures -- --save-private --save-catalogue
 
 Promotion is refused if discovery fails or yields no selected fixtures. The bounded
 transport accepts only configured HTTPS hosts, rejects redirects and wrong MIME types or
-oversized responses, and the JSON/ICS parsers project only neutral fixture identity fields.
+oversized responses, and the JSON/HTML/ICS parsers project only neutral fixture identity fields.
 Upstream score, winner, location, and extra fields never enter the saved snapshot or
 public catalogue.
 
@@ -172,7 +176,7 @@ npm run refresh:daily -- --region=PH
 ```
 
 This runs fixture discovery first, resolves exact live-match pages from the ordinary
-TotalSportek and Camel Live directories, then checks the 11 feed-ready YouTube channels.
+TotalSportek and Camel Live directories, then checks the 13 feed-ready YouTube channels.
 Live discovery requires one unambiguous two-team match on an allowlisted HTTPS host; if
 that proof is absent, the app keeps the appropriate general-directory fallback. Safe
 fixture fields and verified live destinations update automatically. YouTube candidates

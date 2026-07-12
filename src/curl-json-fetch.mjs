@@ -8,6 +8,7 @@ const ALLOWED_ACCEPTS = new Set([
   "application/atom+xml, application/xml;q=0.9",
   "application/json",
   "text/calendar",
+  "text/html",
 ]);
 
 function assertHttpsUrl(value) {

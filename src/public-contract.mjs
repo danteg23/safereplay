@@ -3,6 +3,7 @@ const FIXTURE_KEYS = new Set([
   "competition",
   "favorite",
   "id",
+  "kickoffTba",
   "kickoffUtc",
   "teams",
 ]);
@@ -76,6 +77,7 @@ function validateFixture(fixture, path) {
   assertExactKeys(fixture, FIXTURE_KEYS, path);
   assertText(fixture.id, `${path}.id`);
   assertText(fixture.competition, `${path}.competition`);
+  assert(typeof fixture.kickoffTba === "boolean", `${path}.kickoffTba must be boolean`);
   assertText(fixture.kickoffUtc, `${path}.kickoffUtc`);
   const kickoff = new Date(fixture.kickoffUtc);
   assert(!Number.isNaN(kickoff.valueOf()) && kickoff.toISOString().replace(".000Z", "Z") === fixture.kickoffUtc, `${path}.kickoffUtc must be canonical ISO UTC`);
