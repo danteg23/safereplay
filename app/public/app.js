@@ -21,6 +21,7 @@ const competitionOrder = [
   "Premier League",
   "La Liga",
   "Ligue 1",
+  "MLS",
   "Eliteserien",
   "Champions League",
   "World Cup",
@@ -29,6 +30,7 @@ const competitionOrder = [
 const competitionValues = ["All", "Favorites", ...competitionOrder];
 const storageKey = "safereplay.settings.v1";
 const navigationStorageKey = "safereplay.navigation.v1";
+const favoriteTeamsVersion = 2;
 const LIVE_WINDOW_MS = 3 * 60 * 60 * 1000;
 const internationalLiveSources = Object.freeze([
   { label: "TotalSportek", provider: "totalsportek" },
@@ -87,16 +89,22 @@ function loadSettings() {
   const defaults = {
     communitySources: true,
     displayTimeZone: "Asia/Manila",
-    favoriteTeams: ["Manchester City", "Arsenal", "Barcelona"],
+    favoriteTeams: ["Manchester City", "Arsenal", "Barcelona", "Inter Miami"],
+    favoriteTeamsVersion,
     region: "Philippines",
   };
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey) ?? "null");
     if (!saved || typeof saved !== "object") return defaults;
+    const savedFavoriteTeams = Array.isArray(saved.favoriteTeams) ? saved.favoriteTeams : defaults.favoriteTeams;
+    const migratedFavoriteTeams = saved.favoriteTeamsVersion === favoriteTeamsVersion
+      ? savedFavoriteTeams
+      : [...new Set([...savedFavoriteTeams, "Inter Miami"])];
     return {
       communitySources: saved.communitySources !== false,
       displayTimeZone: isSupportedTimeZoneSetting(saved.displayTimeZone) ? saved.displayTimeZone : defaults.displayTimeZone,
-      favoriteTeams: Array.isArray(saved.favoriteTeams) ? saved.favoriteTeams : defaults.favoriteTeams,
+      favoriteTeams: migratedFavoriteTeams,
+      favoriteTeamsVersion,
       region: ["Philippines", "Norway", "Other"].includes(saved.region) ? saved.region : defaults.region,
     };
   } catch {
@@ -410,8 +418,8 @@ function settingsScreen() {
         <div class="settings-grid">
           <section class="settings-group"><h2>Playback region</h2>${["Philippines", "Norway", "Other"].map((region) => settingChoice("region", region, state.settings.region === region)).join("")}</section>
           <section class="settings-group"><h2>Time zone</h2><button class="setting-row setting-row-tall" data-action="open-time-zone"><span><strong>${escapeHtml(displayTimeZoneLabel(activeTimeZone()))}</strong><small>Used for every kickoff time</small></span>${icons.chevron}</button></section>
-          <section class="settings-group"><h2>Favorite teams</h2>${["Manchester City", "Arsenal", "Barcelona"].map((team) => settingChoice("favorite", team, state.settings.favoriteTeams.includes(team))).join("")}<button class="setting-row" data-action="show-team-note"><span>Add team</span>${icons.chevron}</button></section>
-          <section class="settings-group"><h2>Competitions</h2><button class="setting-row setting-row-tall" data-action="show-competitions"><span><strong>7 selected</strong><small>Premier League · La Liga · Ligue 1 · Eliteserien · Champions League · World Cup · Euros</small></span>${icons.chevron}</button></section>
+          <section class="settings-group"><h2>Favorite teams</h2>${["Manchester City", "Arsenal", "Barcelona", "Inter Miami"].map((team) => settingChoice("favorite", team, state.settings.favoriteTeams.includes(team))).join("")}<button class="setting-row" data-action="show-team-note"><span>Add team</span>${icons.chevron}</button></section>
+          <section class="settings-group"><h2>Competitions</h2><button class="setting-row setting-row-tall" data-action="show-competitions"><span><strong>8 selected</strong><small>Premier League · La Liga · Ligue 1 · MLS · Eliteserien · Champions League · World Cup · Euros</small></span>${icons.chevron}</button></section>
           <section class="settings-group"><h2>Sources</h2>${toggleRow("communitySources", "Community sources", "Always shown as unverified", state.settings.communitySources)}<div class="setting-row static-row"><span>Show provenance</span><span class="setting-value">Always</span></div></section>
           <section class="settings-group"><h2>App</h2><button class="setting-row" data-action="install"><span>Install app</span>${icons.chevron}</button></section>
         </div>
@@ -595,11 +603,11 @@ function handleAction(target) {
     return;
   }
   if (action === "show-team-note") {
-    openInfo("Favorite teams", "City, Arsenal and Barcelona are ready. More team controls can follow the fixture feed.");
+    openInfo("Favorite teams", "City, Arsenal, Barcelona and Inter Miami are ready. More team controls can follow the fixture feed.");
     return;
   }
   if (action === "show-competitions") {
-    openInfo("Competitions", "Premier League, La Liga, Ligue 1, Eliteserien, Champions League, World Cup and Euros are selected.");
+    openInfo("Competitions", "Premier League, La Liga, Ligue 1, MLS, Eliteserien, Champions League, World Cup and Euros are selected.");
     return;
   }
   if (action === "install") {

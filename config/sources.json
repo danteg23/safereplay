@@ -97,6 +97,26 @@
     "stage": "explore"
   },
   {
+    "id": "mls-youtube",
+    "name": "Major League Soccer on YouTube",
+    "baseUrl": "https://www.youtube.com/@mls",
+    "channelHandle": "@mls",
+    "channelId": "UCSZbXT5TLLW_i-5W8FZpFsg",
+    "channelIdentityEvidenceUrl": "https://www.youtube.com/channel/UCSZbXT5TLLW_i-5W8FZpFsg",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.mlssoccer.com/news/youtube-and-major-league-soccer-team-strategic-content-and-advertising-partnersh",
+    "formats": ["extended", "short"],
+    "access": "free",
+    "discovery": ["youtube_channel"],
+    "regions": [
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-12" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-12" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unsafe", "player": "unsafe", "postplay": "unsafe" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
     "id": "uefa-youtube",
     "name": "UEFA on YouTube",
     "baseUrl": "https://www.youtube.com/UEFA",
@@ -486,6 +506,26 @@
     "regions": [
       { "code": "PH", "status": "untested", "checkedAt": "2026-07-10" },
       { "code": "NO", "status": "untested", "checkedAt": "2026-07-10" }
+    ],
+    "spoilerBaseline": { "listing": "unsafe", "preplay": "unsafe", "player": "unsafe", "postplay": "unsafe" },
+    "requiresItemScan": true,
+    "stage": "explore"
+  },
+  {
+    "id": "inter-miami-youtube",
+    "name": "Inter Miami CF on YouTube",
+    "baseUrl": "https://www.youtube.com/@InterMiamiCF",
+    "channelHandle": "@InterMiamiCF",
+    "channelId": "UCcFuqX01k0dCBULXl1YvCsA",
+    "channelIdentityEvidenceUrl": "https://www.youtube.com/channel/UCcFuqX01k0dCBULXl1YvCsA",
+    "provenance": "verified_official",
+    "provenanceEvidenceUrl": "https://www.intermiamicf.com/news/inside-inter-miami-club-docuseries-premiere-july-1",
+    "formats": ["extended", "short"],
+    "access": "free",
+    "discovery": ["youtube_channel"],
+    "regions": [
+      { "code": "PH", "status": "untested", "checkedAt": "2026-07-12" },
+      { "code": "NO", "status": "untested", "checkedAt": "2026-07-12" }
     ],
     "spoilerBaseline": { "listing": "unsafe", "preplay": "unsafe", "player": "unsafe", "postplay": "unsafe" },
     "requiresItemScan": true,

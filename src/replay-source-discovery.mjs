@@ -76,10 +76,15 @@ export function discoverReplaySources({ checkedAt, fixtures, xml }) {
       .sort((left, right) => right.published.localeCompare(left.published));
     const selected = new Map();
     let footreplays = null;
+    let footreplaysFormat = null;
     for (const entry of matching) {
       const format = entryFormat(entry.title, entry.content);
-      if (format && !selected.has(format)) selected.set(format, entry.url);
-      footreplays ??= footReplaysUrl(entry.content);
+      if (format && format !== "full" && !selected.has(format)) selected.set(format, entry.url);
+      const foundFootreplays = footReplaysUrl(entry.content);
+      if (!footreplays && foundFootreplays) {
+        footreplays = foundFootreplays;
+        footreplaysFormat = format === "full" ? "full" : "extended";
+      }
     }
     const sources = [...selected].map(([format, url]) => ({
       format,
@@ -89,13 +94,13 @@ export function discoverReplaySources({ checkedAt, fixtures, xml }) {
     }));
     if (footreplays) {
       sources.push({
-        format: "extended",
-        id: `${fixture.id}-footreplays-extended`,
+        format: footreplaysFormat,
+        id: `${fixture.id}-footreplays-${footreplaysFormat}`,
         provider: "footreplays",
         url: footreplays,
       });
     }
-    if (sources.length > 0) sourcesByFixture[fixture.id] = sources;
+    sourcesByFixture[fixture.id] = sources;
   }
 
   return validateReplaySourceSnapshot({ checkedAt, sourcesByFixture }, {
@@ -144,7 +149,7 @@ export function buildReplaySourceProjection(snapshot) {
         providerName: reddit ? "r/footballhighlights" : "FootReplays",
         provenance: "community_unverified",
         redirectPath: `/go/${source.id}`,
-        riskLabel: reddit ? "Comments and downloads can spoil" : "Match page · thumbnail and popup risk",
+        riskLabel: reddit ? "Comments can spoil · highlight links unverified" : "Match page · thumbnail and popup risk",
         riskTone: "caution",
       };
     });

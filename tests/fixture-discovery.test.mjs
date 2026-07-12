@@ -74,6 +74,57 @@ test("fixture parser maps EPL aliases and discards scores, winner, location, and
   assert.doesNotMatch(serialized, /winner|score|result|stadium|8-7/i);
 });
 
+test("MLS fixture discovery selects only Inter Miami and canonicalizes replay-search names", () => {
+  const feed = {
+    ...enabledFeed,
+    competition: "MLS",
+    evidenceUrl: "https://www.intermiamicf.com/news/inter-miami-cf-s-2026-mls-regular-season-schedule-presented-by-ticketmaster-unveiled-miami-freedom-park-s-mls-home-opener-set-for-april-4",
+    feedUrl: "https://fixturedownload.com/feed/json/mls-2026",
+    id: "fixture-download-mls-2026",
+    priorityTeams: ["Inter Miami"],
+    teamAliases: {
+      "Inter Miami CF": "Inter Miami",
+      "Los Angeles Football Club": "LAFC",
+    },
+  };
+  const fixtures = parseFixtureDownloadRows([
+    row({
+      AwayTeam: "Chicago Fire FC",
+      DateUtc: "2026-07-22 23:30:00Z",
+      HomeTeam: "Inter Miami CF",
+      MatchNumber: 16,
+    }),
+    row({
+      AwayTeam: "Inter Miami CF",
+      DateUtc: "2026-07-25 23:30:00Z",
+      HomeTeam: "CF Montréal",
+      MatchNumber: 17,
+    }),
+    row({
+      AwayTeam: "Charlotte FC",
+      DateUtc: "2026-07-26 22:00:00Z",
+      HomeTeam: "Los Angeles Football Club",
+      MatchNumber: 18,
+    }),
+  ], feed, { from: "2026-07-22", to: "2026-07-26" });
+  assert.deepEqual(fixtures, [
+    {
+      competition: "MLS",
+      id: "fixture-download-mls-2026-match-16",
+      kickoffUtc: "2026-07-22T23:30:00Z",
+      scope: "senior_men",
+      teams: ["Inter Miami", "Chicago Fire FC"],
+    },
+    {
+      competition: "MLS",
+      id: "fixture-download-mls-2026-match-17",
+      kickoffUtc: "2026-07-25T23:30:00Z",
+      scope: "senior_men",
+      teams: ["CF Montréal", "Inter Miami"],
+    },
+  ]);
+});
+
 test("fixture registry withholds mismatched feeds and rejects untrusted hosts", () => {
   const withheld = { ...enabledFeed, blockReason: "date_mismatch", state: "withheld" };
   assert.deepEqual(validateFixtureFeedRegistry(registry(withheld)), [withheld]);

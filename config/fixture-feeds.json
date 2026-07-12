@@ -50,6 +50,24 @@
       "evidenceUrl": "https://www.lfp.fr/article/ligue-1-mc-donald-s-le-calendrier-de-la-saison-2026-2027"
     },
     {
+      "id": "fixture-download-mls-2026",
+      "kind": "fixture_download_json",
+      "competition": "MLS",
+      "feedUrl": "https://fixturedownload.com/feed/json/mls-2026",
+      "state": "enabled_candidate",
+      "scope": "senior_men",
+      "selection": "priority_teams",
+      "priorityTeams": ["Inter Miami"],
+      "teamAliases": {
+        "Inter Miami CF": "Inter Miami",
+        "Los Angeles Football Club": "LAFC",
+        "New York City Football Club": "New York City FC",
+        "Red Bull New York": "New York Red Bulls"
+      },
+      "checkedAt": "2026-07-12",
+      "evidenceUrl": "https://www.intermiamicf.com/news/inter-miami-cf-s-2026-mls-regular-season-schedule-presented-by-ticketmaster-unveiled-miami-freedom-park-s-mls-home-opener-set-for-april-4"
+    },
+    {
       "id": "eliteserien-official-calendar-2026",
       "kind": "official_ical",
       "competition": "Eliteserien",
