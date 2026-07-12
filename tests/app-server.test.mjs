@@ -138,11 +138,11 @@ test("provider handoff is allowlisted and does not accept arbitrary URLs", async
     /^https:\/\/www\.camel1\.tv\/football\/norway-vs-england\/(?:live\/)?23xmvkh60yz0qg8$/u,
   );
 
-  const norwayEnglandReplay = await request("/go/fifa-world-cup-2026-match-99-reddit-full");
+  const norwayEnglandReplay = await request("/go/fifa-world-cup-2026-match-99-footreplays-full");
   assert.equal(norwayEnglandReplay.status, 302);
   assert.equal(
     norwayEnglandReplay.headers.get("location"),
-    "https://www.reddit.com/r/footballhighlights/comments/1utwz59/norway_vs_england_world_cup_11jul2026/",
+    "https://www.footreplays.com/international/world-cup-2026/norway-vs-england-11-07-2026/",
   );
 
   const norwayEnglandYouTube = await request("/go/norway-england-youtube-short");

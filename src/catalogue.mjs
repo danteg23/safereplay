@@ -124,17 +124,6 @@ function worldCupReplaySources({
       riskTone: "caution",
       redirectPath: `/go/${prefix}-youtube-full`,
     }] : []),
-    {
-      id: `${prefix}-reddit`,
-      format: "full",
-      evidenceStatus: "thread_candidate",
-      providerName: "r/footballhighlights",
-      accessLabel: "Free links vary",
-      provenance: "community_unverified",
-      riskLabel: "Search titles and comments can spoil",
-      riskTone: "unknown",
-      redirectPath: `/go/${prefix}-reddit`,
-    },
   ];
 }
 
@@ -199,17 +188,6 @@ const staticSourcesByFixture = {
       riskLabel: "Spoiler thumbnail · ad popup",
       riskTone: "caution",
       redirectPath: "/go/france-morocco-footreplays",
-    },
-    {
-      id: "france-morocco-reddit",
-      format: "full",
-      evidenceStatus: "thread_candidate",
-      providerName: "r/footballhighlights",
-      accessLabel: "Free links vary",
-      provenance: "community_unverified",
-      riskLabel: "Comments can spoil",
-      riskTone: "unknown",
-      redirectPath: "/go/france-morocco-reddit",
     },
   ],
   "fifa-world-cup-2026-match-98": [
@@ -279,17 +257,6 @@ const staticSourcesByFixture = {
       riskLabel: "Listing thumbnail · ad popup risk",
       riskTone: "caution",
       redirectPath: "/go/spain-belgium-footreplays",
-    },
-    {
-      id: "spain-belgium-reddit-full",
-      format: "full",
-      evidenceStatus: "thread_candidate",
-      providerName: "r/footballhighlights",
-      accessLabel: "Free links vary",
-      provenance: "community_unverified",
-      riskLabel: "Search titles and comments can spoil",
-      riskTone: "unknown",
-      redirectPath: "/go/spain-belgium-reddit",
     },
     {
       id: "spain-belgium-reddit-short",
@@ -424,7 +391,7 @@ function dynamicLiveDestinations(fixtures) {
 }
 
 const fixtures = sanitizeFixtureSnapshot(snapshot, {
-  favoriteTeams: ["Manchester City", "Arsenal", "Barcelona", "Norway"],
+  favoriteTeams: ["Manchester City", "Arsenal", "Barcelona", "Inter Miami", "Norway"],
   availabilityByFixture: Object.fromEntries(Object.entries(sourcesByFixture)
     .filter(([, sources]) => sources.length > 0)
     .map(([fixtureId]) => [fixtureId, "ready"])),

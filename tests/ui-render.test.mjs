@@ -97,6 +97,24 @@ test("Matches is minimal, status-free, and disables fixtures without a useful de
   assert.doesNotMatch(visibleText(root.innerHTML), /\b\d+\s*[-–—]\s*\d+\b/);
 });
 
+test("Inter Miami is a default favorite and upgrades existing saved settings once", async () => {
+  const legacySettings = JSON.stringify({
+    communitySources: true,
+    displayTimeZone: "Asia/Manila",
+    favoriteTeams: ["Manchester City", "Arsenal", "Barcelona"],
+    region: "Philippines",
+  });
+  const { root, ui } = await loadUi(getPublicCatalogue(), { settingsState: legacySettings });
+  assert.ok(ui.getState().settings.favoriteTeams.includes("Inter Miami"));
+  assert.equal(ui.getState().settings.favoriteTeamsVersion, 2);
+
+  ui.setNow("2026-07-22T12:00:00Z");
+  ui.setState({ selectedCompetition: "Favorites", selectedDate: "2026-07-23", screen: "matches" });
+  ui.render();
+  assert.match(root.innerHTML, /Inter Miami/);
+  assert.match(root.innerHTML, /Chicago Fire FC/);
+});
+
 test("unavailable fixture actions are ignored while available fixtures open detail", async () => {
   const unavailable = {
     availability: "none",
@@ -126,7 +144,7 @@ test("detail groups real sources into Highlights, Extended and Full match withou
   assert.match(root.innerHTML, /href="\/go\/spain-belgium-footreplays-extended"/);
   assert.match(root.innerHTML, /href="\/go\/spain-belgium-reddit-extended"/);
   assert.match(root.innerHTML, /Alternative 1 · FootReplays/);
-  assert.match(root.innerHTML, /Alternative 2 · r\/footballhighlights/);
+  assert.doesNotMatch(root.innerHTML, /spain-belgium-reddit-full/);
   assert.match(root.innerHTML, /First half/);
   assert.match(root.innerHTML, /Second half/);
   assert.match(root.innerHTML, /href="\/go\/spain-belgium-footreplays-first-half"/);

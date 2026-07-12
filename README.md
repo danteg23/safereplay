@@ -195,7 +195,9 @@ missing. It does not use AI: matching and spoiler blocking are deterministic. Th
 friend deployment is independent of the private review queue; publishing a newly reviewed
 video still requires a tested repository push.
 
-The production VPS runs `scripts/vps-refresh-and-deploy.sh` twice daily. It uses the same
+The production VPS runs `scripts/vps-refresh-and-deploy.sh` at 09:07 and 21:07 Manila
+time. Minute 07 deliberately avoids the every-15-minute post-match job; both jobs share
+one lock so they cannot edit and push the catalogue concurrently. The full refresh uses the same
 authenticated YouTube capability directly on that VPS, keeps the private candidate queue
 and cache there, discovers exact TotalSportek/Camel live pages, runs the full test suite,
 and pushes only changed neutral fixtures or allowlisted live destinations. That push

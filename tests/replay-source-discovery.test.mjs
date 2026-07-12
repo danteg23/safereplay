@@ -30,15 +30,27 @@ test("footballhighlights feed produces exact format links and a FootReplays fall
   assert.deepEqual(snapshot.sourcesByFixture[fixture.id].map(({ provider, format }) => [provider, format]), [
     ["reddit", "extended"],
     ["reddit", "short"],
-    ["reddit", "full"],
-    ["footreplays", "extended"],
+    ["footreplays", "full"],
   ]);
-  assert.doesNotMatch(JSON.stringify(snapshot), /unsafe_result|1-2/u);
+  assert.doesNotMatch(JSON.stringify(snapshot), /unsafe_result|1-2|reddit-full/u);
 
   const projection = buildReplaySourceProjection(snapshot);
-  assert.equal(projection.sourcesByFixture[fixture.id].length, 4);
+  assert.equal(projection.sourcesByFixture[fixture.id].length, 3);
   assert.equal(projection.sourcesByFixture[fixture.id][0].providerName, "FootReplays");
-  assert.equal(Object.keys(projection.destinations).length, 4);
+  assert.equal(Object.keys(projection.destinations).length, 3);
+});
+
+test("torrent-only full-match Reddit posts never become replay sources", () => {
+  const torrentOnly = `<?xml version="1.0"?><feed>
+    <entry><content type="html">Torrent download: magnet:?xt=urn:btih:private</content><link href="https://www.reddit.com/r/footballhighlights/comments/torrent1/norway_england_full/" /><published>2026-07-12T01:00:00Z</published><title>Norway vs England Full Match</title></entry>
+  </feed>`;
+  const snapshot = discoverReplaySources({
+    checkedAt: "2026-07-12T02:00:00Z",
+    fixtures: [fixture],
+    xml: torrentOnly,
+  });
+  assert.deepEqual(snapshot.sourcesByFixture[fixture.id], []);
+  assert.doesNotMatch(JSON.stringify(snapshot), /torrent|magnet|reddit-full/u);
 });
 
 test("replay snapshot rejects unknown fixtures and hostile destinations", () => {

@@ -152,6 +152,16 @@
       ]
     },
     {
+      "competition": "MLS",
+      "id": "fixture-download-mls-2026-match-229",
+      "kickoffUtc": "2026-07-22T23:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Inter Miami",
+        "Chicago Fire FC"
+      ]
+    },
+    {
       "competition": "Eliteserien",
       "id": "eliteserien-official-e5361ec5-a615-42ab-b7ef-03e784440903",
       "kickoffUtc": "2026-07-25T14:00:00Z",
@@ -159,6 +169,16 @@
       "teams": [
         "Kristiansund",
         "Start"
+      ]
+    },
+    {
+      "competition": "MLS",
+      "id": "fixture-download-mls-2026-match-244",
+      "kickoffUtc": "2026-07-25T23:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "CF Montréal",
+        "Inter Miami"
       ]
     },
     {
@@ -259,6 +279,16 @@
       "teams": [
         "Start",
         "Viking"
+      ]
+    },
+    {
+      "competition": "MLS",
+      "id": "fixture-download-mls-2026-match-260",
+      "kickoffUtc": "2026-08-01T23:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Inter Miami",
+        "Columbus Crew"
       ]
     },
     {
@@ -392,6 +422,16 @@
       ]
     },
     {
+      "competition": "MLS",
+      "id": "fixture-download-mls-2026-match-281",
+      "kickoffUtc": "2026-08-16T00:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Nashville SC",
+        "Inter Miami"
+      ]
+    },
+    {
       "competition": "Eliteserien",
       "id": "eliteserien-official-e9a9ecfd-b36f-476a-be66-37018a55993f",
       "kickoffUtc": "2026-08-16T12:30:00Z",
@@ -442,6 +482,16 @@
       ]
     },
     {
+      "competition": "MLS",
+      "id": "fixture-download-mls-2026-match-292",
+      "kickoffUtc": "2026-08-19T23:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Philadelphia Union",
+        "Inter Miami"
+      ]
+    },
+    {
       "competition": "Premier League",
       "id": "fixture-download-epl-2026-match-1",
       "kickoffUtc": "2026-08-21T19:00:00Z",
@@ -449,6 +499,16 @@
       "teams": [
         "Arsenal",
         "Coventry City"
+      ]
+    },
+    {
+      "competition": "MLS",
+      "id": "fixture-download-mls-2026-match-304",
+      "kickoffUtc": "2026-08-22T23:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Inter Miami",
+        "Toronto FC"
       ]
     },
     {
@@ -489,6 +549,16 @@
       "teams": [
         "Viking",
         "Aalesund"
+      ]
+    },
+    {
+      "competition": "MLS",
+      "id": "fixture-download-mls-2026-match-320",
+      "kickoffUtc": "2026-08-29T23:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Inter Miami",
+        "CF Montréal"
       ]
     },
     {
@@ -622,6 +692,16 @@
       ]
     },
     {
+      "competition": "MLS",
+      "id": "fixture-download-mls-2026-match-336",
+      "kickoffUtc": "2026-09-05T23:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Inter Miami",
+        "Atlanta United"
+      ]
+    },
+    {
       "competition": "Eliteserien",
       "id": "eliteserien-official-60e30c3b-3a22-4205-aebd-985fb629f3d6",
       "kickoffUtc": "2026-09-06T15:00:00Z",
@@ -662,6 +742,16 @@
       ]
     },
     {
+      "competition": "MLS",
+      "id": "fixture-download-mls-2026-match-354",
+      "kickoffUtc": "2026-09-10T00:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Chicago Fire FC",
+        "Inter Miami"
+      ]
+    },
+    {
       "competition": "Eliteserien",
       "id": "eliteserien-official-9b93afd6-d406-449a-b735-aeaa8e5b66f7",
       "kickoffUtc": "2026-09-12T14:00:00Z",
@@ -689,6 +779,16 @@
       "teams": [
         "Sunderland",
         "Arsenal"
+      ]
+    },
+    {
+      "competition": "MLS",
+      "id": "fixture-download-mls-2026-match-365",
+      "kickoffUtc": "2026-09-12T23:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Inter Miami",
+        "Nashville SC"
       ]
     },
     {
@@ -862,6 +962,26 @@
       ]
     },
     {
+      "competition": "MLS",
+      "id": "fixture-download-mls-2026-match-391",
+      "kickoffUtc": "2026-09-20T23:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Inter Miami",
+        "San Diego FC"
+      ]
+    },
+    {
+      "competition": "MLS",
+      "id": "fixture-download-mls-2026-match-398",
+      "kickoffUtc": "2026-09-27T23:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Columbus Crew",
+        "Inter Miami"
+      ]
+    },
+    {
       "competition": "Premier League",
       "id": "fixture-download-epl-2026-match-51",
       "kickoffUtc": "2026-10-10T14:00:00Z",
@@ -880,6 +1000,16 @@
         "Liverpool",
         "Manchester City"
       ]
+    },
+    {
+      "competition": "MLS",
+      "id": "fixture-download-mls-2026-match-410",
+      "kickoffUtc": "2026-10-10T23:30:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Inter Miami",
+        "D.C. United"
+      ]
     }
   ],
   "sourceName": "Fixture Download candidate feeds",
@@ -887,6 +1017,10 @@
     {
       "feedId": "fixture-download-epl-2026",
       "fixtureCount": 12
+    },
+    {
+      "feedId": "fixture-download-mls-2026",
+      "fixtureCount": 13
     },
     {
       "feedId": "eliteserien-official-calendar-2026",

@@ -53,9 +53,18 @@ test("catalogue includes every verified Norway World Cup match and the recent Ar
   );
 });
 
+test("catalogue includes the verified upcoming Inter Miami window as favorites", () => {
+  const fixtures = getPublicCatalogue().fixtures.filter((fixture) => fixture.teams.includes("Inter Miami"));
+  assert.equal(fixtures.length, 13);
+  assert.ok(fixtures.every((fixture) => fixture.competition === "MLS"));
+  assert.ok(fixtures.every((fixture) => fixture.favorite === true));
+  assert.equal(fixtures[0].kickoffUtc, "2026-07-22T23:30:00Z");
+  assert.equal(fixtures.at(-1).kickoffUtc, "2026-10-10T23:30:00Z");
+});
+
 test("thread candidates are reserved for community-unverified sources", () => {
   const catalogue = getPublicCatalogue();
-  const thread = catalogue.sourcesByFixture["fifa-world-cup-2026-match-97"]
+  const thread = catalogue.sourcesByFixture["fifa-world-cup-2026-match-98"]
     .find((source) => source.evidenceStatus === "thread_candidate");
   thread.provenance = "verified_official";
   assert.throws(
