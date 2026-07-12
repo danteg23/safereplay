@@ -375,7 +375,7 @@ function proofCoveredPlayerDocument(record) {
     <title>${escapeHtml(record.publicRecord.teams.join(" vs "))} · Covered YouTube proof</title>
     <link rel="icon" href="/brand-mark.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css?v=20260711-2" />
-    <script type="module" src="/youtube-proof-player.js?v=20260712-1"></script>
+    <script type="module" src="/youtube-proof-player.js?v=20260712-2"></script>
   </head>
   <body class="youtube-watch-page">
     <main class="youtube-watch-screen">
@@ -430,7 +430,7 @@ export function youtubePlayerDocument(record) {
     <link rel="icon" href="/brand-mark.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css?v=20260711-1" />
     <link rel="stylesheet" href="/v2.css?v=20260712-2" />
-    <script type="module" src="/youtube-proof-player.js?v=20260712-1"></script>
+    <script type="module" src="/youtube-proof-player.js?v=20260712-2"></script>
   </head>
   <body class="youtube-watch-page">
     <main class="youtube-watch-screen">
@@ -706,6 +706,7 @@ export async function handleRequest(request, response, {
       "Content-Security-Policy": youtubePlayerSecurityPolicy,
       "Content-Type": "text/html; charset=utf-8",
       "Permissions-Policy": 'autoplay=(self "https://www.youtube-nocookie.com"), camera=(), fullscreen=(self "https://www.youtube-nocookie.com"), geolocation=(), microphone=()',
+      "Referrer-Policy": "strict-origin-when-cross-origin",
     }, youtubePlayerDocument(record));
     return;
   }
@@ -742,6 +743,7 @@ export async function handleRequest(request, response, {
       "Content-Security-Policy": youtubePlayerSecurityPolicy,
       "Content-Type": "text/html; charset=utf-8",
       "Permissions-Policy": 'autoplay=(self "https://www.youtube-nocookie.com"), camera=(), fullscreen=(self "https://www.youtube-nocookie.com"), geolocation=(), microphone=()',
+      "Referrer-Policy": "strict-origin-when-cross-origin",
     }, proofCoveredPlayerDocument(record));
     return;
   }

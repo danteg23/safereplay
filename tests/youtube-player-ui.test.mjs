@@ -24,6 +24,11 @@ test("private playback probe stays covered until YouTube reports playing", async
   const script = await readFile(new URL("youtube-proof-player.js", publicRoot), "utf8");
   assert.match(script, /document\.createElement\("iframe"\)/);
   assert.match(script, /youtube-nocookie\.com\/embed/);
+  assert.doesNotMatch(script, /if \(!apiReady \|\| player\) return/);
+  assert.match(script, /new window\.YT\.Player\(host/);
+  assert.match(script, /host: "https:\/\/www\.youtube-nocookie\.com"/);
+  assert.match(script, /setTimeout\(createFallbackFrame, 1_500\)/);
+  assert.match(script, /typeof window\.YT\?\.Player !== "function"/);
   assert.match(script, /onAutoplayBlocked/);
   assert.match(script, /Tap YouTube's play symbol/);
   assert.match(script, /frame\.setAttribute\("aria-hidden", "true"\)/);
@@ -38,7 +43,7 @@ test("private playback probe stays covered until YouTube reports playing", async
   assert.match(script, /recreate: true/);
   assert.match(script, /classList\.add\("is-playing"\)/);
   assert.ok(script.indexOf("PlayerState.PLAYING") < script.indexOf('classList.add("is-playing")'));
-  assert.match(script, /This upload blocks embedded playback\. It stayed covered\./);
+  assert.match(script, /YouTube's control layer failed\. The direct covered player is ready\./);
   assert.match(script, /requestFullscreen/);
   assert.match(script, /wrapper\.requestFullscreen/);
   assert.doesNotMatch(script, /frame\.requestFullscreen/);

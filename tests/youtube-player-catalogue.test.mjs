@@ -25,8 +25,8 @@ test("compact player catalogue keeps only neutral identity and a strict video id
   assert.deepEqual(record.teams, ["France", "Morocco"]);
   assert.equal(Object.hasOwn(record, "title"), false);
   assert.equal(Object.hasOwn(record, "thumbnail"), false);
-  assert.equal(getYouTubePlayerRecord("spain-belgium-youtube-short").videoId, "dKwl7C7xGS8");
-  assert.equal(getYouTubePlayerRecord("spain-belgium-youtube-short").durationLabel, "5:16");
+  assert.equal(getYouTubePlayerRecord("spain-belgium-youtube-short").videoId, "Tlv7uBNb6aM");
+  assert.equal(getYouTubePlayerRecord("spain-belgium-youtube-short").durationLabel, "3:38");
   assert.equal(getYouTubePlayerRecord("spain-belgium-youtube-long"), null);
 });
 

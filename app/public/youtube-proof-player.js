@@ -52,17 +52,22 @@ function resetCoveredPlayer(message, { recreate = false, startAt = 0 } = {}) {
   wrapper.classList.remove("is-ready", "is-playing");
   setPlaybackControlsVisible(false);
   setStatus(message);
-  if (recreate) queueMicrotask(createPlayer);
+  if (recreate) queueMicrotask(startPlayer);
 }
 
-function createPlayer() {
-  if (!apiReady || player) return;
+function getVideoId() {
   const videoId = wrapper.dataset.videoId;
   if (!/^[A-Za-z0-9_-]{11}$/u.test(videoId ?? "")) {
     setStatus("Candidate unavailable");
-    return;
+    return null;
   }
+  return videoId;
+}
 
+function createFallbackFrame() {
+  if (player || host.querySelector("iframe")) return;
+  const videoId = getVideoId();
+  if (!videoId) return;
   const frame = document.createElement("iframe");
   const parameters = new URLSearchParams({
     autoplay: "0",
@@ -81,22 +86,45 @@ function createPlayer() {
   frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?${parameters}`;
   neutralizeFrameMetadata(frame);
   host.replaceChildren(frame);
-  setStatus("Starting behind the cover…");
+  wrapper.classList.add("is-ready");
+  setStatus(resumeAt > 0
+    ? "Paused and covered. Tap YouTube's play symbol to resume with sound."
+    : "Ready. Tap YouTube's play symbol to begin with sound.");
+}
 
-  player = new window.YT.Player(frame, {
+function connectPlayerApi() {
+  if (!apiReady || player || host.querySelector("iframe")) return;
+  const videoId = getVideoId();
+  if (!videoId) return;
+  player = new window.YT.Player(host, {
+    host: "https://www.youtube-nocookie.com",
+    videoId,
+    playerVars: {
+      autoplay: 0,
+      controls: 1,
+      origin: window.location.origin,
+      playsinline: 1,
+      rel: 0,
+      start: resumeAt,
+    },
     events: {
       onError(event) {
         const embeddingBlocked = event.data === 101 || event.data === 150;
         wrapper.dataset.lastError = String(event.data ?? "unknown");
-        resetCoveredPlayer(embeddingBlocked
-          ? "This upload blocks embedded playback. It stayed covered."
-          : "This candidate could not play here. It stayed covered.");
+        player?.destroy();
+        player = null;
+        host.replaceChildren();
+        createFallbackFrame();
+        setStatus(embeddingBlocked
+          ? "YouTube's control layer failed. The direct covered player is ready."
+          : "The direct covered player is ready.");
       },
       onAutoplayBlocked() {
         wrapper.classList.add("is-ready");
         setStatus("Ready. Tap YouTube's play symbol in the covered window.");
       },
       onReady() {
+        neutralizeFrameMetadata(player.getIframe());
         wrapper.classList.add("is-ready");
         setStatus(resumeAt > 0
           ? "Paused and covered. Tap YouTube's play symbol to resume with sound."
@@ -131,9 +159,14 @@ function createPlayer() {
   });
 }
 
+function startPlayer() {
+  if (apiReady) connectPlayerApi();
+  else createFallbackFrame();
+}
+
 window.onYouTubeIframeAPIReady = () => {
   apiReady = true;
-  createPlayer();
+  connectPlayerApi();
 };
 
 setStatus("Preparing the covered player…");
@@ -146,4 +179,19 @@ fullscreenButton?.addEventListener("click", () => {
 const apiScript = document.createElement("script");
 apiScript.src = "https://www.youtube.com/iframe_api";
 apiScript.async = true;
+apiScript.addEventListener("error", () => {
+  wrapper.dataset.youtubeApi = "unavailable";
+  createFallbackFrame();
+});
 document.head.append(apiScript);
+
+const directPlayerFallback = window.setTimeout(createFallbackFrame, 1_500);
+
+const apiFallbackPoll = window.setInterval(() => {
+  if (typeof window.YT?.Player !== "function") return;
+  apiReady = true;
+  connectPlayerApi();
+  window.clearTimeout(directPlayerFallback);
+  window.clearInterval(apiFallbackPoll);
+}, 250);
+window.setTimeout(() => window.clearInterval(apiFallbackPoll), 10_000);

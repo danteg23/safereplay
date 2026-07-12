@@ -118,7 +118,7 @@ test("unavailable fixture actions are ignored while available fixtures open deta
 test("detail groups real sources into Highlights, Extended and Full match without metadata spoilers", async () => {
   const { root, ui } = await loadUi();
   ui.handleAction({ dataset: { action: "open-fixture", fixtureId: "fifa-world-cup-2026-match-98" } });
-  assert.match(root.innerHTML, /id="highlights-heading">Highlights <span class="format-duration">\(5:16\)<\/span>/);
+  assert.match(root.innerHTML, /id="highlights-heading">Highlights <span class="format-duration">\(3:38\)<\/span>/);
   assert.match(root.innerHTML, /id="extended-heading">Extended highlights/);
   assert.match(root.innerHTML, /id="full-heading">Full match/);
   assert.match(root.innerHTML, /class="format-card" aria-labelledby="extended-heading"/);
@@ -154,7 +154,7 @@ test("alternative links remain native text links and never gain play controls", 
   assert.equal(prevented, false);
 });
 
-test("community switch removes unverified alternatives while keeping verified YouTube", async () => {
+test("community switch removes risky alternatives while keeping a covered YouTube fallback", async () => {
   const { root, ui } = await loadUi();
   ui.handleAction({ dataset: { action: "open-fixture", fixtureId: "fifa-world-cup-2026-match-98" } });
   ui.setState({ settings: { ...ui.getState().settings, communitySources: false } });

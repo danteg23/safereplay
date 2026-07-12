@@ -100,7 +100,7 @@ test("public sources may expose only a neutral formatted duration label", () => 
   const catalogue = getPublicCatalogue();
   const source = catalogue.sourcesByFixture["fifa-world-cup-2026-match-98"]
     .find(({ id }) => id === "spain-belgium-youtube-short");
-  assert.equal(source.durationLabel, "5:16");
+  assert.equal(source.durationLabel, "3:38");
 
   source.durationLabel = "Spain won 2-1";
   assert.throws(() => validatePublicCatalogue(catalogue), /durationLabel is invalid/);

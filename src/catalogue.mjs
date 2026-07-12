@@ -53,7 +53,7 @@ function worldCupReplaySources({
       evidenceStatus: "player_candidate",
       providerName: shortProvider,
       accessLabel: "Free",
-      provenance: "verified_official",
+      provenance: "community_unverified",
       riskLabel: "Covered player · metadata hidden",
       riskTone: "caution",
       redirectPath: `/go/${prefix}-youtube-short`,
@@ -215,11 +215,11 @@ const staticSourcesByFixture = {
   "fifa-world-cup-2026-match-98": [
     {
       id: "spain-belgium-youtube-short",
-      durationLabel: "5:16",
+      durationLabel: "3:38",
       format: "short",
       evidenceStatus: "player_candidate",
-      providerName: "Aleph Arena on YouTube",
-      accessLabel: "Free status varies",
+      providerName: "Podcast Speak English on YouTube",
+      accessLabel: "Free",
       provenance: "verified_official",
       riskLabel: "Covered player · metadata hidden",
       riskTone: "caution",

@@ -60,6 +60,7 @@ test("catalogue endpoint serves the validated public contract with no-store", as
   const response = await request("/api/catalogue");
   assert.equal(response.status, 200);
   assert.equal(response.headers.get("cache-control"), "no-store");
+  assert.equal(response.headers.get("referrer-policy"), "no-referrer");
   assert.match(response.headers.get("content-security-policy"), /frame-src 'none'/);
   const catalogue = JSON.parse(response.body);
   assert.equal(validatePublicCatalogue(catalogue), catalogue);
@@ -172,6 +173,7 @@ test("public YouTube page stays covered and permits only the privacy-enhanced fr
   });
   assert.equal(response.status, 200);
   assert.equal(response.headers.get("cache-control"), "no-store");
+  assert.equal(response.headers.get("referrer-policy"), "strict-origin-when-cross-origin");
   assert.match(response.headers.get("content-security-policy"), /frame-src https:\/\/www\.youtube-nocookie\.com/);
   assert.doesNotMatch(response.headers.get("content-security-policy"), /frame-src '\*'|frame-src https:\/\/www\.youtube\.com/);
   assert.match(response.body, /Thumbnail and title hidden/);
@@ -345,6 +347,7 @@ test("private covered-player proof includes blocked candidates but no direct han
 
   const player = await request(`/proof/youtube-player/${playbackProbe.publicRecord.id}`, "GET", options);
   assert.equal(player.status, 200);
+  assert.equal(player.headers.get("referrer-policy"), "strict-origin-when-cross-origin");
   assert.match(player.headers.get("content-security-policy"), /frame-src https:\/\/www\.youtube-nocookie\.com/);
   assert.match(player.body, /Thumbnail and title hidden/);
   assert.match(player.body, /data-video-id="AbCdEf12345"/);
