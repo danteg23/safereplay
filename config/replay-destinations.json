@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-12T05:00:01.835Z",
+  "checkedAt": "2026-07-12T11:00:01.655Z",
   "sourcesByFixture": {
     "fifa-world-cup-2026-match-99": [
       {
@@ -29,16 +29,16 @@
     ],
     "fifa-world-cup-2026-match-100": [
       {
+        "format": "extended",
+        "id": "fifa-world-cup-2026-match-100-reddit-extended",
+        "provider": "reddit",
+        "url": "https://www.reddit.com/r/footballhighlights/comments/1uuc2ao/quarter_final_argentina_vs_switzerland_english/"
+      },
+      {
         "format": "short",
         "id": "fifa-world-cup-2026-match-100-reddit-short",
         "provider": "reddit",
         "url": "https://www.reddit.com/r/footballhighlights/comments/1uu5wlf/argentina_v_switzerland_highlights_fifa_world_cup/"
-      },
-      {
-        "format": "extended",
-        "id": "fifa-world-cup-2026-match-100-reddit-extended",
-        "provider": "reddit",
-        "url": "https://www.reddit.com/r/footballhighlights/comments/1uu5g6b/argentina_v_switzerland_extended_highlights/"
       }
     ]
   }
