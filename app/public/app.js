@@ -224,6 +224,7 @@ function sourcesForFixture(fixtureId) {
 }
 
 function fixtureIsLive(fixture) {
+  if (fixture.kickoffTba === true) return false;
   const kickoff = new Date(fixture.kickoffUtc).valueOf();
   const now = nowProvider().valueOf();
   return Number.isFinite(kickoff) && now >= kickoff && now < kickoff + LIVE_WINDOW_MS;

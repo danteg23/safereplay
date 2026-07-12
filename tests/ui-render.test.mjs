@@ -115,6 +115,16 @@ test("Inter Miami is a default favorite and upgrades existing saved settings onc
   assert.match(root.innerHTML, /Chicago Fire FC/);
 });
 
+test("unconfirmed official fixtures show TBA instead of a placeholder kickoff", async () => {
+  const { root, ui } = await loadUi();
+  ui.setState({ selectedCompetition: "La Liga", selectedDate: "2026-08-16", screen: "matches" });
+  ui.render();
+  assert.match(root.innerHTML, /TBA/);
+  assert.match(root.innerHTML, /Barcelona/);
+  assert.match(root.innerHTML, /Athletic Club/);
+  assert.doesNotMatch(root.innerHTML, /14:00|20:00/);
+});
+
 test("unavailable fixture actions are ignored while available fixtures open detail", async () => {
   const unavailable = {
     availability: "none",

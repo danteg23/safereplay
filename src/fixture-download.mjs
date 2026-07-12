@@ -4,7 +4,7 @@ const DATE = /^\d{4}-\d{2}-\d{2}$/u;
 const RAW_DATE = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}Z$/u;
 const STATES = new Set(["enabled_candidate", "withheld"]);
 const SELECTIONS = new Set(["all", "priority_teams"]);
-const KINDS = new Set(["fixture_download_json", "official_ical"]);
+const KINDS = new Set(["fixture_download_json", "official_ical", "official_lfp_api", "official_schema_org"]);
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -29,6 +29,24 @@ function officialCalendarUrl(value) {
   assert(url.protocol === "https:" && url.hostname === "www.eliteserien.no", "official calendar host is not allowed");
   assert(url.pathname === "/terminliste/subscribe", "official calendar path is invalid");
   assert(!url.search && !url.hash, "official calendar URL must not contain query or fragment");
+  return url;
+}
+
+function barcelonaScheduleUrl(value) {
+  const url = new URL(value);
+  assert(url.protocol === "https:" && url.hostname === "www.fcbarcelona.com", "Barcelona schedule host is not allowed");
+  assert(url.pathname === "/en/football/first-team/schedule", "Barcelona schedule path is invalid");
+  assert(!url.search && !url.hash, "Barcelona schedule URL must not contain query or fragment");
+  return url;
+}
+
+function officialLfpUrl(feed, value) {
+  const url = new URL(value);
+  assert(url.protocol === "https:" && url.hostname === "ma-api.ligue1.fr", "official LFP API host is not allowed");
+  const calendarPath = `/championship-calendar/${feed.championshipId}`;
+  const matchPath = new RegExp(`^/championship-matches/championship/${feed.championshipId}/game-week/(?:[1-9]|[12]\\d|3[0-4])$`, "u");
+  assert(url.pathname === calendarPath || matchPath.test(url.pathname), "official LFP API path is invalid");
+  assert(url.searchParams.size === 1 && url.searchParams.get("season") === String(feed.season) && !url.hash, "official LFP API query is invalid");
   return url;
 }
 
@@ -57,6 +75,12 @@ export function validateFixtureFeedRegistry(value) {
       text(canonical, `${path}.teamAliases.${raw}`);
     }
     assert(DATE.test(feed.checkedAt ?? ""), `${path}.checkedAt is invalid`);
+    if (feed.kind === "official_lfp_api") {
+      assert(feed.championshipId === 1, `${path}.championshipId is invalid`);
+      assert(feed.season === 2026, `${path}.season is invalid`);
+    } else {
+      assert(feed.championshipId === undefined && feed.season === undefined, `${path} LFP fields are not allowed`);
+    }
     const evidenceUrl = new URL(feed.evidenceUrl);
     assert(evidenceUrl.protocol === "https:", `${path}.evidenceUrl must use HTTPS`);
     if (feed.state === "withheld") assert(CODE.test(feed.blockReason ?? ""), `${path}.blockReason is required`);
@@ -124,5 +148,7 @@ export function allowedFixtureDownloadUrl(value) {
 export function allowedFixtureFeedUrl(feed, value) {
   if (feed?.kind === "fixture_download_json") return fixtureDownloadUrl(value);
   if (feed?.kind === "official_ical") return officialCalendarUrl(value);
+  if (feed?.kind === "official_schema_org") return barcelonaScheduleUrl(value);
+  if (feed?.kind === "official_lfp_api") return officialLfpUrl(feed, value);
   throw new Error("fixture feed kind is not allowed");
 }

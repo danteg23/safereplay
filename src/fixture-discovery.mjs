@@ -4,12 +4,19 @@ import {
   validateFixtureFeedRegistry,
 } from "./fixture-download.mjs";
 import { parseEliteserienCalendar } from "./eliteserien-calendar.mjs";
+import {
+  parseBarcelonaScheduleHtml,
+  parseLigue1GameWeek,
+  selectLigue1GameWeeks,
+} from "./official-fixture-feeds.mjs";
 
 const MAX_FEED_BYTES = 5 * 1_024 * 1_024;
 
-async function feedBody(feed, { fetchImpl, timeoutMs }) {
-  const requestedUrl = allowedFixtureFeedUrl(feed, feed.feedUrl);
-  const accept = feed.kind === "official_ical" ? "text/calendar" : "application/json";
+async function feedBody(feed, { fetchImpl, timeoutMs, url = feed.feedUrl }) {
+  const requestedUrl = allowedFixtureFeedUrl(feed, url);
+  const accept = feed.kind === "official_ical"
+    ? "text/calendar"
+    : feed.kind === "official_schema_org" ? "text/html" : "application/json";
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try {
@@ -31,7 +38,9 @@ async function feedBody(feed, { fetchImpl, timeoutMs }) {
     const contentType = response.headers?.get?.("content-type") ?? "";
     const expectedContentType = feed.kind === "official_ical"
       ? /^text\/calendar(?:;|$)/iu
-      : /^application\/json(?:;|$)/iu;
+      : feed.kind === "official_schema_org"
+        ? /^text\/html(?:;|$)/iu
+        : /^application\/json(?:;|$)/iu;
     if (!expectedContentType.test(contentType)) throw new Error("fixture_feed_wrong_content_type");
     const declaredLength = Number(response.headers?.get?.("content-length") ?? 0);
     if (Number.isFinite(declaredLength) && declaredLength > MAX_FEED_BYTES) throw new Error("fixture_feed_too_large");
@@ -59,9 +68,17 @@ export async function discoverFixtureCandidates({
   for (const feed of feeds) {
     try {
       const body = await feedBody(feed, { fetchImpl, timeoutMs });
-      const parsed = feed.kind === "official_ical"
-        ? parseEliteserienCalendar(body, { from, to })
-        : parseFixtureDownloadRows(JSON.parse(body), feed, { from, to });
+      let parsed;
+      if (feed.kind === "official_ical") parsed = parseEliteserienCalendar(body, { from, to });
+      else if (feed.kind === "official_schema_org") parsed = parseBarcelonaScheduleHtml(body, feed, { from, to });
+      else if (feed.kind === "official_lfp_api") {
+        const gameWeeks = selectLigue1GameWeeks(JSON.parse(body), { from, to });
+        const responses = await Promise.all(gameWeeks.map(async (gameWeek) => {
+          const url = `https://ma-api.ligue1.fr/championship-matches/championship/${feed.championshipId}/game-week/${gameWeek}?season=${feed.season}`;
+          return JSON.parse(await feedBody(feed, { fetchImpl, timeoutMs, url }));
+        }));
+        parsed = responses.flatMap((response) => parseLigue1GameWeek(response, feed, { from, to }));
+      } else parsed = parseFixtureDownloadRows(JSON.parse(body), feed, { from, to });
       fixtures.push(...parsed);
       sources.push({ feedId: feed.id, fixtureCount: parsed.length });
     } catch (error) {

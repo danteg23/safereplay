@@ -55,7 +55,7 @@ export function localizeFixture(fixture, timeZone) {
       timeZone,
       weekday: "short",
     }).format(kickoffDate),
-    kickoff: `${parts.hour}:${parts.minute}`,
+    kickoff: fixture.kickoffTba === true ? "TBA" : `${parts.hour}:${parts.minute}`,
   };
 }
 

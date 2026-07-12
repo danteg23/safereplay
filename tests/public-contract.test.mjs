@@ -62,6 +62,17 @@ test("catalogue includes the verified upcoming Inter Miami window as favorites",
   assert.equal(fixtures.at(-1).kickoffUtc, "2026-10-10T23:30:00Z");
 });
 
+test("catalogue includes official Barcelona and Ligue 1 fixtures without invented kickoff times", () => {
+  const fixtures = getPublicCatalogue().fixtures;
+  const barcelona = fixtures.filter((fixture) => fixture.competition === "La Liga" && fixture.teams.includes("Barcelona"));
+  const ligue1 = fixtures.filter((fixture) => fixture.competition === "Ligue 1");
+  assert.equal(barcelona.length, 7);
+  assert.equal(ligue1.length, 54);
+  assert.ok(barcelona.every((fixture) => fixture.favorite && fixture.kickoffTba));
+  assert.equal(ligue1.filter((fixture) => fixture.kickoffTba).length, 36);
+  assert.equal(ligue1.filter((fixture) => !fixture.kickoffTba).length, 18);
+});
+
 test("thread candidates are reserved for community-unverified sources", () => {
   const catalogue = getPublicCatalogue();
   const thread = catalogue.sourcesByFixture["fifa-world-cup-2026-match-98"]

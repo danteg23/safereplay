@@ -14,7 +14,7 @@
     {
       "competition": "Eliteserien",
       "id": "eliteserien-official-03c73521-764d-42b3-b778-a1cdef6ab894",
-      "kickoffUtc": "2026-07-12T15:00:00Z",
+      "kickoffUtc": "2026-07-12T13:00:00Z",
       "scope": "senior_men",
       "teams": [
         "Brann",
@@ -24,7 +24,7 @@
     {
       "competition": "Eliteserien",
       "id": "eliteserien-official-23c2232f-ce8d-4723-8639-8db4b27f26b4",
-      "kickoffUtc": "2026-07-12T15:00:00Z",
+      "kickoffUtc": "2026-07-12T13:00:00Z",
       "scope": "senior_men",
       "teams": [
         "Sandefjord Fotball",
@@ -34,7 +34,7 @@
     {
       "competition": "Eliteserien",
       "id": "eliteserien-official-a3b8c060-8cb7-4425-9252-d1a592503889",
-      "kickoffUtc": "2026-07-12T15:00:00Z",
+      "kickoffUtc": "2026-07-12T13:00:00Z",
       "scope": "senior_men",
       "teams": [
         "Rosenborg",
@@ -432,6 +432,17 @@
       ]
     },
     {
+      "competition": "La Liga",
+      "id": "barcelona-official-schema-2026-match-138283",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-08-16T12:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Barcelona",
+        "Athletic Club"
+      ]
+    },
+    {
       "competition": "Eliteserien",
       "id": "eliteserien-official-e9a9ecfd-b36f-476a-be66-37018a55993f",
       "kickoffUtc": "2026-08-16T12:30:00Z",
@@ -492,6 +503,17 @@
       ]
     },
     {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73825",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-21T18:45:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Olympique de Marseille",
+        "RC Strasbourg Alsace"
+      ]
+    },
+    {
       "competition": "Premier League",
       "id": "fixture-download-epl-2026-match-1",
       "kickoffUtc": "2026-08-21T19:00:00Z",
@@ -499,6 +521,61 @@
       "teams": [
         "Arsenal",
         "Coventry City"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73824",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-22T15:15:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "RC Lens",
+        "AJ Auxerre"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73823",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-22T18:45:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Le Mans FC",
+        "Stade Brestois 29"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73826",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-22T18:45:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "OGC Nice",
+        "FC Lorient"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73828",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-22T18:45:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Toulouse FC",
+        "Olympique Lyonnais"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73829",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-22T18:45:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Estac Troyes",
+        "Paris FC"
       ]
     },
     {
@@ -512,6 +589,17 @@
       ]
     },
     {
+      "competition": "La Liga",
+      "id": "barcelona-official-schema-2026-match-138293",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-08-23T12:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Elche",
+        "Barcelona"
+      ]
+    },
+    {
       "competition": "Premier League",
       "id": "fixture-download-epl-2026-match-8",
       "kickoffUtc": "2026-08-23T13:00:00Z",
@@ -519,6 +607,50 @@
       "teams": [
         "Manchester City",
         "AFC Bournemouth"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73821",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-23T13:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Angers SCO",
+        "LOSC Lille"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73822",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-23T15:15:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Havre Athletic Club",
+        "AS Monaco"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73827",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-23T18:45:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Paris Saint-Germain",
+        "Stade Rennais FC"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73832",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-28T18:45:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "LOSC Lille",
+        "Paris Saint-Germain"
       ]
     },
     {
@@ -542,6 +674,17 @@
       ]
     },
     {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73838",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-29T15:15:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "RC Strasbourg Alsace",
+        "RC Lens"
+      ]
+    },
+    {
       "competition": "Eliteserien",
       "id": "eliteserien-official-6151172d-fb5f-43a9-9b05-71f92823137a",
       "kickoffUtc": "2026-08-29T16:00:00Z",
@@ -549,6 +692,50 @@
       "teams": [
         "Viking",
         "Aalesund"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73830",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-29T18:45:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "AJ Auxerre",
+        "Angers SCO"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73831",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-29T18:45:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Stade Brestois 29",
+        "Toulouse FC"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73833",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-29T18:45:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "FC Lorient",
+        "Estac Troyes"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73834",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-29T18:45:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Olympique Lyonnais",
+        "Havre Athletic Club"
       ]
     },
     {
@@ -562,6 +749,17 @@
       ]
     },
     {
+      "competition": "La Liga",
+      "id": "barcelona-official-schema-2026-match-138302",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-08-30T12:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Barcelona",
+        "Rayo Vallecano"
+      ]
+    },
+    {
       "competition": "Eliteserien",
       "id": "eliteserien-official-e88fdb97-b295-405a-a381-5fbacb8a3709",
       "kickoffUtc": "2026-08-30T12:30:00Z",
@@ -569,6 +767,17 @@
       "teams": [
         "Bodø/Glimt",
         "Rosenborg"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73836",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-30T13:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Paris FC",
+        "OGC Nice"
       ]
     },
     {
@@ -612,6 +821,17 @@
       ]
     },
     {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73837",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-30T15:15:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Stade Rennais FC",
+        "Le Mans FC"
+      ]
+    },
+    {
       "competition": "Eliteserien",
       "id": "eliteserien-official-97047507-ff88-4ce8-83c3-c9a91dd28dcb",
       "kickoffUtc": "2026-08-30T17:15:00Z",
@@ -619,6 +839,17 @@
       "teams": [
         "Lillestrøm",
         "Fredrikstad"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73835",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-08-30T18:45:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "AS Monaco",
+        "Olympique de Marseille"
       ]
     },
     {
@@ -662,6 +893,105 @@
       ]
     },
     {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73839",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-04T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Angers SCO",
+        "Stade Rennais FC"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73840",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-04T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Havre Athletic Club",
+        "Stade Brestois 29"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73841",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-04T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "RC Lens",
+        "FC Lorient"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73842",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-04T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Olympique Lyonnais",
+        "AJ Auxerre"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73843",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-04T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Olympique de Marseille",
+        "Paris FC"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73844",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-04T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "OGC Nice",
+        "Le Mans FC"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73845",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-04T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Paris Saint-Germain",
+        "AS Monaco"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73846",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-04T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Toulouse FC",
+        "LOSC Lille"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73847",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-04T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Estac Troyes",
+        "RC Strasbourg Alsace"
+      ]
+    },
+    {
       "competition": "Eliteserien",
       "id": "eliteserien-official-2a51e262-b4b7-4bda-a032-dc5820ae64ef",
       "kickoffUtc": "2026-09-05T14:00:00Z",
@@ -699,6 +1029,17 @@
       "teams": [
         "Inter Miami",
         "Atlanta United"
+      ]
+    },
+    {
+      "competition": "La Liga",
+      "id": "barcelona-official-schema-2026-match-138319",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-06T12:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Valencia CF",
+        "Barcelona"
       ]
     },
     {
@@ -752,6 +1093,105 @@
       ]
     },
     {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73848",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-11T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "AJ Auxerre",
+        "OGC Nice"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73849",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-11T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Stade Brestois 29",
+        "Paris Saint-Germain"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73850",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-11T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Havre Athletic Club",
+        "Angers SCO"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73851",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-11T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Le Mans FC",
+        "RC Lens"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73852",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-11T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "LOSC Lille",
+        "Estac Troyes"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73853",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-11T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "FC Lorient",
+        "Toulouse FC"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73854",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-11T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Paris FC",
+        "Olympique Lyonnais"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73855",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-11T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Stade Rennais FC",
+        "Olympique de Marseille"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73856",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-11T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "RC Strasbourg Alsace",
+        "AS Monaco"
+      ]
+    },
+    {
       "competition": "Eliteserien",
       "id": "eliteserien-official-9b93afd6-d406-449a-b735-aeaa8e5b66f7",
       "kickoffUtc": "2026-09-12T14:00:00Z",
@@ -789,6 +1229,17 @@
       "teams": [
         "Inter Miami",
         "Nashville SC"
+      ]
+    },
+    {
+      "competition": "La Liga",
+      "id": "barcelona-official-schema-2026-match-138324",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-13T12:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Levante",
+        "Barcelona"
       ]
     },
     {
@@ -862,6 +1313,17 @@
       ]
     },
     {
+      "competition": "La Liga",
+      "id": "barcelona-official-schema-2026-match-138333",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-16T12:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Barcelona",
+        "Racing de Santander"
+      ]
+    },
+    {
       "competition": "Eliteserien",
       "id": "eliteserien-official-f9939976-9f9f-4c6a-96b1-7b9cec3b377f",
       "kickoffUtc": "2026-09-18T17:00:00Z",
@@ -869,6 +1331,105 @@
       "teams": [
         "Sarpsborg 08",
         "KFUM"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73857",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-18T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Angers SCO",
+        "Estac Troyes"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73858",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-18T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "AJ Auxerre",
+        "Stade Brestois 29"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73859",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-18T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Le Mans FC",
+        "FC Lorient"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73860",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-18T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Olympique Lyonnais",
+        "Stade Rennais FC"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73861",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-18T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Olympique de Marseille",
+        "Paris Saint-Germain"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73862",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-18T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "AS Monaco",
+        "RC Lens"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73863",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-18T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "OGC Nice",
+        "LOSC Lille"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73864",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-18T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Paris FC",
+        "RC Strasbourg Alsace"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73865",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-18T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Toulouse FC",
+        "Havre Athletic Club"
       ]
     },
     {
@@ -909,6 +1470,17 @@
       "teams": [
         "Molde",
         "Aalesund"
+      ]
+    },
+    {
+      "competition": "La Liga",
+      "id": "barcelona-official-schema-2026-match-138348",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-09-20T12:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Sevilla",
+        "Barcelona"
       ]
     },
     {
@@ -982,6 +1554,105 @@
       ]
     },
     {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73866",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-10-09T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Stade Brestois 29",
+        "Angers SCO"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73867",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-10-09T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "RC Lens",
+        "Olympique Lyonnais"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73868",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-10-09T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "LOSC Lille",
+        "Havre Athletic Club"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73869",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-10-09T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "FC Lorient",
+        "Paris FC"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73870",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-10-09T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "AS Monaco",
+        "Toulouse FC"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73871",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-10-09T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "OGC Nice",
+        "RC Strasbourg Alsace"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73872",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-10-09T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Paris Saint-Germain",
+        "Le Mans FC"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73873",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-10-09T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Stade Rennais FC",
+        "AJ Auxerre"
+      ]
+    },
+    {
+      "competition": "Ligue 1",
+      "id": "l1-championship-match-73874",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-10-09T22:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Estac Troyes",
+        "Olympique de Marseille"
+      ]
+    },
+    {
       "competition": "Premier League",
       "id": "fixture-download-epl-2026-match-51",
       "kickoffUtc": "2026-10-10T14:00:00Z",
@@ -1017,6 +1688,14 @@
     {
       "feedId": "fixture-download-epl-2026",
       "fixtureCount": 12
+    },
+    {
+      "feedId": "barcelona-official-schema-2026",
+      "fixtureCount": 7
+    },
+    {
+      "feedId": "ligue1-official-api-2026",
+      "fixtureCount": 54
     },
     {
       "feedId": "fixture-download-mls-2026",

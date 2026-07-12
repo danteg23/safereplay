@@ -50,6 +50,36 @@
       "evidenceUrl": "https://www.lfp.fr/article/ligue-1-mc-donald-s-le-calendrier-de-la-saison-2026-2027"
     },
     {
+      "id": "barcelona-official-schema-2026",
+      "kind": "official_schema_org",
+      "competition": "La Liga",
+      "feedUrl": "https://www.fcbarcelona.com/en/football/first-team/schedule",
+      "state": "enabled_candidate",
+      "scope": "senior_men",
+      "selection": "priority_teams",
+      "priorityTeams": ["Barcelona"],
+      "teamAliases": {
+        "FC Barcelona": "Barcelona"
+      },
+      "checkedAt": "2026-07-13",
+      "evidenceUrl": "https://www.fcbarcelona.com/en/football/first-team/schedule"
+    },
+    {
+      "id": "ligue1-official-api-2026",
+      "kind": "official_lfp_api",
+      "competition": "Ligue 1",
+      "feedUrl": "https://ma-api.ligue1.fr/championship-calendar/1?season=2026",
+      "championshipId": 1,
+      "season": 2026,
+      "state": "enabled_candidate",
+      "scope": "senior_men",
+      "selection": "all",
+      "priorityTeams": [],
+      "teamAliases": {},
+      "checkedAt": "2026-07-13",
+      "evidenceUrl": "https://ligue1.com/en/calendar/ligue1"
+    },
+    {
       "id": "fixture-download-mls-2026",
       "kind": "fixture_download_json",
       "competition": "MLS",

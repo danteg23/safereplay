@@ -12,6 +12,7 @@ test("post-match selection is focused between 135 minutes and 12 hours after kic
     { id: "too-recent", kickoffUtc: "2026-07-12T01:00:00Z" },
     { id: "ready", kickoffUtc: "2026-07-11T21:00:00Z" },
     { id: "too-old", kickoffUtc: "2026-07-11T14:00:00Z" },
+    { id: "unknown-time", kickoffTba: true, kickoffUtc: "2026-07-11T21:00:00Z" },
   ];
   assert.deepEqual(selectPostMatchFixtures(fixtures, { now }).map(({ id }) => id), ["ready"]);
 });

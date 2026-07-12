@@ -38,6 +38,16 @@ test("curl transport is HTTPS-only, shell-free, bounded, and response-compatible
     headers: { accept: "text/calendar" },
   });
   assert.equal(calendarResponse.headers.get("content-type"), "text/calendar; charset=utf-8");
+  const htmlResponse = await curlJsonFetch("https://www.fcbarcelona.com/en/football/first-team/schedule", {
+    execFileImpl: async (...args) => {
+      assert.equal(args[1].includes("Accept: text/html"), true);
+      return successResult("<html></html>", {
+        stderr: "200\ntext/html; charset=utf-8\nhttps://www.fcbarcelona.com/en/football/first-team/schedule\n13\n0",
+      });
+    },
+    headers: { accept: "text/html" },
+  });
+  assert.equal(htmlResponse.headers.get("content-type"), "text/html; charset=utf-8");
   await curlJsonFetch("https://www.youtube.com/feeds/videos.xml?channel_id=UC9QZZRUajPEoo1Q-V3MfvnQ", {
     execFileImpl: async (...args) => {
       assert.equal(args[1].includes("Accept: application/atom+xml, application/xml;q=0.9"), true);

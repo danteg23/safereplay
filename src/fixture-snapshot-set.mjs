@@ -43,6 +43,7 @@ export function selectDiscoveryFixtures(fixtures, {
   const from = day.valueOf() - (pastDays * 86_400_000);
   const to = day.valueOf() + ((futureDays + 1) * 86_400_000) - 1;
   return fixtures.filter((fixture) => {
+    if (fixture?.kickoffTba === true) return false;
     const kickoff = new Date(fixture?.kickoffUtc).valueOf();
     return Number.isFinite(kickoff) && kickoff >= from && kickoff <= to;
   });

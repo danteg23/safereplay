@@ -24,6 +24,30 @@ test("fixture CLI saves only the neutral candidate snapshot and reports counts",
     MatchNumber: 1,
     RoundNumber: 1,
   }];
+  const barcelonaBody = `<script type="application/ld+json">${JSON.stringify([{
+    "@type": "SportsEvent",
+    awayTeam: { name: "FC Barcelona" },
+    homeTeam: { name: "Elche" },
+    name: "Elche vs FC Barcelona (La Liga)",
+    startDate: "2026-08-23",
+    url: "https://www.fcbarcelona.com/en/matches/138284/elche-fc-barcelona-la-liga-2026-2027",
+  }])}</script>`;
+  const ligue1Calendar = {
+    gameWeeks: {
+      1: { gameWeekNumber: 1, startDate: "2026-08-21T18:45:00Z", displayEndDate: "2026-08-25T07:00:00Z" },
+    },
+  };
+  const ligue1Matches = {
+    matches: [{
+      championshipId: 1,
+      date: "2026-08-21T18:45:00.000Z",
+      gameWeekNumber: 1,
+      home: { clubIdentity: { name: "Olympique de Marseille" } },
+      away: { clubIdentity: { name: "RC Strasbourg Alsace" } },
+      matchId: "l1_championship_match_73825",
+      unknownMatch: false,
+    }],
+  };
   const calendarBody = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
@@ -46,6 +70,27 @@ test("fixture CLI saves only the neutral candidate snapshot and reports counts",
         text: async () => calendarBody,
         url,
       };
+      if (url.includes("fcbarcelona.com")) return {
+        headers: { get(name) { return name.toLowerCase() === "content-type" ? "text/html" : String(Buffer.byteLength(barcelonaBody)); } },
+        ok: true,
+        status: 200,
+        text: async () => barcelonaBody,
+        url,
+      };
+      if (url.includes("championship-calendar")) return {
+        headers: { get(name) { return name.toLowerCase() === "content-type" ? "application/json" : "512"; } },
+        ok: true,
+        status: 200,
+        text: async () => JSON.stringify(ligue1Calendar),
+        url,
+      };
+      if (url.includes("championship-matches")) return {
+        headers: { get(name) { return name.toLowerCase() === "content-type" ? "application/json" : "512"; } },
+        ok: true,
+        status: 200,
+        text: async () => JSON.stringify(ligue1Matches),
+        url,
+      };
       const rows = url.includes("mls-2026") ? mlsRows : premierLeagueRows;
       return {
         headers: { get(name) { return name.toLowerCase() === "content-type" ? "application/json" : "512"; } },
@@ -59,10 +104,12 @@ test("fixture CLI saves only the neutral candidate snapshot and reports counts",
     savePrivateImpl: async (snapshot) => { saved = snapshot; },
   });
   assert.equal(report.catalogueSnapshotSaved, true);
-  assert.equal(report.fixtureCount, 2);
+  assert.equal(report.fixtureCount, 4);
   assert.equal(report.privateSnapshotSaved, true);
-  assert.equal(saved.fixtures[0].teams[0], "Arsenal");
-  assert.deepEqual(saved.fixtures[1].teams, ["New York City FC", "Inter Miami"]);
+  assert.ok(saved.fixtures.some((fixture) => fixture.teams[0] === "Arsenal"));
+  assert.ok(saved.fixtures.some((fixture) => fixture.teams.join("|") === "New York City FC|Inter Miami"));
+  assert.ok(saved.fixtures.some((fixture) => fixture.teams.join("|") === "Elche|Barcelona" && fixture.kickoffTba));
+  assert.ok(saved.fixtures.some((fixture) => fixture.teams.join("|") === "Olympique de Marseille|RC Strasbourg Alsace"));
   assert.equal("displayTimeZone" in saved, false);
   assert.deepEqual(catalogueSaved, saved);
   assert.doesNotMatch(JSON.stringify(report), /Arsenal|Coventry|winner|score|stadium/i);
