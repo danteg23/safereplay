@@ -3,8 +3,6 @@ const host = document.querySelector("[data-proof-player-host]");
 const status = document.querySelector("[data-proof-status]");
 const controls = document.querySelector("[data-proof-controls]");
 const fullscreenButton = document.querySelector("[data-proof-fullscreen]");
-const fullscreenWarning = document.querySelector("[data-fullscreen-warning]");
-const confirmFullscreenButton = document.querySelector("[data-confirm-fullscreen]");
 
 let apiReady = false;
 let player = null;
@@ -25,11 +23,12 @@ function neutralizeFrameMetadata(frame) {
 }
 
 function setStatus(message) {
-  status.textContent = message;
+  if (status) status.textContent = message;
 }
 
 function setPlaybackControlsVisible(value) {
   controls.hidden = !value;
+  controls.classList.toggle("is-attention", value);
 }
 
 function requestPlayerFullscreen() {
@@ -139,17 +138,8 @@ window.onYouTubeIframeAPIReady = () => {
 
 setStatus("Preparing the covered player…");
 
-fullscreenButton.addEventListener("click", () => {
+fullscreenButton?.addEventListener("click", () => {
   if (!window.matchMedia("(min-width: 900px)").matches) return;
-  if (typeof fullscreenWarning?.showModal === "function") {
-    fullscreenWarning.showModal();
-    return;
-  }
-  requestPlayerFullscreen();
-});
-
-confirmFullscreenButton?.addEventListener("click", () => {
-  fullscreenWarning?.close();
   requestPlayerFullscreen();
 });
 

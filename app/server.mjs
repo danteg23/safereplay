@@ -344,6 +344,23 @@ function proofPlayerIndex(records) {
   </main>`);
 }
 
+function safeFullscreenControl() {
+  return `<div class="youtube-proof-controls" data-proof-controls hidden>
+          <button class="safe-fullscreen-button" type="button" data-proof-fullscreen aria-label="Open safe fullscreen. Keeps the video title hidden.">
+            <svg class="safe-fullscreen-icon" viewBox="0 0 32 32" aria-hidden="true">
+              <path class="safe-fullscreen-corners" d="M10 3H3v7M22 3h7v7M3 22v7h7M29 22v7h-7" />
+              <g transform="translate(9 9) scale(.2917)">
+                <path d="M7 7.2v33.6c0 2.7 3 4.3 5.2 2.8l27-16.8a3.3 3.3 0 0 0 0-5.6l-27-16.8C10 3 7 4.5 7 7.2Z" fill="#315CFF" />
+                <path d="m14 15 13.8 8.6c.3.2.3.6 0 .8L14 33V15Z" fill="white" />
+                <path d="m7 23.5 8-5v11l-8-5v-1Z" fill="#6E8BFF" />
+              </g>
+            </svg>
+            <span class="safe-fullscreen-copy"><strong>Open safe fullscreen</strong><span>Keeps the video title hidden</span></span>
+            <svg class="safe-fullscreen-chevron" viewBox="0 0 20 20" aria-hidden="true"><path d="m7 4 6 6-6 6" /></svg>
+          </button>
+        </div>`;
+}
+
 function proofCoveredPlayerDocument(record) {
   const format = record.publicRecord.formats[0] ?? "video";
   const access = record.publicRecord.access === "free" ? "Free" : "Free status varies";
@@ -358,7 +375,7 @@ function proofCoveredPlayerDocument(record) {
     <title>${escapeHtml(record.publicRecord.teams.join(" vs "))} · Covered YouTube proof</title>
     <link rel="icon" href="/brand-mark.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css?v=20260711-2" />
-    <script type="module" src="/youtube-proof-player.js?v=20260711-9"></script>
+    <script type="module" src="/youtube-proof-player.js?v=20260712-1"></script>
   </head>
   <body class="youtube-watch-page">
     <main class="youtube-watch-screen">
@@ -388,9 +405,7 @@ function proofCoveredPlayerDocument(record) {
           </div>
         </div>
         <p class="lab-covered-status" data-proof-status aria-live="polite">Preparing the covered player…</p>
-        <div class="youtube-proof-controls" data-proof-controls hidden>
-          <button type="button" data-proof-fullscreen>Fullscreen</button>
-        </div>
+        ${safeFullscreenControl()}
       </section>
     </main>
   </body>
@@ -414,8 +429,8 @@ export function youtubePlayerDocument(record) {
     <title>${escapeHtml(record.teams.join(" vs "))} · SafeReplay</title>
     <link rel="icon" href="/brand-mark.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css?v=20260711-1" />
-    <link rel="stylesheet" href="/v2.css?v=20260712-1" />
-    <script type="module" src="/youtube-proof-player.js?v=20260711-9"></script>
+    <link rel="stylesheet" href="/v2.css?v=20260712-2" />
+    <script type="module" src="/youtube-proof-player.js?v=20260712-1"></script>
   </head>
   <body class="youtube-watch-page">
     <main class="youtube-watch-screen">
@@ -436,21 +451,7 @@ export function youtubePlayerDocument(record) {
             <span class="lab-covered-prompt">Thumbnail and title hidden · tap the play symbol</span>
           </div>
         </div>
-        <p class="lab-covered-status" data-proof-status aria-live="polite">Preparing the covered player…</p>
-        <div class="youtube-proof-controls" data-proof-controls hidden>
-          <button type="button" data-proof-fullscreen>Fullscreen</button>
-        </div>
-        <dialog class="fullscreen-warning" data-fullscreen-warning aria-labelledby="fullscreen-warning-title">
-          <form method="dialog">
-            <p class="fullscreen-warning-kicker">Spoiler warning</p>
-            <h3 id="fullscreen-warning-title">Look away for the first 3 seconds</h3>
-            <p>YouTube may briefly show the video title at the top. Keep the cursor still while watching—moving it can reveal the title again.</p>
-            <div class="fullscreen-warning-actions">
-              <button type="submit" value="cancel">Cancel</button>
-              <button type="button" data-confirm-fullscreen>Enter fullscreen</button>
-            </div>
-          </form>
-        </dialog>
+        ${safeFullscreenControl()}
       </section>
     </main>
   </body>

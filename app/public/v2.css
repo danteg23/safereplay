@@ -768,10 +768,8 @@ input:focus-visible {
 @media (max-width: 899px) {
   .source-screen { padding-bottom: 48px; }
   .source-screen ~ .bottom-nav { display: none; }
-  .youtube-proof-controls [data-proof-fullscreen] { display: none; }
-  .youtube-watch-page .fullscreen-warning { display: none; }
+  .youtube-watch-page .youtube-proof-controls { display: none !important; }
   .youtube-watch-page .youtube-player-card { padding: 12px; }
-  .youtube-watch-page .youtube-proof-controls button { min-width: 0; flex: 1; }
 }
 
 @media (min-width: 900px) {
@@ -1254,77 +1252,91 @@ input:focus-visible {
 
 .youtube-watch-page .youtube-proof-controls {
   width: 100%;
-  justify-content: flex-end;
-  margin-top: 12px;
-}
-
-.youtube-watch-page .youtube-proof-controls button {
-  min-width: 126px;
-  flex: 0 0 auto;
-}
-
-.youtube-watch-page .fullscreen-warning {
-  width: min(440px, calc(100vw - 40px));
-  padding: 0;
-  border: 1px solid var(--divider);
-  border-radius: 18px;
-  color: var(--text-primary);
-  background: var(--surface);
-  box-shadow: 0 24px 80px rgb(15 23 42 / .22);
-}
-
-.youtube-watch-page .fullscreen-warning::backdrop {
-  background: rgb(15 23 42 / .42);
-  backdrop-filter: blur(4px);
-}
-
-.youtube-watch-page .fullscreen-warning form { padding: 28px; }
-
-.youtube-watch-page .fullscreen-warning-kicker {
-  margin: 0 0 8px;
-  color: var(--accent);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-.youtube-watch-page .fullscreen-warning h3 {
-  margin: 0;
-  font-size: 24px;
-  line-height: 1.15;
-}
-
-.youtube-watch-page .fullscreen-warning h3 + p {
-  margin: 14px 0 0;
-  color: var(--text-secondary);
-  font-size: 15px;
-  line-height: 1.55;
-}
-
-.youtube-watch-page .fullscreen-warning-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
+  justify-content: center;
   margin-top: 24px;
 }
 
-.youtube-watch-page .fullscreen-warning-actions button {
-  min-height: 44px;
-  padding: 0 18px;
-  border: 1px solid var(--divider);
-  border-radius: 10px;
+.youtube-watch-page .youtube-proof-controls[hidden] { display: none; }
+
+.youtube-watch-page .safe-fullscreen-button {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 20px;
+  align-items: center;
+  gap: 14px;
+  width: min(100%, 340px);
+  min-height: 76px;
+  padding: 12px 16px;
+  border: 1.5px solid #6380ff;
+  border-radius: 14px;
   color: var(--text-primary);
-  background: var(--surface);
+  background: #f3f6ff;
+  box-shadow: 0 10px 30px rgb(49 92 255 / .12), 0 0 0 5px rgb(49 92 255 / .08);
   font: inherit;
-  font-weight: 650;
+  text-align: left;
   cursor: pointer;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
-.youtube-watch-page .fullscreen-warning-actions [data-confirm-fullscreen] {
+.youtube-watch-page .safe-fullscreen-button:hover {
   border-color: var(--accent);
-  color: white;
-  background: var(--accent);
+  box-shadow: 0 12px 34px rgb(49 92 255 / .16), 0 0 0 6px rgb(49 92 255 / .1);
+  transform: translateY(-1px);
+}
+
+.youtube-watch-page .safe-fullscreen-button:active { transform: translateY(0); }
+
+.youtube-watch-page .safe-fullscreen-button:focus-visible {
+  outline: 3px solid rgb(49 92 255 / .28);
+  outline-offset: 4px;
+}
+
+.youtube-watch-page .safe-fullscreen-icon {
+  width: 44px;
+  height: 44px;
+  overflow: visible;
+}
+
+.youtube-watch-page .safe-fullscreen-corners,
+.youtube-watch-page .safe-fullscreen-chevron path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.youtube-watch-page .safe-fullscreen-copy {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.youtube-watch-page .safe-fullscreen-copy strong {
+  color: var(--accent);
+  font-size: 16px;
+  font-weight: 720;
+  line-height: 1.15;
+  letter-spacing: -.02em;
+}
+
+.youtube-watch-page .safe-fullscreen-copy span {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.youtube-watch-page .safe-fullscreen-chevron {
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes safe-fullscreen-attention {
+  0%, 100% { box-shadow: 0 10px 30px rgb(49 92 255 / .12), 0 0 0 5px rgb(49 92 255 / .08); }
+  50% { box-shadow: 0 12px 34px rgb(49 92 255 / .16), 0 0 0 10px rgb(49 92 255 / .13); }
+}
+
+.youtube-watch-page .youtube-proof-controls.is-attention .safe-fullscreen-button {
+  animation: safe-fullscreen-attention 1.4s ease-out 2;
 }
 
 .youtube-watch-page .lab-covered-player:fullscreen,
@@ -1342,4 +1354,8 @@ input:focus-visible {
 @media (min-width: 900px) {
   .youtube-watch-screen { padding-top: 34px; }
   .watch-heading { margin-top: 34px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .youtube-watch-page .youtube-proof-controls.is-attention .safe-fullscreen-button { animation: none; }
 }

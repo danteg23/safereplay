@@ -43,8 +43,8 @@ test("private playback probe stays covered until YouTube reports playing", async
   assert.match(script, /wrapper\.requestFullscreen/);
   assert.doesNotMatch(script, /frame\.requestFullscreen/);
   assert.doesNotMatch(script, /pauseButton|data-proof-pause/);
-  assert.match(script, /fullscreenWarning\.showModal/);
-  assert.match(script, /confirmFullscreenButton/);
+  assert.doesNotMatch(script, /fullscreenWarning|confirmFullscreenButton|showModal/);
+  assert.match(script, /fullscreenButton\?\.addEventListener\("click"/);
   assert.match(script, /parameters\.set\("start", String\(resumeAt\)\)/);
   assert.doesNotMatch(script, /player\.pauseVideo\(\)/);
   assert.doesNotMatch(script, /window\.open|location\.(?:assign|replace)|watch\?v=/);
@@ -55,5 +55,7 @@ test("public covered player fully removes the shield after playback and keeps de
   assert.match(styles, /--covered-play-hole-width:\s*70px/);
   assert.match(styles, /--covered-play-hole-height:\s*50px/);
   assert.match(styles, /\.youtube-watch-page \.lab-covered-player\.is-playing \.lab-covered-shield\s*{[^}]*visibility:\s*hidden/s);
-  assert.match(styles, /@media \(max-width:\s*899px\)[\s\S]*?\[data-proof-fullscreen\]\s*{\s*display:\s*none;/s);
+  assert.match(styles, /\.safe-fullscreen-button\s*{[^}]*grid-template-columns:\s*44px minmax\(0, 1fr\) 20px[^}]*background:\s*#f3f6ff/s);
+  assert.match(styles, /safe-fullscreen-attention 1\.4s ease-out 2/);
+  assert.match(styles, /@media \(max-width:\s*899px\)[\s\S]*?\.youtube-watch-page \.youtube-proof-controls\s*{\s*display:\s*none !important;/s);
 });

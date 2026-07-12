@@ -161,7 +161,7 @@ test("public YouTube page stays covered and permits only the privacy-enhanced fr
   assert.match(response.headers.get("content-security-policy"), /frame-src https:\/\/www\.youtube-nocookie\.com/);
   assert.doesNotMatch(response.headers.get("content-security-policy"), /frame-src '\*'|frame-src https:\/\/www\.youtube\.com/);
   assert.match(response.body, /Thumbnail and title hidden/);
-  assert.match(response.body, /v2\.css\?v=20260712-1/);
+  assert.match(response.body, /v2\.css\?v=20260712-2/);
   assert.match(response.body, /Thumbnail and title hidden/);
   assert.match(response.body, /tap the play symbol/);
   assert.match(response.body, /lab-covered-panel-top/);
@@ -169,8 +169,10 @@ test("public YouTube page stays covered and permits only the privacy-enhanced fr
   assert.doesNotMatch(response.body, /data-proof-start|data-proof-sound/);
   assert.doesNotMatch(response.body, /Start \+ fullscreen/);
   assert.doesNotMatch(response.body, /Pause safely|data-proof-pause/);
-  assert.match(response.body, /Look away for the first 3 seconds/);
-  assert.match(response.body, /moving it can reveal the title again/);
+  assert.match(response.body, /Open safe fullscreen/);
+  assert.match(response.body, /Keeps the video title hidden/);
+  assert.match(response.body, /safe-fullscreen-icon/);
+  assert.doesNotMatch(response.body, /data-proof-status|fullscreen-warning|Look away for the first 3 seconds/);
   assert.match(response.body, /youtube-proof-player\.js/);
   assert.match(response.body, /data-video-id="[A-Za-z0-9_-]{11}"/);
   assert.doesNotMatch(response.body, /<iframe|youtube\.com\/embed|youtube-nocookie\.com\/embed/i);
