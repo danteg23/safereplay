@@ -143,6 +143,17 @@ export function validateLiveDestinationSnapshot(value, { fixtureIds } = {}) {
   return value;
 }
 
+export function pruneLiveDestinationSnapshot(value, { fixtureIds }) {
+  validateLiveDestinationSnapshot(value);
+  const allowed = new Set(fixtureIds);
+  const sourcesByFixture = Object.fromEntries(Object.entries(value.sourcesByFixture)
+    .filter(([fixtureId]) => allowed.has(fixtureId)));
+  return validateLiveDestinationSnapshot({
+    checkedAt: value.checkedAt,
+    sourcesByFixture,
+  }, { fixtureIds });
+}
+
 export async function fetchLiveSourcePage(provider, {
   fetchImpl = fetch,
   timeoutMs = 20_000,

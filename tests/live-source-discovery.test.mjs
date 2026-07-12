@@ -5,6 +5,7 @@ import {
   discoverProviderLinks,
   fetchLiveSourcePage,
   liveTeamSlug,
+  pruneLiveDestinationSnapshot,
   validateLiveDestinationSnapshot,
 } from "../src/live-source-discovery.mjs";
 
@@ -85,4 +86,24 @@ test("live destination snapshots reject unknown fixtures, providers, and hosts",
     () => validateLiveDestinationSnapshot(unknown, { fixtureIds: ["world-cup-match-1"] }),
     /fixture id/,
   );
+});
+
+test("completed fixtures are pruned before the next live discovery run", () => {
+  const snapshot = {
+    checkedAt: "2026-07-12T00:00:00.000Z",
+    sourcesByFixture: {
+      "world-cup-match-1": {
+        totalsportek: "https://totalsportek.cat/game/norway-vs-england-7445162393",
+      },
+      "completed-match": {
+        camel: "https://www.camel1.tv/football/aalesund-fk-vs-molde/live/6ypq3nhv7w0xmd7",
+      },
+    },
+  };
+  assert.deepEqual(pruneLiveDestinationSnapshot(snapshot, { fixtureIds: ["world-cup-match-1"] }), {
+    checkedAt: snapshot.checkedAt,
+    sourcesByFixture: {
+      "world-cup-match-1": snapshot.sourcesByFixture["world-cup-match-1"],
+    },
+  });
 });

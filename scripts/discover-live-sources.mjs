@@ -5,6 +5,7 @@ import {
   discoverProviderLinks,
   fetchLiveSourcePage,
   liveSourceProviders,
+  pruneLiveDestinationSnapshot,
   validateLiveDestinationSnapshot,
 } from "../src/live-source-discovery.mjs";
 
@@ -38,8 +39,9 @@ export async function runLiveSourceDiscovery({
     json("config/live-destinations.json"),
   ]);
   const fixtures = uniqueFixtures([official, feed]);
-  validateLiveDestinationSnapshot(previous, { fixtureIds: fixtures.map(({ id }) => id) });
-  const sourcesByFixture = structuredClone(previous.sourcesByFixture ?? {});
+  const fixtureIds = fixtures.map(({ id }) => id);
+  const currentPrevious = pruneLiveDestinationSnapshot(previous, { fixtureIds });
+  const sourcesByFixture = structuredClone(currentPrevious.sourcesByFixture);
   const failures = [];
   let linksFound = 0;
 
@@ -59,10 +61,10 @@ export async function runLiveSourceDiscovery({
     }
   }
 
-  const fixtureIds = new Set(fixtures.map(({ id }) => id));
+  const currentFixtureIds = new Set(fixtureIds);
   const cleaned = {};
   for (const [fixtureId, sources] of Object.entries(sourcesByFixture)) {
-    if (!fixtureIds.has(fixtureId)) continue;
+    if (!currentFixtureIds.has(fixtureId)) continue;
     cleaned[fixtureId] = sortedObject(sources);
   }
   const sourcesChanged = JSON.stringify(sortedObject(previous.sourcesByFixture ?? {})) !== JSON.stringify(sortedObject(cleaned));
@@ -70,6 +72,7 @@ export async function runLiveSourceDiscovery({
     checkedAt: sourcesChanged ? checkedAt : previous.checkedAt,
     sourcesByFixture: sortedObject(cleaned),
   };
+  validateLiveDestinationSnapshot(snapshot, { fixtureIds });
   if (save && sourcesChanged && failures.length < liveSourceProviders.length) {
     await writeFile(new URL("config/live-destinations.json", root), `${JSON.stringify(snapshot, null, 2)}\n`);
   }
