@@ -1,36 +1,6 @@
 {
-  "checkedAt": "2026-07-11",
+  "checkedAt": "2026-07-12",
   "fixtures": [
-    {
-      "competition": "Eliteserien",
-      "id": "eliteserien-official-a76adb3a-b111-4530-acb8-bf341895f3d9",
-      "kickoffUtc": "2026-07-11T10:00:00Z",
-      "scope": "senior_men",
-      "teams": [
-        "Fredrikstad",
-        "Lillestrøm"
-      ]
-    },
-    {
-      "competition": "Eliteserien",
-      "id": "eliteserien-official-85a8aebb-0535-4030-bd44-6c8508814657",
-      "kickoffUtc": "2026-07-11T12:00:00Z",
-      "scope": "senior_men",
-      "teams": [
-        "Aalesund",
-        "Molde"
-      ]
-    },
-    {
-      "competition": "Eliteserien",
-      "id": "eliteserien-official-380dd2ad-ac62-4cf2-bf66-1e4c185871ba",
-      "kickoffUtc": "2026-07-11T16:00:00Z",
-      "scope": "senior_men",
-      "teams": [
-        "Tromsø",
-        "Vålerenga"
-      ]
-    },
     {
       "competition": "Eliteserien",
       "id": "eliteserien-official-f783179e-52b0-4f0c-a9cd-24bf40f566d0",
@@ -890,17 +860,37 @@
         "Brann",
         "Bodø/Glimt"
       ]
+    },
+    {
+      "competition": "Premier League",
+      "id": "fixture-download-epl-2026-match-51",
+      "kickoffUtc": "2026-10-10T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Arsenal",
+        "Leeds"
+      ]
+    },
+    {
+      "competition": "Premier League",
+      "id": "fixture-download-epl-2026-match-58",
+      "kickoffUtc": "2026-10-10T14:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Liverpool",
+        "Manchester City"
+      ]
     }
   ],
   "sourceName": "Fixture Download candidate feeds",
   "sources": [
     {
       "feedId": "fixture-download-epl-2026",
-      "fixtureCount": 10
+      "fixtureCount": 12
     },
     {
       "feedId": "eliteserien-official-calendar-2026",
-      "fixtureCount": 79
+      "fixtureCount": 76
     }
   ]
 }

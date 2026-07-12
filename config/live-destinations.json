@@ -1,24 +1,39 @@
 {
-  "checkedAt": "2026-07-11T16:44:10.795Z",
+  "checkedAt": "2026-07-12T00:00:00.000Z",
   "sourcesByFixture": {
-    "eliteserien-official-380dd2ad-ac62-4cf2-bf66-1e4c185871ba": {
-      "camel": "https://www.camel1.tv/football/tromso-il-vs-valerenga-fotball-elite/live/y0or5jh8z343qwz"
+    "eliteserien-official-09dc355e-bfad-4100-b636-b9e2fe166263": {
+      "camel": "https://www.camel1.tv/football/sarpsborg-08-vs-viking/23xmvkh6pk3xqg8"
     },
-    "eliteserien-official-85a8aebb-0535-4030-bd44-6c8508814657": {
-      "camel": "https://www.camel1.tv/football/aalesund-fk-vs-molde/live/6ypq3nhv7w0xmd7"
+    "eliteserien-official-23c2232f-ce8d-4723-8639-8db4b27f26b4": {
+      "camel": "https://www.camel1.tv/football/sandefjord-vs-ham-kam/y39mp1h60yj8moj"
+    },
+    "eliteserien-official-97047507-ff88-4ce8-83c3-c9a91dd28dcb": {
+      "camel": "https://www.camel1.tv/football/fredrikstad-vs-lillestrom/1l4rjnh9jxx9m7v"
+    },
+    "eliteserien-official-a3b8c060-8cb7-4425-9252-d1a592503889": {
+      "camel": "https://www.camel1.tv/football/rosenborg-vs-kristiansund-bk/k82rekhg0oy4rep"
+    },
+    "eliteserien-official-c303031d-7fb6-4815-a3ff-936f9e7c6e22": {
+      "camel": "https://www.camel1.tv/football/aalesund-fk-vs-molde/6ypq3nhv7w0xmd7"
+    },
+    "eliteserien-official-d6ccdeaf-40f8-439e-b014-1ed781068fd7": {
+      "camel": "https://www.camel1.tv/football/rosenborg-vs-kristiansund-bk/k82rekhg0oy4rep"
+    },
+    "eliteserien-official-ece85614-6299-4b1c-9281-abc28bc764e1": {
+      "camel": "https://www.camel1.tv/football/sarpsborg-08-vs-viking/23xmvkh6pk3xqg8"
     },
     "eliteserien-official-f783179e-52b0-4f0c-a9cd-24bf40f566d0": {
       "camel": "https://www.camel1.tv/football/kfum-oslo-vs-bodo-glimt/pxwrxlhyxjppryk"
     },
     "fifa-world-cup-2026-match-100": {
-      "camel": "https://www.camel1.tv/football/argentina-vs-switzerland/zp5rzghgw3e6q82",
+      "camel": "https://www.camel1.tv/football/argentina-vs-switzerland/live/zp5rzghgw3e6q82",
       "totalsportek": "https://totalsportek.cat/game/argentina-vs-switzerland-7938421891"
     },
     "fifa-world-cup-2026-match-98": {
       "totalsportek": "https://totalsportek.cat/game/spain-vs-belgium-2144565976"
     },
     "fifa-world-cup-2026-match-99": {
-      "camel": "https://www.camel1.tv/football/norway-vs-england/23xmvkh60yz0qg8",
+      "camel": "https://www.camel1.tv/football/norway-vs-england/live/23xmvkh60yz0qg8",
       "totalsportek": "https://totalsportek.cat/game/norway-vs-england-7445162393"
     }
   }
