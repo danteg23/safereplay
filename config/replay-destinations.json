@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-12T11:15:02.243Z",
+  "checkedAt": "2026-07-12T17:00:01.907Z",
   "sourcesByFixture": {
     "fifa-world-cup-2026-match-99": [
       {
@@ -34,6 +34,7 @@
         "provider": "reddit",
         "url": "https://www.reddit.com/r/footballhighlights/comments/1uuc2ao/quarter_final_argentina_vs_switzerland_english/"
       }
-    ]
+    ],
+    "eliteserien-official-f783179e-52b0-4f0c-a9cd-24bf40f566d0": []
   }
 }
