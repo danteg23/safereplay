@@ -36,7 +36,10 @@ Norway–Senegal additionally has a public full-match YouTube upload behind the 
 Argentina–Egypt has the same complete format set plus a covered full-match upload. TV 2
 Sport received a dedicated Norway-region search for every fixture but returned no exact
 channel match, so SafeReplay does not invent a TV 2 source. Norway–England is listed
-neutrally and gains the live control only inside its configured live window.
+neutrally and gains the live control only inside its configured live window. After that
+match, the focused post-match refresh found an official covered YouTube Short, exact
+Short and Extended r/footballhighlights threads, a Full-match thread, and the linked
+FootReplays match page without exposing result metadata in the app.
 
 The first usable journey is France–Morocco → FootReplays, with separate Full, Halves,
 and Short rows. Desktop browser evidence now proves that its Full route reaches and
@@ -200,6 +203,16 @@ triggers the GitHub Pages deployment. A failed feed, search, test, or non-fast-f
 update stops without publishing. New video candidates are deliberately not auto-promoted:
 the covered player hides metadata, but exact identity, embedding, free playback, and
 region availability still need evidence before a friend-facing replay link appears.
+
+The VPS also runs `scripts/vps-post-match-refresh.sh` every 15 minutes. This focused job
+does nothing unless a fixture started between 2 hours 15 minutes and 12 hours ago. During
+that window it checks the newest r/footballhighlights RSS feed on every run and searches
+YouTube only for those recently finished fixtures. YouTube results use a one-hour private
+cache, so the 15-minute cadence does not spend API quota four times an hour. Exact neutral
+Reddit threads and linked FootReplays match pages can update the public replay snapshot;
+YouTube candidates remain private until the covered-player identity and region evidence
+are sufficient. A changed public snapshot runs the full test suite before an automatic
+push and GitHub Pages deployment.
 
 ### Compare YouTube playback workarounds
 

@@ -37,10 +37,14 @@ async function loadCache(cacheUrl) {
 
 export function createRemoteYouTubeExecutor({
   cacheUrl = new URL("../.private/youtube-search-cache.json", import.meta.url),
+  cacheTtlMs = CACHE_TTL_MS,
   execFileImpl = execFile,
   local = process.env.SAFEREPLAY_YOUTUBE_LOCAL === "1",
   now = () => Date.now(),
 } = {}) {
+  if (!Number.isFinite(cacheTtlMs) || cacheTtlMs < 60_000 || cacheTtlMs > 24 * 60 * 60 * 1_000) {
+    throw new TypeError("cacheTtlMs must be between one minute and 24 hours");
+  }
   let cachePromise = null;
   let cacheHits = 0;
   let remoteSearches = 0;
@@ -72,7 +76,7 @@ export function createRemoteYouTubeExecutor({
       const key = cacheKey(parameters);
       const currentCache = await cache();
       const cached = currentCache.entries[key];
-      if (cached && Number.isFinite(cached.storedAt) && now() - cached.storedAt < CACHE_TTL_MS) {
+      if (cached && Number.isFinite(cached.storedAt) && now() - cached.storedAt < cacheTtlMs) {
         cacheHits += 1;
         return cached.response;
       }

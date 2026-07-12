@@ -230,6 +230,22 @@ job “automatic YouTube search” while preserving a fallback that works withou
 The remote mode verifies `youtube.readonly`, uses one bounded query per selected fixture,
 reuses the six-hour private cache, and reports only neutral counts. A real PH run refreshed
 89 fixtures and five private candidates with 12 cache hits and zero new search calls.
+
+## 2026-07-12 — use a focused post-match hunt window
+
+Twice-daily discovery was too slow immediately after a match and a stale live-link test
+caused the first Norway–England post-match run to publish nothing. SafeReplay now runs a
+second deterministic VPS job every 15 minutes, but only for fixtures 2 hours 15 minutes
+to 12 hours after kickoff. It reads one newest-post RSS feed from
+r/footballhighlights, classifies exact neutral threads as Short, Extended, or Full, and
+accepts an exact FootReplays page only when it is linked by the matching thread. Titles
+with direct score or outcome language are rejected.
+
+The same focused job searches authenticated YouTube only for the recently finished
+fixtures and uses a one-hour cache. This keeps a responsive 15-minute public-source check
+without multiplying YouTube calls across the full seven-day fixture window. Public replay
+snapshot changes run the full test suite before push; private YouTube candidates are not
+silently promoted merely because the loop runs more often.
 No scheduler is installed until an always-on host is explicitly approved; the proven
 command is the scheduler boundary.
 

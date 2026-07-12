@@ -12,6 +12,7 @@
     "discover:live": "node scripts/discover-live-sources.mjs",
     "refresh:daily": "node scripts/refresh-daily.mjs",
     "refresh:daily:remote": "node scripts/refresh-daily.mjs --remote-search",
+    "refresh:post-match": "node scripts/post-match-refresh.mjs",
     "scan:youtube-thumbnails": "node scripts/scan-youtube-thumbnails.mjs",
     "spike:playback": "node spikes/playback/server.mjs",
     "test": "node --test tests/*.test.mjs"

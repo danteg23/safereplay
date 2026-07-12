@@ -132,7 +132,21 @@ test("provider handoff is allowlisted and does not accept arbitrary URLs", async
 
   const discoveredCamel = await request("/go/live-camel-fifa-world-cup-2026-match-99");
   assert.equal(discoveredCamel.status, 302);
-  assert.equal(discoveredCamel.headers.get("location"), "https://www.camel1.tv/football/norway-vs-england/23xmvkh60yz0qg8");
+  assert.match(
+    discoveredCamel.headers.get("location"),
+    /^https:\/\/www\.camel1\.tv\/football\/norway-vs-england\/(?:live\/)?23xmvkh60yz0qg8$/u,
+  );
+
+  const norwayEnglandReplay = await request("/go/fifa-world-cup-2026-match-99-reddit-full");
+  assert.equal(norwayEnglandReplay.status, 302);
+  assert.equal(
+    norwayEnglandReplay.headers.get("location"),
+    "https://www.reddit.com/r/footballhighlights/comments/1utwz59/norway_vs_england_world_cup_11jul2026/",
+  );
+
+  const norwayEnglandYouTube = await request("/go/norway-england-youtube-short");
+  assert.equal(norwayEnglandYouTube.status, 302);
+  assert.equal(norwayEnglandYouTube.headers.get("location"), "/watch/youtube/norway-england-youtube-short");
 
   const livsports = await request("/go/live-livsports-schedule");
   assert.equal(livsports.status, 302);

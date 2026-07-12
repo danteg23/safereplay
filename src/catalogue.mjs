@@ -8,6 +8,10 @@ import { sanitizeFixtureSnapshot } from "./fixture-sanitizer.mjs";
 import { mergeFixtureSnapshots } from "./fixture-snapshot-set.mjs";
 import { validateLiveDestinationSnapshot } from "./live-source-discovery.mjs";
 import { validatePublicCatalogue } from "./public-contract.mjs";
+import {
+  buildReplaySourceProjection,
+  validateReplaySourceSnapshot,
+} from "./replay-source-discovery.mjs";
 
 const officialSnapshot = JSON.parse(
   readFileSync(new URL("../config/fixture-snapshot.json", import.meta.url), "utf8"),
@@ -25,7 +29,13 @@ const itemRegistry = JSON.parse(
 const liveDestinationSnapshot = JSON.parse(
   readFileSync(new URL("../config/live-destinations.json", import.meta.url), "utf8"),
 );
+const replaySourceSnapshot = JSON.parse(
+  readFileSync(new URL("../config/replay-destinations.json", import.meta.url), "utf8"),
+);
 validateLiveDestinationSnapshot(liveDestinationSnapshot, {
+  fixtureIds: snapshot.fixtures.map(({ id }) => id),
+});
+validateReplaySourceSnapshot(replaySourceSnapshot, {
   fixtureIds: snapshot.fixtures.map(({ id }) => id),
 });
 
@@ -304,7 +314,19 @@ const staticSourcesByFixture = {
       redirectPath: "/go/spain-belgium-reddit-extended",
     },
   ],
-  "fifa-world-cup-2026-match-99": [],
+  "fifa-world-cup-2026-match-99": [
+    {
+      id: "norway-england-youtube-short",
+      format: "short",
+      evidenceStatus: "player_candidate",
+      providerName: "Aleph Arena on YouTube",
+      accessLabel: "Free in Philippines",
+      provenance: "verified_official",
+      riskLabel: "Covered player · metadata hidden",
+      riskTone: "caution",
+      redirectPath: "/go/norway-england-youtube-short",
+    },
+  ],
   "fifa-world-cup-2026-match-100": [],
 };
 
@@ -320,6 +342,7 @@ const staticDestinations = {
   "france-morocco-reddit": "https://www.reddit.com/r/footballhighlights/comments/1us2ust/france_vs_morocco_world_cup_09jul2026/",
   "france-morocco-footreplays": "https://www.footreplays.com/international/world-cup-2026/france-vs-morocco-09-07-2026/",
   "spain-belgium-youtube-short": "/watch/youtube/spain-belgium-youtube-short",
+  "norway-england-youtube-short": "/watch/youtube/norway-england-youtube-short",
   "spain-belgium-footreplays-full": "https://hgcloud.to/9b4o12yhq4ud",
   "spain-belgium-footreplays-first-half": "https://hgcloud.to/vxmnzbifbraz",
   "spain-belgium-footreplays-second-half": "https://hgcloud.to/jxxrdxanlc6d",
@@ -379,7 +402,15 @@ const staticDestinations = {
 
 const fixtureIds = snapshot.fixtures.map((fixture) => fixture.id);
 const surfaceProjection = buildSurfaceProjection(itemRegistry, sourceRegistry, { fixtureIds });
-const sourcesByFixture = mergeSurfaceRecords(fixtureIds, staticSourcesByFixture, surfaceProjection);
+const replayProjection = buildReplaySourceProjection(replaySourceSnapshot);
+const replayAwareStaticSources = Object.fromEntries(fixtureIds.map((fixtureId) => [
+  fixtureId,
+  [
+    ...(staticSourcesByFixture[fixtureId] ?? []),
+    ...(replayProjection.sourcesByFixture[fixtureId] ?? []),
+  ],
+]));
+const sourcesByFixture = mergeSurfaceRecords(fixtureIds, replayAwareStaticSources, surfaceProjection);
 
 function dynamicLiveDestinations(fixtures) {
   const destinations = {};
@@ -414,5 +445,8 @@ export function getPublicCatalogue() {
 
 export const providerDestinations = Object.freeze({
   ...dynamicLiveDestinations(snapshot.fixtures),
-  ...mergeProviderDestinations(staticDestinations, surfaceProjection.destinations),
+  ...mergeProviderDestinations({
+    ...staticDestinations,
+    ...replayProjection.destinations,
+  }, surfaceProjection.destinations),
 });

@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-07-12T02:58:16.315Z",
+  "sourcesByFixture": {
+    "fifa-world-cup-2026-match-99": [
+      {
+        "format": "extended",
+        "id": "fifa-world-cup-2026-match-99-reddit-extended",
+        "provider": "reddit",
+        "url": "https://www.reddit.com/r/footballhighlights/comments/1uu30oy/england_v_norway_extended_highlights_11jul2026/"
+      },
+      {
+        "format": "short",
+        "id": "fifa-world-cup-2026-match-99-reddit-short",
+        "provider": "reddit",
+        "url": "https://www.reddit.com/r/footballhighlights/comments/1uu2d2d/england_v_norway_highlights_fifa_world_cup_2026/"
+      },
+      {
+        "format": "full",
+        "id": "fifa-world-cup-2026-match-99-reddit-full",
+        "provider": "reddit",
+        "url": "https://www.reddit.com/r/footballhighlights/comments/1utwz59/norway_vs_england_world_cup_11jul2026/"
+      },
+      {
+        "format": "extended",
+        "id": "fifa-world-cup-2026-match-99-footreplays-extended",
+        "provider": "footreplays",
+        "url": "https://www.footreplays.com/international/world-cup-2026/norway-vs-england-11-07-2026/"
+      }
+    ]
+  }
+}

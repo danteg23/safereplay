@@ -63,6 +63,30 @@ test("remote executor verifies scope and reuses a credential-free private cache"
   assert.match(cacheText, /France v Morocco/);
 });
 
+test("post-match executor can use a bounded one-hour cache without disabling caching", async (t) => {
+  const directory = await mkdtemp(join(tmpdir(), "safereplay-post-match-cache-"));
+  t.after(() => rm(directory, { force: true, recursive: true }));
+  let now = 1_000_000;
+  let searches = 0;
+  const executor = createRemoteYouTubeExecutor({
+    cacheTtlMs: 60 * 60_000,
+    cacheUrl: pathToFileURL(join(directory, "cache.json")),
+    execFileImpl: async () => {
+      searches += 1;
+      return { stdout: JSON.stringify(rawResponse()) };
+    },
+    now: () => now,
+  });
+  await executor.search(parameters);
+  now += 59 * 60_000;
+  await executor.search(parameters);
+  now += 2 * 60_000;
+  await executor.search(parameters);
+  assert.equal(searches, 2);
+  assert.deepEqual(executor.stats(), { cacheHits: 1, remoteSearches: 2 });
+  assert.throws(() => createRemoteYouTubeExecutor({ cacheTtlMs: 1 }), /cacheTtlMs/);
+});
+
 test("remote executor maps SSH and missing-scope failures to the exact route error", async () => {
   for (const execFileImpl of [
     async () => { throw new Error("raw ssh details"); },

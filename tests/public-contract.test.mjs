@@ -45,7 +45,12 @@ test("catalogue includes every verified Norway World Cup match and the recent Ar
     assert.deepEqual([...formats].sort(), ["extended", "full", "halves", "short"]);
   }
 
-  assert.equal(catalogue.fixtures.find((fixture) => fixture.id === "fifa-world-cup-2026-match-99").availability, "none");
+  const norwayEngland = catalogue.fixtures.find((fixture) => fixture.id === "fifa-world-cup-2026-match-99");
+  assert.equal(norwayEngland.availability, "ready");
+  assert.deepEqual(
+    [...new Set(catalogue.sourcesByFixture[norwayEngland.id].map((source) => source.format))].sort(),
+    ["extended", "full", "short"],
+  );
 });
 
 test("thread candidates are reserved for community-unverified sources", () => {

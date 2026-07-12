@@ -41,6 +41,19 @@
   },
   {
     "competition": "World Cup",
+    "fixtureId": "fifa-world-cup-2026-match-99",
+    "format": "short",
+    "id": "norway-england-youtube-short",
+    "providerName": "Aleph Arena on YouTube",
+    "sourceId": "aleph-arena-youtube",
+    "teams": [
+      "Norway",
+      "England"
+    ],
+    "videoId": "RDvuwao-fKI"
+  },
+  {
+    "competition": "World Cup",
     "durationLabel": "5:06",
     "fixtureId": "iraq-norway-2026-06-16",
     "format": "short",
