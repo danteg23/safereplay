@@ -81,7 +81,7 @@ test("Matches is minimal, status-free, and disables fixtures without a useful de
     competition: "Eliteserien",
     favorite: false,
     id: "unavailable-test-fixture",
-    kickoffUtc: "2026-07-11T16:00:00Z",
+    kickoffUtc: "2026-07-11T08:00:00Z",
     teams: ["Fredrikstad", "Lillestrøm"],
   };
   const { root, ui } = await loadUi(withFixture(unavailable));
@@ -103,7 +103,7 @@ test("unavailable fixture actions are ignored while available fixtures open deta
     competition: "Eliteserien",
     favorite: false,
     id: "unavailable-action-test",
-    kickoffUtc: "2026-07-11T16:00:00Z",
+    kickoffUtc: "2026-07-11T08:00:00Z",
     teams: ["Fredrikstad", "Lillestrøm"],
   };
   const { root, ui } = await loadUi(withFixture(unavailable));
