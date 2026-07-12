@@ -33,6 +33,7 @@ function feed(entries, channelId = source.channelId) {
 function entry({
   channelId = source.channelId,
   description = "Watch the neutral match package.",
+  published = "2026-07-10T14:00:00+00:00",
   title = "Arsenal v Barcelona | Extended highlights",
   videoId = "AbCdEf12345",
 } = {}) {
@@ -40,7 +41,7 @@ function entry({
     <yt:videoId>${videoId}</yt:videoId>
     <yt:channelId>${channelId}</yt:channelId>
     <title>${title}</title>
-    <published>2026-07-10T14:00:00+00:00</published>
+    <published>${published}</published>
     <media:group><media:description>${description}</media:description></media:group>
   </entry>`;
 }
@@ -118,6 +119,24 @@ test("both teams may match explicit multilingual aliases without weakening the t
     xml: feed([entry({ title: "Man City match highlights" })]),
   });
   assert.deepEqual(oneTeamOnly, []);
+});
+
+test("official French abbreviations still require both exact Ligue 1 teams", () => {
+  const ligue1Fixture = {
+    competition: "Ligue 1",
+    id: "l1-championship-match-example",
+    kickoffUtc: "2026-08-30T18:45:00Z",
+    teams: ["LOSC Lille", "Paris Saint-Germain"],
+  };
+  const candidates = buildYouTubeItemCandidates({
+    aliases: { "LOSC Lille": ["LOSC", "Lille"], "Paris Saint-Germain": ["PSG", "Paris SG"] },
+    checkedAt: "2026-08-30",
+    fixture: ligue1Fixture,
+    region: "PH",
+    source: { ...source, formats: ["short"] },
+    xml: feed([entry({ published: "2026-08-30T22:00:00Z", title: "LOSC - PSG | Highlights" })]),
+  });
+  assert.equal(candidates.length, 1);
 });
 
 test("score-bearing YouTube metadata is blocked before the public catalogue", () => {
