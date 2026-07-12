@@ -68,8 +68,23 @@ function visibleText(html) {
   return html.replace(/<svg[\s\S]*?<\/svg>/g, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 }
 
+function withFixture(fixture) {
+  const catalogue = getPublicCatalogue();
+  catalogue.fixtures.push(fixture);
+  catalogue.sourcesByFixture[fixture.id] = [];
+  return catalogue;
+}
+
 test("Matches is minimal, status-free, and disables fixtures without a useful destination", async () => {
-  const { root, ui } = await loadUi();
+  const unavailable = {
+    availability: "none",
+    competition: "Eliteserien",
+    favorite: false,
+    id: "unavailable-test-fixture",
+    kickoffUtc: "2026-07-11T16:00:00Z",
+    teams: ["Fredrikstad", "Lillestrøm"],
+  };
+  const { root, ui } = await loadUi(withFixture(unavailable));
   assert.match(root.innerHTML, /<h1>Matches<\/h1>/);
   assert.doesNotMatch(root.innerHTML, /Sources ready|Checking sources|No sources yet|Watched/);
   assert.doesNotMatch(root.innerHTML, /class="(?:format|live)-play"/);
@@ -78,13 +93,21 @@ test("Matches is minimal, status-free, and disables fixtures without a useful de
   ui.handleAction({ dataset: { action: "select-date", date: "2026-07-11" } });
   assert.match(root.innerHTML, /class="fixture-row is-unavailable" aria-disabled="true"/);
   assert.match(root.innerHTML, /Fredrikstad/);
-  assert.doesNotMatch(root.innerHTML, /data-fixture-id="eliteserien-official-a76adb3a-b111-4530-acb8-bf341895f3d9"/);
+  assert.doesNotMatch(root.innerHTML, /data-fixture-id="unavailable-test-fixture"/);
   assert.doesNotMatch(visibleText(root.innerHTML), /\b\d+\s*[-–—]\s*\d+\b/);
 });
 
 test("unavailable fixture actions are ignored while available fixtures open detail", async () => {
-  const { root, ui } = await loadUi();
-  ui.handleAction({ dataset: { action: "open-fixture", fixtureId: "eliteserien-official-a76adb3a-b111-4530-acb8-bf341895f3d9" } });
+  const unavailable = {
+    availability: "none",
+    competition: "Eliteserien",
+    favorite: false,
+    id: "unavailable-action-test",
+    kickoffUtc: "2026-07-11T16:00:00Z",
+    teams: ["Fredrikstad", "Lillestrøm"],
+  };
+  const { root, ui } = await loadUi(withFixture(unavailable));
+  ui.handleAction({ dataset: { action: "open-fixture", fixtureId: unavailable.id } });
   assert.equal(ui.getState().screen, "matches");
 
   ui.handleAction({ dataset: { action: "open-fixture", fixtureId: "fifa-world-cup-2026-match-98" } });
@@ -163,14 +186,22 @@ test("international live control uses an exact TotalSportek match page and keeps
 });
 
 test("Eliteserien live control prioritizes the exact Camel match page", async () => {
-  const { root, ui } = await loadUi();
+  const liveFixture = {
+    availability: "none",
+    competition: "Eliteserien",
+    favorite: false,
+    id: "eliteserien-live-test",
+    kickoffUtc: "2026-07-11T14:00:00Z",
+    teams: ["Aalesund", "Molde"],
+  };
+  const { root, ui } = await loadUi(withFixture(liveFixture));
   ui.setNow("2026-07-11T14:30:00Z");
   ui.setState({ selectedDate: "2026-07-11", screen: "matches", selectedFixtureId: null });
   ui.render();
-  assert.match(root.innerHTML, /class="live-play" href="\/go\/live-camel-eliteserien-official-85a8aebb-0535-4030-bd44-6c8508814657"/);
+  assert.match(root.innerHTML, /class="live-play" href="\/go\/live-camel-eliteserien-live-test"/);
 
-  ui.handleAction({ dataset: { action: "open-fixture", fixtureId: "eliteserien-official-85a8aebb-0535-4030-bd44-6c8508814657" } });
-  assert.match(root.innerHTML, /href="\/go\/live-camel-eliteserien-official-85a8aebb-0535-4030-bd44-6c8508814657"/);
+  ui.handleAction({ dataset: { action: "open-fixture", fixtureId: liveFixture.id } });
+  assert.match(root.innerHTML, /href="\/go\/live-camel-eliteserien-live-test"/);
   assert.match(root.innerHTML, /Alternative 1 · TotalSportek/);
   assert.match(root.innerHTML, /Alternative 2 · Livsports/);
 });

@@ -36,10 +36,11 @@ test("post-match refresh checks Reddit every run and scopes cached YouTube to th
   });
 
   assert.deepEqual(calls.map(([name]) => name), ["replay", "youtube", "private"]);
-  assert.match(calls[1][1].argv.at(-1), /(?:^|,)fifa-world-cup-2026-match-99(?:,|$)/u);
+  const fixtureIds = calls[1][1].argv.at(-1).replace("--fixture-id=", "").split(",");
+  assert.ok(fixtureIds.includes("fifa-world-cup-2026-match-99"));
   assert.equal(calls[1][1].remoteExecutor.name, "bounded-cache");
   assert.deepEqual(report, {
-    fixturesChecked: 2,
+    fixturesChecked: fixtureIds.length,
     publicSnapshotUpdated: true,
     youtube: { cacheHits: 1, candidatesFound: 1, remoteSearches: 1 },
   });
