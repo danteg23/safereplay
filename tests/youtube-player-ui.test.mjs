@@ -20,15 +20,16 @@ test("compact YouTube player is created only after Start and uses the minimum co
   assert.doesNotMatch(styles, /\.youtube-player-(?:overlay|mask|crop)/);
 });
 
-test("private playback probe stays covered until YouTube reports playing", async () => {
+test("private playback probe waits for the controllable player and offers an honest retry", async () => {
   const script = await readFile(new URL("youtube-proof-player.js", publicRoot), "utf8");
-  assert.match(script, /document\.createElement\("iframe"\)/);
-  assert.match(script, /youtube-nocookie\.com\/embed/);
-  assert.doesNotMatch(script, /if \(!apiReady \|\| player\) return/);
+  assert.doesNotMatch(script, /createFallbackFrame|directPlayerFallback|host\.querySelector\("iframe"\)/);
   assert.match(script, /new window\.YT\.Player\(host/);
   assert.match(script, /host: "https:\/\/www\.youtube-nocookie\.com"/);
-  assert.match(script, /setTimeout\(createFallbackFrame, 1_500\)/);
-  assert.match(script, /typeof window\.YT\?\.Player !== "function"/);
+  assert.match(script, /setRetryGate\("Retry", \{ retryable: true \}\)/);
+  assert.match(script, /retryGate\.addEventListener\("click", retryPlayer\)/);
+  assert.match(script, /errorCode === 100/);
+  assert.match(script, /errorCode === 150/);
+  assert.match(script, /permanentlyUnavailable \? "Unavailable" : "Retry"/);
   assert.match(script, /onAutoplayBlocked/);
   assert.match(script, /Tap YouTube's play symbol/);
   assert.match(script, /frame\.setAttribute\("aria-hidden", "true"\)/);
@@ -43,14 +44,14 @@ test("private playback probe stays covered until YouTube reports playing", async
   assert.match(script, /recreate: true/);
   assert.match(script, /classList\.add\("is-playing"\)/);
   assert.ok(script.indexOf("PlayerState.PLAYING") < script.indexOf('classList.add("is-playing")'));
-  assert.match(script, /YouTube's control layer failed\. The direct covered player is ready\./);
+  assert.match(script, /YouTube did not load\. Retry when ready\./);
   assert.match(script, /requestFullscreen/);
   assert.match(script, /wrapper\.requestFullscreen/);
   assert.doesNotMatch(script, /frame\.requestFullscreen/);
   assert.doesNotMatch(script, /pauseButton|data-proof-pause/);
   assert.doesNotMatch(script, /fullscreenWarning|confirmFullscreenButton|showModal/);
   assert.match(script, /fullscreenButton\?\.addEventListener\("click"/);
-  assert.match(script, /parameters\.set\("start", String\(resumeAt\)\)/);
+  assert.match(script, /start: resumeAt/);
   assert.doesNotMatch(script, /player\.pauseVideo\(\)/);
   assert.doesNotMatch(script, /window\.open|location\.(?:assign|replace)|watch\?v=/);
 });

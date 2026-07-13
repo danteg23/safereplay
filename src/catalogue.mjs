@@ -197,10 +197,10 @@ const staticSourcesByFixture = {
   "fifa-world-cup-2026-match-98": [
     {
       id: "spain-belgium-youtube-short",
-      durationLabel: "3:38",
+      durationLabel: "5:16",
       format: "short",
       evidenceStatus: "player_candidate",
-      providerName: "Podcast Speak English on YouTube",
+      providerName: "Aleph Arena on YouTube",
       accessLabel: "Free",
       provenance: "verified_official",
       riskLabel: "Covered player · metadata hidden",
