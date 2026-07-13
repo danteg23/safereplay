@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-13T03:05:52.171Z",
+  "checkedAt": "2026-07-13T00:00:00.000Z",
   "sourcesByFixture": {
     "eliteserien-official-09dc355e-bfad-4100-b636-b9e2fe166263": {
       "camel": "https://www.camel1.tv/football/sarpsborg-08-vs-viking/live/23xmvkh6pk3xqg8"
@@ -16,6 +16,9 @@
     "fifa-world-cup-2026-match-100": {
       "camel": "https://www.camel1.tv/football/argentina-vs-switzerland/zp5rzghgw3e6q82",
       "totalsportek": "https://totalsportek.cat/game/argentina-vs-switzerland-7938421891"
+    },
+    "fifa-world-cup-2026-match-101": {
+      "camel": "https://www.camel1.tv/football/france-vs-spain/1l4rjnh9lnp4m7v"
     },
     "fifa-world-cup-2026-match-98": {
       "totalsportek": "https://totalsportek.cat/game/spain-vs-belgium-2144565976"
