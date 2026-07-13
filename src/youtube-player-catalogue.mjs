@@ -1,5 +1,7 @@
 import { readFileSync } from "node:fs";
 
+import { isYouTubePlayerUnavailable } from "./youtube-availability.mjs";
+
 const PLAYER_KEYS = new Set([
   "competition",
   "durationLabel",
@@ -55,9 +57,11 @@ const recordsById = new Map(records.map((record) => [record.id, record]));
 
 export function getYouTubePlayerRecord(id) {
   const record = recordsById.get(id);
-  return record ? structuredClone(record) : null;
+  return record && !isYouTubePlayerUnavailable(id) ? structuredClone(record) : null;
 }
 
-export function getYouTubePlayerRecords() {
-  return records.map((record) => structuredClone(record));
+export function getYouTubePlayerRecords({ includeUnavailable = false } = {}) {
+  return records
+    .filter((record) => includeUnavailable || !isYouTubePlayerUnavailable(record.id))
+    .map((record) => structuredClone(record));
 }
