@@ -78,7 +78,8 @@ export function refreshYouTubeAvailability({ now = new Date().toISOString(), pro
     assert(probe && PROBE_STATUSES.has(probe.status), `missing or invalid probe for ${record.id}`);
     counts[probe.status] += 1;
     if (probe.status === "available") {
-      delete unavailable[record.id];
+      const needsEmbedProof = ["embed_disabled", "restricted"].includes(unavailable[record.id]?.reason);
+      if (!needsEmbedProof || probe.proves === "embed") delete unavailable[record.id];
       continue;
     }
     if (probe.status === "permanent") {

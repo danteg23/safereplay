@@ -12,7 +12,11 @@ import {
   getYouTubePlayerRecord,
   getYouTubePlayerRecords,
 } from "../src/youtube-player-catalogue.mjs";
-import { checkYouTubeAvailability, probeYouTubeVideo } from "../scripts/check-youtube-availability.mjs";
+import {
+  checkYouTubeAvailability,
+  probeYouTubeVideo,
+  probeYouTubeWatchPage,
+} from "../scripts/check-youtube-availability.mjs";
 
 const records = [
   { id: "fixture-youtube-short", videoId: "AbCdEf12345" },
@@ -83,6 +87,39 @@ test("a successful sweep writes a sparse heartbeat every 21 days", () => {
   assert.equal(result.snapshot.lastSuccessfulSweep, "2026-08-04T00:00:00.000Z");
 });
 
+test("watch-page availability cannot incorrectly restore an embed-blocked video", () => {
+  const snapshot = {
+    ...emptySnapshot,
+    unavailable: {
+      "fixture-youtube-short": {
+        checkedAt: "2026-07-14T00:00:00.000Z",
+        reason: "embed_disabled",
+      },
+    },
+  };
+  const watchOnly = refreshYouTubeAvailability({
+    probes: new Map([
+      [records[0].id, { proves: "watch", status: "available" }],
+      [records[1].id, { proves: "watch", status: "available" }],
+    ]),
+    records,
+    snapshot,
+  });
+  assert.equal(watchOnly.changed, false);
+  assert.equal(watchOnly.snapshot.unavailable[records[0].id].reason, "embed_disabled");
+
+  const embedReady = refreshYouTubeAvailability({
+    probes: new Map([
+      [records[0].id, { proves: "embed", status: "available" }],
+      [records[1].id, { proves: "embed", status: "available" }],
+    ]),
+    records,
+    snapshot,
+  });
+  assert.equal(embedReady.changed, true);
+  assert.deepEqual(embedReady.snapshot.unavailable, {});
+});
+
 test("checker runs probes concurrently without exposing video metadata", async () => {
   const result = await checkYouTubeAvailability({
     now: "2026-07-14T00:00:00.000Z",
@@ -121,7 +158,7 @@ test("yt-dlp probe treats only an exact neutral id response as available", async
   const available = await probeYouTubeVideo("AbCdEf12345", {
     execute: async () => ({ stdout: "AbCdEf12345\n" }),
   });
-  assert.deepEqual(available, { status: "available" });
+  assert.deepEqual(available, { proves: "embed", status: "available" });
 
   const removed = await probeYouTubeVideo("AbCdEf12345", {
     execute: async () => {
@@ -131,4 +168,27 @@ test("yt-dlp probe treats only an exact neutral id response as available", async
     },
   });
   assert.deepEqual(removed, { reason: "removed", status: "permanent" });
+});
+
+test("public watch-page probe uses only status codes and never reads metadata", async () => {
+  let requestedUrl;
+  const available = await probeYouTubeWatchPage("AbCdEf12345", {
+    request: async (url) => {
+      requestedUrl = url;
+      return { status: 200 };
+    },
+  });
+  assert.equal(requestedUrl.hostname, "www.youtube.com");
+  assert.equal(requestedUrl.pathname, "/oembed");
+  assert.deepEqual(available, { proves: "watch", status: "available" });
+
+  const removed = await probeYouTubeWatchPage("AbCdEf12345", {
+    request: async () => ({ status: 404 }),
+  });
+  assert.deepEqual(removed, { reason: "unavailable", status: "permanent" });
+
+  const rateLimited = await probeYouTubeWatchPage("AbCdEf12345", {
+    request: async () => ({ status: 429 }),
+  });
+  assert.deepEqual(rateLimited, { reason: "probe_blocked", status: "transient" });
 });

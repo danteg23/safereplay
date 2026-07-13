@@ -26,8 +26,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Install the public YouTube probe
-        run: python3 -m pip install --disable-pip-version-check --quiet --upgrade yt-dlp
       - name: Check every SafeReplay YouTube video
         run: node scripts/check-youtube-availability.mjs
       - name: Publish changed availability
