@@ -7,6 +7,7 @@ import { pathToFileURL } from "node:url";
 
 import {
   createRemoteYouTubeExecutor,
+  RemoteYouTubeQuotaExceededError,
   RemoteYouTubeRouteMissingError,
 } from "../scripts/remote-youtube-executor.mjs";
 
@@ -99,6 +100,25 @@ test("remote executor maps SSH and missing-scope failures to the exact route err
       return true;
     });
   }
+});
+
+test("remote executor reports quota exhaustion without mislabeling the authenticated route", async (t) => {
+  const directory = await mkdtemp(join(tmpdir(), "safereplay-quota-"));
+  t.after(() => rm(directory, { force: true, recursive: true }));
+  let calls = 0;
+  const executor = createRemoteYouTubeExecutor({
+    cacheUrl: pathToFileURL(join(directory, "cache.json")),
+    execFileImpl: async () => {
+      calls += 1;
+      throw Object.assign(new Error("command failed"), {
+        stderr: "error: HTTP 429: Quota exceeded for quota metric 'Search Queries'",
+      });
+    },
+    local: true,
+  });
+  await assert.rejects(executor.search(parameters), RemoteYouTubeQuotaExceededError);
+  await assert.rejects(executor.search({ ...parameters, query: "another match" }), RemoteYouTubeQuotaExceededError);
+  assert.equal(calls, 1);
 });
 
 test("remote executor forwards a validated relevance language for preferred broadcasters", async (t) => {
