@@ -8,6 +8,7 @@ import { sanitizeFixtureSnapshot } from "./fixture-sanitizer.mjs";
 import { mergeFixtureSnapshots } from "./fixture-snapshot-set.mjs";
 import { pruneLiveDestinationSnapshot, validateLiveDestinationSnapshot } from "./live-source-discovery.mjs";
 import { validatePublicCatalogue } from "./public-contract.mjs";
+import { isYouTubePlayerUnavailable } from "./youtube-availability.mjs";
 import {
   buildReplaySourceProjection,
   pruneReplaySourceSnapshot,
@@ -381,7 +382,12 @@ const replayAwareStaticSources = Object.fromEntries(fixtureIds.map((fixtureId) =
     ...(replayProjection.sourcesByFixture[fixtureId] ?? []),
   ],
 ]));
-const sourcesByFixture = mergeSurfaceRecords(fixtureIds, replayAwareStaticSources, surfaceProjection);
+const sourcesByFixture = Object.fromEntries(Object.entries(
+  mergeSurfaceRecords(fixtureIds, replayAwareStaticSources, surfaceProjection),
+).map(([fixtureId, sources]) => [
+  fixtureId,
+  sources.filter((source) => !isYouTubePlayerUnavailable(source.id)),
+]));
 
 function dynamicLiveDestinations(fixtures) {
   const destinations = {};
@@ -415,9 +421,11 @@ export function getPublicCatalogue() {
 }
 
 export const providerDestinations = Object.freeze({
-  ...dynamicLiveDestinations(snapshot.fixtures),
-  ...mergeProviderDestinations({
-    ...staticDestinations,
-    ...replayProjection.destinations,
-  }, surfaceProjection.destinations),
+  ...Object.fromEntries(Object.entries({
+    ...dynamicLiveDestinations(snapshot.fixtures),
+    ...mergeProviderDestinations({
+      ...staticDestinations,
+      ...replayProjection.destinations,
+    }, surfaceProjection.destinations),
+  }).filter(([id]) => !isYouTubePlayerUnavailable(id))),
 });

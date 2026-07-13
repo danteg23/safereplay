@@ -6,6 +6,7 @@
   "scripts": {
     "app": "node app/server.mjs",
     "build:static": "node scripts/build-static.mjs",
+    "check:youtube": "node scripts/check-youtube-availability.mjs",
     "discover:fixtures": "node scripts/discover-fixtures.mjs",
     "discover:youtube": "node scripts/discover-youtube.mjs",
     "discover:youtube:remote": "node scripts/discover-youtube.mjs --remote-search",
