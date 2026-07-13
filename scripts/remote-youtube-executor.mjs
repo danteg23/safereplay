@@ -17,6 +17,13 @@ export class RemoteYouTubeRouteMissingError extends Error {
   }
 }
 
+export class RemoteYouTubeQuotaExceededError extends Error {
+  constructor() {
+    super("YouTube search quota exhausted");
+    this.name = "RemoteYouTubeQuotaExceededError";
+  }
+}
+
 function remoteQuote(value) {
   return `'${String(value).replaceAll("'", `'"'"'`)}'`;
 }
@@ -47,6 +54,7 @@ export function createRemoteYouTubeExecutor({
   }
   let cachePromise = null;
   let cacheHits = 0;
+  let quotaExhausted = false;
   let remoteSearches = 0;
   const cache = () => cachePromise ??= loadCache(cacheUrl);
 
@@ -73,6 +81,7 @@ export function createRemoteYouTubeExecutor({
       }
     },
     async search(parameters) {
+      if (quotaExhausted) throw new RemoteYouTubeQuotaExceededError();
       const key = cacheKey(parameters);
       const currentCache = await cache();
       const cached = currentCache.entries[key];
@@ -107,7 +116,11 @@ export function createRemoteYouTubeExecutor({
             timeout: 30_000,
           }));
         }
-      } catch {
+      } catch (error) {
+        if (/HTTP 429:[\s\S]*Quota exceeded/iu.test(String(error?.stderr ?? ""))) {
+          quotaExhausted = true;
+          throw new RemoteYouTubeQuotaExceededError();
+        }
         throw new RemoteYouTubeRouteMissingError();
       }
       remoteSearches += 1;
