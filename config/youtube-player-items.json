@@ -27,17 +27,17 @@
   },
   {
     "competition": "World Cup",
-    "durationLabel": "3:38",
+    "durationLabel": "5:16",
     "fixtureId": "fifa-world-cup-2026-match-98",
     "format": "short",
     "id": "spain-belgium-youtube-short",
-    "providerName": "Podcast Speak English on YouTube",
-    "sourceId": "podcast-speak-english-youtube",
+    "providerName": "Aleph Arena on YouTube",
+    "sourceId": "aleph-arena-youtube",
     "teams": [
       "Spain",
       "Belgium"
     ],
-    "videoId": "Tlv7uBNb6aM"
+    "videoId": "dKwl7C7xGS8"
   },
   {
     "competition": "World Cup",

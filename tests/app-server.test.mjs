@@ -181,6 +181,7 @@ test("public YouTube page stays covered and permits only the privacy-enhanced fr
   assert.match(response.body, /Thumbnail and title hidden/);
   assert.match(response.body, /tap the play symbol/);
   assert.match(response.body, /lab-covered-panel-top/);
+  assert.match(response.body, /data-proof-retry role="button" tabindex="-1" aria-disabled="true"/);
   assert.match(response.body, /data-proof-player-host aria-hidden="true"/);
   assert.doesNotMatch(response.body, /data-proof-start|data-proof-sound/);
   assert.doesNotMatch(response.body, /Start \+ fullscreen/);

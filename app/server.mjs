@@ -375,7 +375,7 @@ function proofCoveredPlayerDocument(record) {
     <title>${escapeHtml(record.publicRecord.teams.join(" vs "))} · Covered YouTube proof</title>
     <link rel="icon" href="/brand-mark.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css?v=20260711-2" />
-    <script type="module" src="/youtube-proof-player.js?v=20260712-2"></script>
+    <script type="module" src="/youtube-proof-player.js?v=20260714-1"></script>
   </head>
   <body class="youtube-watch-page">
     <main class="youtube-watch-screen">
@@ -399,7 +399,7 @@ function proofCoveredPlayerDocument(record) {
             <span class="lab-covered-panel lab-covered-panel-right" aria-hidden="true"></span>
             <span class="lab-covered-panel lab-covered-panel-bottom" aria-hidden="true"></span>
             <span class="lab-covered-panel lab-covered-panel-left" aria-hidden="true"></span>
-            <span class="lab-covered-start-gate" aria-hidden="true">Preparing…</span>
+            <span class="lab-covered-start-gate" data-proof-retry role="button" tabindex="-1" aria-disabled="true">Preparing…</span>
             <span class="lab-covered-play-ring" aria-hidden="true"></span>
             <span class="lab-covered-prompt">Thumbnail and title hidden · tap the play symbol</span>
           </div>
@@ -430,7 +430,7 @@ export function youtubePlayerDocument(record) {
     <link rel="icon" href="/brand-mark.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css?v=20260711-1" />
     <link rel="stylesheet" href="/v2.css?v=20260712-2" />
-    <script type="module" src="/youtube-proof-player.js?v=20260712-2"></script>
+    <script type="module" src="/youtube-proof-player.js?v=20260714-1"></script>
   </head>
   <body class="youtube-watch-page">
     <main class="youtube-watch-screen">
@@ -446,7 +446,7 @@ export function youtubePlayerDocument(record) {
             <span class="lab-covered-panel lab-covered-panel-right" aria-hidden="true"></span>
             <span class="lab-covered-panel lab-covered-panel-bottom" aria-hidden="true"></span>
             <span class="lab-covered-panel lab-covered-panel-left" aria-hidden="true"></span>
-            <span class="lab-covered-start-gate" aria-hidden="true">Preparing…</span>
+            <span class="lab-covered-start-gate" data-proof-retry role="button" tabindex="-1" aria-disabled="true">Preparing…</span>
             <span class="lab-covered-play-ring" aria-hidden="true"></span>
             <span class="lab-covered-prompt">Thumbnail and title hidden · tap the play symbol</span>
           </div>
