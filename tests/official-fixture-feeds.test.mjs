@@ -3,6 +3,7 @@ import test from "node:test";
 
 import {
   parseBarcelonaScheduleHtml,
+  parseFifaWorldCupCalendar,
   parseLigue1GameWeek,
   selectLigue1GameWeeks,
 } from "../src/official-fixture-feeds.mjs";
@@ -20,6 +21,65 @@ const ligue1Feed = {
   scope: "senior_men",
   teamAliases: {},
 };
+
+const fifaFeed = {
+  competition: "World Cup",
+  matchIds: {
+    "400021541": 101,
+    "400021540": 102,
+    "400021542": 103,
+    "400021543": 104,
+  },
+  placeholderTeams: {
+    103: ["Runner-up match 101", "Runner-up match 102"],
+    104: ["Winner match 101", "Winner match 102"],
+  },
+  scope: "senior_men",
+  seasonId: 285023,
+};
+
+function fifaCalendar() {
+  const Results = Array.from({ length: 104 }, (_, index) => ({
+    Date: "2026-06-11T19:00:00Z",
+    IdMatch: String(500000000 + index),
+    IdSeason: "285023",
+  }));
+  const remaining = [
+    ["400021541", "2026-07-14T19:00:00Z", "France", "Spain"],
+    ["400021540", "2026-07-15T19:00:00Z", "England", "Argentina"],
+    ["400021542", "2026-07-18T21:00:00Z", null, null],
+    ["400021543", "2026-07-19T19:00:00Z", null, null],
+  ];
+  remaining.forEach(([IdMatch, Date, home, away], index) => {
+    Results[100 + index] = {
+      Away: away ? { TeamName: [{ Locale: "en-GB", Description: away }], Score: 99 } : null,
+      Date,
+      Home: home ? { TeamName: [{ Locale: "en-GB", Description: home }], Score: 98 } : null,
+      IdMatch,
+      IdSeason: "285023",
+      Result: "must be discarded",
+    };
+  });
+  return { ContinuationToken: null, Results };
+}
+
+test("official FIFA calendar keeps stable match numbers and honest unresolved bracket slots", () => {
+  const fixtures = parseFifaWorldCupCalendar(fifaCalendar(), fifaFeed);
+  assert.deepEqual(fixtures, [
+    { competition: "World Cup", id: "fifa-world-cup-2026-match-101", kickoffTba: false, kickoffUtc: "2026-07-14T19:00:00Z", participantsTba: false, scope: "senior_men", teams: ["France", "Spain"] },
+    { competition: "World Cup", id: "fifa-world-cup-2026-match-102", kickoffTba: false, kickoffUtc: "2026-07-15T19:00:00Z", participantsTba: false, scope: "senior_men", teams: ["England", "Argentina"] },
+    { competition: "World Cup", id: "fifa-world-cup-2026-match-103", kickoffTba: false, kickoffUtc: "2026-07-18T21:00:00Z", participantsTba: true, scope: "senior_men", teams: ["Runner-up match 101", "Runner-up match 102"] },
+    { competition: "World Cup", id: "fifa-world-cup-2026-match-104", kickoffTba: false, kickoffUtc: "2026-07-19T19:00:00Z", participantsTba: true, scope: "senior_men", teams: ["Winner match 101", "Winner match 102"] },
+  ]);
+  assert.doesNotMatch(JSON.stringify(fixtures), /score|result|98|99/iu);
+});
+
+test("official FIFA calendar fails closed if a remaining match disappears", () => {
+  const calendar = fifaCalendar();
+  calendar.Results = calendar.Results.filter((match) => match.IdMatch !== "400021543");
+  calendar.Results.push({ Date: "2026-06-11T19:00:00Z", IdMatch: "unrelated", IdSeason: "285023" });
+  assert.throws(() => parseFifaWorldCupCalendar(calendar, fifaFeed), /identity changed/);
+});
 
 test("official Barcelona SportsEvent data becomes neutral La Liga fixtures with TBA preserved", () => {
   const events = [

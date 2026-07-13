@@ -5,6 +5,7 @@ const PUBLIC_KEYS = new Set([
   "id",
   "kickoffTba",
   "kickoffUtc",
+  "participantsTba",
   "teams",
 ]);
 
@@ -25,6 +26,7 @@ export function sanitizeFixture(rawFixture, {
   assertText(rawFixture.competition, "rawFixture.competition");
   assertText(rawFixture.kickoffUtc, "rawFixture.kickoffUtc");
   assert(rawFixture.kickoffTba === undefined || typeof rawFixture.kickoffTba === "boolean", "rawFixture.kickoffTba must be boolean");
+  assert(rawFixture.participantsTba === undefined || typeof rawFixture.participantsTba === "boolean", "rawFixture.participantsTba must be boolean");
   assert(Array.isArray(rawFixture.teams) && rawFixture.teams.length === 2, "rawFixture.teams must contain two teams");
   rawFixture.teams.forEach((team, index) => assertText(team, `rawFixture.teams[${index}]`));
 
@@ -37,6 +39,7 @@ export function sanitizeFixture(rawFixture, {
     competition: rawFixture.competition,
     kickoffTba: rawFixture.kickoffTba === true,
     kickoffUtc,
+    participantsTba: rawFixture.participantsTba === true,
     teams: [...rawFixture.teams],
     favorite: rawFixture.teams.some((team) => favoriteTeams.includes(team)),
     availability,

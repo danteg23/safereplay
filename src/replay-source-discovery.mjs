@@ -132,6 +132,18 @@ export function validateReplaySourceSnapshot(snapshot, { fixtureIds }) {
   return snapshot;
 }
 
+export function pruneReplaySourceSnapshot(snapshot, { fixtureIds }) {
+  if (!snapshot || typeof snapshot !== "object" || Array.isArray(snapshot)) throw new TypeError("replay source snapshot is invalid");
+  if (!snapshot.sourcesByFixture || typeof snapshot.sourcesByFixture !== "object" || Array.isArray(snapshot.sourcesByFixture)) {
+    throw new Error("replay source snapshot sourcesByFixture is invalid");
+  }
+  const allowed = new Set(fixtureIds);
+  return validateReplaySourceSnapshot({
+    checkedAt: snapshot.checkedAt,
+    sourcesByFixture: Object.fromEntries(Object.entries(snapshot.sourcesByFixture).filter(([fixtureId]) => allowed.has(fixtureId))),
+  }, { fixtureIds });
+}
+
 export function buildReplaySourceProjection(snapshot) {
   const sourcesByFixture = {};
   const destinations = {};

@@ -224,7 +224,7 @@ function sourcesForFixture(fixtureId) {
 }
 
 function fixtureIsLive(fixture) {
-  if (fixture.kickoffTba === true) return false;
+  if (fixture.kickoffTba === true || fixture.participantsTba === true) return false;
   const kickoff = new Date(fixture.kickoffUtc).valueOf();
   const now = nowProvider().valueOf();
   return Number.isFinite(kickoff) && now >= kickoff && now < kickoff + LIVE_WINDOW_MS;
@@ -242,12 +242,12 @@ function liveSourcesForFixture(fixture) {
   }));
 }
 
-function fixtureRow(fixture) {
+function fixtureRow(fixture, { showDate = false } = {}) {
   const actionable = fixtureIsActionable(fixture);
   const live = fixtureIsLive(fixture);
   const primaryLiveSource = live ? liveSourcesForFixture(fixture)[0] : null;
   const copy = `
-    <span class="fixture-time"><strong>${escapeHtml(fixture.kickoff)}</strong><small>${escapeHtml(fixture.competition)}</small></span>
+    <span class="fixture-time"><strong>${escapeHtml(fixture.kickoff)}</strong><small>${escapeHtml(showDate ? `${fixture.dateLabel} · ${fixture.competition}` : fixture.competition)}</small></span>
     <span class="fixture-teams"><strong>${escapeHtml(fixture.teams[0])}</strong><strong>${escapeHtml(fixture.teams[1])}</strong></span>`;
   return `
     <article class="fixture-row${live ? " has-live" : ""}${actionable ? "" : " is-unavailable"}"${actionable ? "" : ' aria-disabled="true"'}>
@@ -262,7 +262,10 @@ function fixtureRow(fixture) {
 function homeScreen() {
   const allFixtures = localizedFixtures();
   const dates = localizedDates(allFixtures);
+  const worldCupMode = state.selectedCompetition === "World Cup";
+  const now = nowProvider().valueOf();
   const fixtures = allFixtures.filter((fixture) => {
+    if (worldCupMode) return fixture.competition === "World Cup" && new Date(fixture.kickoffUtc).valueOf() + LIVE_WINDOW_MS > now;
     if (fixture.dateKey !== state.selectedDate) return false;
     if (state.selectedCompetition === "Favorites") {
       return fixture.teams.some((team) => state.settings.favoriteTeams.includes(team));
@@ -274,12 +277,12 @@ function homeScreen() {
       <main class="screen home-screen">
         ${mobileHeader("matches")}
         <h1>Matches</h1>
-        <div class="date-rail" role="tablist" aria-label="Match date">${dates.map(dateTab).join("")}</div>
+        ${worldCupMode ? `<p class="fixture-scope-label">Remaining World Cup matches</p>` : `<div class="date-rail" role="tablist" aria-label="Match date">${dates.map(dateTab).join("")}</div>`}
         <div class="text-tabs competition-tabs" role="tablist" aria-label="Competition">
           ${activeCompetitionTabs().map((tab) => `<button role="tab" aria-selected="${state.selectedCompetition === tab}" class="text-tab${state.selectedCompetition === tab ? " is-selected" : ""}" data-action="select-competition" data-competition="${escapeHtml(tab)}">${escapeHtml(tab)}</button>`).join("")}
         </div>
         <section class="fixture-list" aria-label="Fixtures">
-          ${fixtures.length ? fixtures.map(fixtureRow).join("") : `<div class="simple-empty"><h2>No matches here</h2><p>Try another date or competition.</p></div>`}
+          ${fixtures.length ? fixtures.map((fixture) => fixtureRow(fixture, { showDate: worldCupMode })).join("") : `<div class="simple-empty"><h2>No matches here</h2><p>Try another date or competition.</p></div>`}
         </section>
       </main>
       ${primaryNav()}

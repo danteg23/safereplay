@@ -6,10 +6,11 @@ import {
 } from "./catalogue-projection.mjs";
 import { sanitizeFixtureSnapshot } from "./fixture-sanitizer.mjs";
 import { mergeFixtureSnapshots } from "./fixture-snapshot-set.mjs";
-import { validateLiveDestinationSnapshot } from "./live-source-discovery.mjs";
+import { pruneLiveDestinationSnapshot, validateLiveDestinationSnapshot } from "./live-source-discovery.mjs";
 import { validatePublicCatalogue } from "./public-contract.mjs";
 import {
   buildReplaySourceProjection,
+  pruneReplaySourceSnapshot,
   validateReplaySourceSnapshot,
 } from "./replay-source-discovery.mjs";
 
@@ -26,17 +27,20 @@ const sourceRegistry = JSON.parse(
 const itemRegistry = JSON.parse(
   readFileSync(new URL("../config/item-candidates.json", import.meta.url), "utf8"),
 );
-const liveDestinationSnapshot = JSON.parse(
+const rawLiveDestinationSnapshot = JSON.parse(
   readFileSync(new URL("../config/live-destinations.json", import.meta.url), "utf8"),
 );
-const replaySourceSnapshot = JSON.parse(
+const rawReplaySourceSnapshot = JSON.parse(
   readFileSync(new URL("../config/replay-destinations.json", import.meta.url), "utf8"),
 );
+const fixtureIdsForProjection = snapshot.fixtures.map(({ id }) => id);
+const liveDestinationSnapshot = pruneLiveDestinationSnapshot(rawLiveDestinationSnapshot, { fixtureIds: fixtureIdsForProjection });
+const replaySourceSnapshot = pruneReplaySourceSnapshot(rawReplaySourceSnapshot, { fixtureIds: fixtureIdsForProjection });
 validateLiveDestinationSnapshot(liveDestinationSnapshot, {
-  fixtureIds: snapshot.fixtures.map(({ id }) => id),
+  fixtureIds: fixtureIdsForProjection,
 });
 validateReplaySourceSnapshot(replaySourceSnapshot, {
-  fixtureIds: snapshot.fixtures.map(({ id }) => id),
+  fixtureIds: fixtureIdsForProjection,
 });
 
 function worldCupReplaySources({

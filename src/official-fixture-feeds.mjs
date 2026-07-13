@@ -140,3 +140,54 @@ export function parseLigue1GameWeek(value, feed, { from, to }) {
   }
   return fixtures.sort((left, right) => left.kickoffUtc.localeCompare(right.kickoffUtc) || left.id.localeCompare(right.id));
 }
+
+function fifaLocalizedName(value, path) {
+  assert(Array.isArray(value) && value.length > 0 && value.length <= 10, `${path} schema changed`);
+  const english = value.find((item) => item?.Locale === "en-GB") ?? value.find((item) => item?.Locale === "en");
+  return boundedText(english?.Description, `${path}.Description`, 80);
+}
+
+export function parseFifaWorldCupCalendar(value, feed) {
+  assert(value && typeof value === "object" && !Array.isArray(value), "FIFA calendar must be an object");
+  assert(value.ContinuationToken === null, "FIFA calendar unexpectedly paginated");
+  assert(Array.isArray(value.Results) && value.Results.length === 104, "FIFA World Cup calendar schema changed");
+  const wanted = new Map(Object.entries(feed.matchIds).map(([id, number]) => [id, number]));
+  const fixtures = [];
+  const found = new Set();
+
+  for (let index = 0; index < value.Results.length; index += 1) {
+    const match = value.Results[index];
+    const number = wanted.get(String(match?.IdMatch));
+    if (!number) continue;
+    const path = `Results[${index}]`;
+    assert(!found.has(number), `${path}.IdMatch is duplicated`);
+    found.add(number);
+    assert(String(match.IdSeason) === String(feed.seasonId), `${path}.IdSeason changed`);
+    const kickoffUtc = canonicalInstant(match.Date, `${path}.Date`);
+    let teams;
+    let participantsTba = false;
+    if (match.Home === null && match.Away === null) {
+      teams = feed.placeholderTeams[number];
+      assert(Array.isArray(teams), `${path} has no approved placeholder teams`);
+      participantsTba = true;
+    } else {
+      assert(match.Home && match.Away, `${path} has only one participant`);
+      teams = [
+        fifaLocalizedName(match.Home.TeamName, `${path}.Home.TeamName`),
+        fifaLocalizedName(match.Away.TeamName, `${path}.Away.TeamName`),
+      ];
+      assert(teams[0] !== teams[1], `${path} teams must differ`);
+    }
+    fixtures.push({
+      competition: feed.competition,
+      id: `fifa-world-cup-2026-match-${number}`,
+      kickoffTba: false,
+      kickoffUtc,
+      participantsTba,
+      scope: feed.scope,
+      teams: [...teams],
+    });
+  }
+  assert(found.size === wanted.size, "FIFA World Cup remaining match identity changed");
+  return fixtures.sort((left, right) => left.kickoffUtc.localeCompare(right.kickoffUtc) || left.id.localeCompare(right.id));
+}

@@ -6,6 +6,7 @@ import {
 import { parseEliteserienCalendar } from "./eliteserien-calendar.mjs";
 import {
   parseBarcelonaScheduleHtml,
+  parseFifaWorldCupCalendar,
   parseLigue1GameWeek,
   selectLigue1GameWeeks,
 } from "./official-fixture-feeds.mjs";
@@ -71,6 +72,7 @@ export async function discoverFixtureCandidates({
       let parsed;
       if (feed.kind === "official_ical") parsed = parseEliteserienCalendar(body, { from, to });
       else if (feed.kind === "official_schema_org") parsed = parseBarcelonaScheduleHtml(body, feed, { from, to });
+      else if (feed.kind === "official_fifa_api") parsed = parseFifaWorldCupCalendar(JSON.parse(body), feed);
       else if (feed.kind === "official_lfp_api") {
         const gameWeeks = selectLigue1GameWeeks(JSON.parse(body), { from, to });
         const responses = await Promise.all(gameWeeks.map(async (gameWeek) => {

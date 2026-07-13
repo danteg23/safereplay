@@ -1,6 +1,30 @@
 {
   "feeds": [
     {
+      "id": "fifa-world-cup-official-api-2026",
+      "kind": "official_fifa_api",
+      "competition": "World Cup",
+      "feedUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=500&idSeason=285023",
+      "seasonId": 285023,
+      "matchIds": {
+        "400021541": 101,
+        "400021540": 102,
+        "400021542": 103,
+        "400021543": 104
+      },
+      "placeholderTeams": {
+        "103": ["Runner-up match 101", "Runner-up match 102"],
+        "104": ["Winner match 101", "Winner match 102"]
+      },
+      "state": "enabled_candidate",
+      "scope": "senior_men",
+      "selection": "all",
+      "priorityTeams": [],
+      "teamAliases": {},
+      "checkedAt": "2026-07-13",
+      "evidenceUrl": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/match-schedule-fixtures-results-teams-stadiums"
+    },
+    {
       "id": "fixture-download-epl-2026",
       "kind": "fixture_download_json",
       "competition": "Premier League",
