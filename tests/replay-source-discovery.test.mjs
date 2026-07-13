@@ -4,6 +4,7 @@ import test from "node:test";
 import {
   buildReplaySourceProjection,
   discoverReplaySources,
+  pruneReplaySourceSnapshot,
   parseFootballHighlightsFeed,
   validateReplaySourceSnapshot,
 } from "../src/replay-source-discovery.mjs";
@@ -64,4 +65,5 @@ test("replay snapshot rejects unknown fixtures and hostile destinations", () => 
   hostile.sourcesByFixture[fixture.id][0].url = "https://evil.example/replay";
   assert.throws(() => validateReplaySourceSnapshot(hostile, { fixtureIds: [fixture.id] }), /allowlist/u);
   assert.throws(() => validateReplaySourceSnapshot(valid, { fixtureIds: [] }), /fixture id/u);
+  assert.deepEqual(pruneReplaySourceSnapshot(valid, { fixtureIds: [] }).sourcesByFixture, {});
 });

@@ -59,10 +59,39 @@ test("fixture CLI saves only the neutral candidate snapshot and reports counts",
     "END:VCALENDAR",
     "",
   ].join("\r\n");
+  const fifaResults = Array.from({ length: 104 }, (_, index) => ({
+    Date: `2026-06-${String((index % 28) + 1).padStart(2, "0")}T19:00:00Z`,
+    IdMatch: String(500000000 + index),
+    IdSeason: "285023",
+  }));
+  for (const [id, number, date, home, away] of [
+    ["400021541", 101, "2026-07-14T19:00:00Z", "France", "Spain"],
+    ["400021540", 102, "2026-07-15T19:00:00Z", "England", "Argentina"],
+    ["400021542", 103, "2026-07-18T21:00:00Z", null, null],
+    ["400021543", 104, "2026-07-19T19:00:00Z", null, null],
+  ]) {
+    fifaResults[number - 1] = {
+      Away: away ? { TeamName: [{ Locale: "en-GB", Description: away }] } : null,
+      Date: date,
+      Home: home ? { TeamName: [{ Locale: "en-GB", Description: home }] } : null,
+      IdMatch: id,
+      IdSeason: "285023",
+    };
+  }
   const report = await runFixtureDiscovery({
     argv: ["--from=2026-08-20", "--to=2026-08-24", "--save-private", "--save-catalogue"],
     checkedAt: "2026-07-10",
     fetchImpl: async (url) => {
+      if (url.includes("api.fifa.com")) {
+        const body = JSON.stringify({ ContinuationToken: null, Results: fifaResults });
+        return {
+          headers: { get(name) { return name.toLowerCase() === "content-type" ? "application/json" : String(Buffer.byteLength(body)); } },
+          ok: true,
+          status: 200,
+          text: async () => body,
+          url,
+        };
+      }
       if (url.includes("eliteserien.no")) return {
         headers: { get(name) { return name.toLowerCase() === "content-type" ? "text/calendar" : String(Buffer.byteLength(calendarBody)); } },
         ok: true,
@@ -104,12 +133,13 @@ test("fixture CLI saves only the neutral candidate snapshot and reports counts",
     savePrivateImpl: async (snapshot) => { saved = snapshot; },
   });
   assert.equal(report.catalogueSnapshotSaved, true);
-  assert.equal(report.fixtureCount, 4);
+  assert.equal(report.fixtureCount, 8);
   assert.equal(report.privateSnapshotSaved, true);
   assert.ok(saved.fixtures.some((fixture) => fixture.teams[0] === "Arsenal"));
   assert.ok(saved.fixtures.some((fixture) => fixture.teams.join("|") === "New York City FC|Inter Miami"));
   assert.ok(saved.fixtures.some((fixture) => fixture.teams.join("|") === "Elche|Barcelona" && fixture.kickoffTba));
   assert.ok(saved.fixtures.some((fixture) => fixture.teams.join("|") === "Olympique de Marseille|RC Strasbourg Alsace"));
+  assert.ok(saved.fixtures.some((fixture) => fixture.id === "fifa-world-cup-2026-match-104" && fixture.participantsTba));
   assert.equal("displayTimeZone" in saved, false);
   assert.deepEqual(catalogueSaved, saved);
   assert.doesNotMatch(JSON.stringify(report), /Arsenal|Coventry|winner|score|stadium/i);

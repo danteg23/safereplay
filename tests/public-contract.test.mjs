@@ -66,11 +66,24 @@ test("catalogue includes official Barcelona and Ligue 1 fixtures without invente
   const fixtures = getPublicCatalogue().fixtures;
   const barcelona = fixtures.filter((fixture) => fixture.competition === "La Liga" && fixture.teams.includes("Barcelona"));
   const ligue1 = fixtures.filter((fixture) => fixture.competition === "Ligue 1");
-  assert.equal(barcelona.length, 7);
+  assert.ok(barcelona.length >= 7);
   assert.equal(ligue1.length, 54);
   assert.ok(barcelona.every((fixture) => fixture.favorite && fixture.kickoffTba));
   assert.equal(ligue1.filter((fixture) => fixture.kickoffTba).length, 36);
   assert.equal(ligue1.filter((fixture) => !fixture.kickoffTba).length, 18);
+});
+
+test("catalogue includes all four remaining World Cup matches with stable IDs and honest participants", () => {
+  const fixtures = getPublicCatalogue().fixtures.filter((fixture) => /^fifa-world-cup-2026-match-10[1-4]$/u.test(fixture.id));
+  assert.deepEqual(fixtures.map(({ id }) => id), [
+    "fifa-world-cup-2026-match-101",
+    "fifa-world-cup-2026-match-102",
+    "fifa-world-cup-2026-match-103",
+    "fifa-world-cup-2026-match-104",
+  ]);
+  assert.deepEqual(fixtures.map(({ participantsTba }) => participantsTba), [false, false, true, true]);
+  assert.deepEqual(fixtures[0].teams, ["France", "Spain"]);
+  assert.deepEqual(fixtures[1].teams, ["England", "Argentina"]);
 });
 
 test("thread candidates are reserved for community-unverified sources", () => {

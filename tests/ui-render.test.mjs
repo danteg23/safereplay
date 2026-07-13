@@ -97,6 +97,20 @@ test("Matches is minimal, status-free, and disables fixtures without a useful de
   assert.doesNotMatch(visibleText(root.innerHTML), /\b\d+\s*[-–—]\s*\d+\b/);
 });
 
+test("World Cup tab shows every remaining match across dates and keeps unresolved bracket matches inert", async () => {
+  const { root, ui } = await loadUi();
+  ui.setNow("2026-07-13T02:54:00Z");
+  ui.handleAction({ dataset: { action: "select-competition", competition: "World Cup" } });
+  assert.match(root.innerHTML, /Remaining World Cup matches/);
+  for (const team of ["France", "Spain", "England", "Argentina", "Runner-up match 101", "Winner match 101"]) {
+    assert.match(root.innerHTML, new RegExp(team));
+  }
+  assert.doesNotMatch(root.innerHTML, /Norway|Belgium|Morocco|date-rail/);
+  const unresolved = root.innerHTML.match(/<article class="fixture-row is-unavailable"[\s\S]*?Winner match 102[\s\S]*?<\/article>/u)?.[0] ?? "";
+  assert.match(unresolved, /Winner match 101/);
+  assert.doesNotMatch(unresolved, /data-action="open-fixture"|live-play/);
+});
+
 test("Inter Miami is a default favorite and upgrades existing saved settings once", async () => {
   const legacySettings = JSON.stringify({
     communitySources: true,

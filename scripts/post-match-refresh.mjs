@@ -6,6 +6,7 @@ import { promisify } from "node:util";
 import { mergeFixtureSnapshots } from "../src/fixture-snapshot-set.mjs";
 import {
   discoverReplaySources,
+  pruneReplaySourceSnapshot,
   validateReplaySourceSnapshot,
 } from "../src/replay-source-discovery.mjs";
 import { runYouTubeDiscovery } from "./discover-youtube.mjs";
@@ -27,7 +28,7 @@ export function selectPostMatchFixtures(fixtures, {
   const newestKickoff = nowMs - startAfterMinutes * 60_000;
   const oldestKickoff = nowMs - stopAfterHours * 60 * 60_000;
   return fixtures.filter((fixture) => {
-    if (fixture.kickoffTba === true) return false;
+    if (fixture.kickoffTba === true || fixture.participantsTba === true) return false;
     const kickoff = new Date(fixture.kickoffUtc).valueOf();
     return Number.isFinite(kickoff) && kickoff >= oldestKickoff && kickoff <= newestKickoff;
   });
@@ -69,7 +70,7 @@ export async function saveReplayDiscoveries(discovered, {
   fixtureIds,
   url = REPLAY_SNAPSHOT_URL,
 } = {}) {
-  const existing = validateReplaySourceSnapshot(await readJson(url, {
+  const existing = pruneReplaySourceSnapshot(await readJson(url, {
     checkedAt: discovered.checkedAt,
     sourcesByFixture: {},
   }), { fixtureIds });

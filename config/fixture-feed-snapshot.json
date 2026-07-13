@@ -1,54 +1,28 @@
 {
-  "checkedAt": "2026-07-12",
+  "checkedAt": "2026-07-13",
   "fixtures": [
     {
-      "competition": "Eliteserien",
-      "id": "eliteserien-official-f783179e-52b0-4f0c-a9cd-24bf40f566d0",
-      "kickoffUtc": "2026-07-12T10:30:00Z",
+      "competition": "World Cup",
+      "id": "fifa-world-cup-2026-match-101",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-07-14T19:00:00Z",
+      "participantsTba": false,
       "scope": "senior_men",
       "teams": [
-        "KFUM",
-        "Bodø/Glimt"
+        "France",
+        "Spain"
       ]
     },
     {
-      "competition": "Eliteserien",
-      "id": "eliteserien-official-03c73521-764d-42b3-b778-a1cdef6ab894",
-      "kickoffUtc": "2026-07-12T13:00:00Z",
+      "competition": "World Cup",
+      "id": "fifa-world-cup-2026-match-102",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-07-15T19:00:00Z",
+      "participantsTba": false,
       "scope": "senior_men",
       "teams": [
-        "Brann",
-        "Start"
-      ]
-    },
-    {
-      "competition": "Eliteserien",
-      "id": "eliteserien-official-23c2232f-ce8d-4723-8639-8db4b27f26b4",
-      "kickoffUtc": "2026-07-12T13:00:00Z",
-      "scope": "senior_men",
-      "teams": [
-        "Sandefjord Fotball",
-        "HamKam"
-      ]
-    },
-    {
-      "competition": "Eliteserien",
-      "id": "eliteserien-official-a3b8c060-8cb7-4425-9252-d1a592503889",
-      "kickoffUtc": "2026-07-12T13:00:00Z",
-      "scope": "senior_men",
-      "teams": [
-        "Rosenborg",
-        "Kristiansund"
-      ]
-    },
-    {
-      "competition": "Eliteserien",
-      "id": "eliteserien-official-ece85614-6299-4b1c-9281-abc28bc764e1",
-      "kickoffUtc": "2026-07-12T15:15:00Z",
-      "scope": "senior_men",
-      "teams": [
-        "Sarpsborg 08",
-        "Viking"
+        "England",
+        "Argentina"
       ]
     },
     {
@@ -129,6 +103,30 @@
       "teams": [
         "Viking",
         "Sandefjord Fotball"
+      ]
+    },
+    {
+      "competition": "World Cup",
+      "id": "fifa-world-cup-2026-match-103",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-07-18T21:00:00Z",
+      "participantsTba": true,
+      "scope": "senior_men",
+      "teams": [
+        "Runner-up match 101",
+        "Runner-up match 102"
+      ]
+    },
+    {
+      "competition": "World Cup",
+      "id": "fifa-world-cup-2026-match-104",
+      "kickoffTba": false,
+      "kickoffUtc": "2026-07-19T19:00:00Z",
+      "participantsTba": true,
+      "scope": "senior_men",
+      "teams": [
+        "Winner match 101",
+        "Winner match 102"
       ]
     },
     {
@@ -1681,17 +1679,112 @@
         "Inter Miami",
         "D.C. United"
       ]
+    },
+    {
+      "competition": "La Liga",
+      "id": "barcelona-official-schema-2026-match-138352",
+      "kickoffTba": true,
+      "kickoffUtc": "2026-10-11T12:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Barcelona",
+        "Getafe"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-07f1cdce-abab-4fe5-9636-f2e85fde9dbc",
+      "kickoffUtc": "2026-10-11T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Start",
+        "HamKam"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-288f9476-9b2b-4535-bd7f-3ac644397e46",
+      "kickoffUtc": "2026-10-11T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Rosenborg",
+        "Sandefjord Fotball"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-4b2ad54a-8fc7-472f-bd03-a3a61a356909",
+      "kickoffUtc": "2026-10-11T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Lillestrøm",
+        "Molde"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-619ac9b6-5eea-4a7c-aa7a-c5f690e96006",
+      "kickoffUtc": "2026-10-11T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Bodø/Glimt",
+        "Kristiansund"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-7da27001-53ad-4fbc-b1e7-aa8d5ad7168d",
+      "kickoffUtc": "2026-10-11T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Fredrikstad",
+        "Tromsø"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-ab2544bc-0474-4881-bc07-ce28aafd84bc",
+      "kickoffUtc": "2026-10-11T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "KFUM",
+        "Vålerenga"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-b740898e-9dbb-4938-8db3-7ff65a0d5a28",
+      "kickoffUtc": "2026-10-11T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Brann",
+        "Viking"
+      ]
+    },
+    {
+      "competition": "Eliteserien",
+      "id": "eliteserien-official-e6002d47-76c8-4d64-a840-b3b06c4b3cb1",
+      "kickoffUtc": "2026-10-11T15:00:00Z",
+      "scope": "senior_men",
+      "teams": [
+        "Aalesund",
+        "Sarpsborg 08"
+      ]
     }
   ],
   "sourceName": "Fixture Download candidate feeds",
   "sources": [
+    {
+      "feedId": "fifa-world-cup-official-api-2026",
+      "fixtureCount": 4
+    },
     {
       "feedId": "fixture-download-epl-2026",
       "fixtureCount": 12
     },
     {
       "feedId": "barcelona-official-schema-2026",
-      "fixtureCount": 7
+      "fixtureCount": 8
     },
     {
       "feedId": "ligue1-official-api-2026",
@@ -1703,7 +1796,7 @@
     },
     {
       "feedId": "eliteserien-official-calendar-2026",
-      "fixtureCount": 76
+      "fixtureCount": 79
     }
   ]
 }

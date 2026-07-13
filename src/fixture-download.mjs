@@ -4,7 +4,7 @@ const DATE = /^\d{4}-\d{2}-\d{2}$/u;
 const RAW_DATE = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}Z$/u;
 const STATES = new Set(["enabled_candidate", "withheld"]);
 const SELECTIONS = new Set(["all", "priority_teams"]);
-const KINDS = new Set(["fixture_download_json", "official_ical", "official_lfp_api", "official_schema_org"]);
+const KINDS = new Set(["fixture_download_json", "official_fifa_api", "official_ical", "official_lfp_api", "official_schema_org"]);
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -50,6 +50,18 @@ function officialLfpUrl(feed, value) {
   return url;
 }
 
+function officialFifaUrl(feed, value) {
+  const url = new URL(value);
+  assert(url.protocol === "https:" && url.hostname === "api.fifa.com", "official FIFA API host is not allowed");
+  assert(url.pathname === "/api/v3/calendar/matches", "official FIFA API path is invalid");
+  assert(url.searchParams.size === 3, "official FIFA API query is invalid");
+  assert(url.searchParams.get("language") === "en", "official FIFA API language is invalid");
+  assert(url.searchParams.get("count") === "500", "official FIFA API count is invalid");
+  assert(url.searchParams.get("idSeason") === String(feed.seasonId), "official FIFA API season is invalid");
+  assert(!url.hash, "official FIFA API URL must not contain a fragment");
+  return url;
+}
+
 export function validateFixtureFeedRegistry(value) {
   assert(value && typeof value === "object" && !Array.isArray(value), "fixture feed registry must be an object");
   assert(Array.isArray(value.feeds) && value.feeds.length > 0, "fixture feed registry must contain feeds");
@@ -78,8 +90,21 @@ export function validateFixtureFeedRegistry(value) {
     if (feed.kind === "official_lfp_api") {
       assert(feed.championshipId === 1, `${path}.championshipId is invalid`);
       assert(feed.season === 2026, `${path}.season is invalid`);
+    } else if (feed.kind === "official_fifa_api") {
+      assert(feed.seasonId === 285023, `${path}.seasonId is invalid`);
+      assert(feed.matchIds && typeof feed.matchIds === "object" && !Array.isArray(feed.matchIds), `${path}.matchIds is invalid`);
+      const matchNumbers = Object.values(feed.matchIds);
+      assert(matchNumbers.length === 4 && new Set(matchNumbers).size === 4, `${path}.matchIds must contain four unique matches`);
+      assert(matchNumbers.every((number) => Number.isSafeInteger(number) && number >= 101 && number <= 104), `${path}.matchIds contains an invalid match number`);
+      assert(feed.placeholderTeams && typeof feed.placeholderTeams === "object" && !Array.isArray(feed.placeholderTeams), `${path}.placeholderTeams is invalid`);
+      for (const number of [103, 104]) {
+        const teams = feed.placeholderTeams[number];
+        assert(Array.isArray(teams) && teams.length === 2, `${path}.placeholderTeams.${number} is invalid`);
+        teams.forEach((team, teamIndex) => text(team, `${path}.placeholderTeams.${number}[${teamIndex}]`, 80));
+      }
     } else {
       assert(feed.championshipId === undefined && feed.season === undefined, `${path} LFP fields are not allowed`);
+      assert(feed.seasonId === undefined && feed.matchIds === undefined && feed.placeholderTeams === undefined, `${path} FIFA fields are not allowed`);
     }
     const evidenceUrl = new URL(feed.evidenceUrl);
     assert(evidenceUrl.protocol === "https:", `${path}.evidenceUrl must use HTTPS`);
@@ -150,5 +175,6 @@ export function allowedFixtureFeedUrl(feed, value) {
   if (feed?.kind === "official_ical") return officialCalendarUrl(value);
   if (feed?.kind === "official_schema_org") return barcelonaScheduleUrl(value);
   if (feed?.kind === "official_lfp_api") return officialLfpUrl(feed, value);
+  if (feed?.kind === "official_fifa_api") return officialFifaUrl(feed, value);
   throw new Error("fixture feed kind is not allowed");
 }
