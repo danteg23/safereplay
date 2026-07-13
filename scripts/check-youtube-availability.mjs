@@ -12,6 +12,26 @@ import { getYouTubePlayerRecords } from "../src/youtube-player-catalogue.mjs";
 const execFile = promisify(execFileCallback);
 const availabilityUrl = new URL("../config/youtube-availability.json", import.meta.url);
 
+export async function probeYouTubeWatchPage(videoId, { request = fetch } = {}) {
+  const endpoint = new URL("https://www.youtube.com/oembed");
+  endpoint.searchParams.set("format", "json");
+  endpoint.searchParams.set("url", `https://www.youtube.com/watch?v=${videoId}`);
+  try {
+    const response = await request(endpoint, {
+      headers: { "User-Agent": "SafeReplay-availability-check/1.0" },
+      redirect: "error",
+      signal: AbortSignal.timeout(15_000),
+    });
+    if (response.status === 200) return { proves: "watch", status: "available" };
+    if ([400, 401, 404, 410].includes(response.status)) {
+      return { reason: "unavailable", status: "permanent" };
+    }
+    return { reason: "probe_blocked", status: "transient" };
+  } catch {
+    return { reason: "probe_failed", status: "transient" };
+  }
+}
+
 export async function probeYouTubeVideo(videoId, {
   binary = process.env.YT_DLP_BINARY ?? "yt-dlp",
   execute = execFile,
@@ -31,7 +51,7 @@ export async function probeYouTubeVideo(videoId, {
       `https://www.youtube.com/watch?v=${videoId}`,
     ], { maxBuffer: 256 * 1024, timeout: 45_000 });
     return stdout.trim() === videoId
-      ? { status: "available" }
+      ? { proves: "embed", status: "available" }
       : { reason: "unexpected_response", status: "transient" };
   } catch (error) {
     if (error?.code === "ENOENT") throw new Error("yt-dlp is required for the YouTube availability check");
@@ -42,7 +62,7 @@ export async function probeYouTubeVideo(videoId, {
 export async function checkYouTubeAvailability({
   concurrency = 3,
   now = new Date().toISOString(),
-  probe = probeYouTubeVideo,
+  probe = probeYouTubeWatchPage,
   records = getYouTubePlayerRecords({ includeUnavailable: true }),
   snapshot,
 } = {}) {
@@ -71,6 +91,7 @@ async function main() {
   process.stdout.write(`${JSON.stringify({
     changed: result.changed,
     checked: Object.values(result.counts).reduce((total, count) => total + count, 0),
+    hidden: Object.keys(result.snapshot.unavailable).length,
     permanentlyUnavailable: result.counts.permanent,
     transientFailures: result.counts.transient,
   })}\n`);
