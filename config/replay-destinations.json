@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-14T23:00:02.853Z",
+  "checkedAt": "2026-07-14T23:15:02.287Z",
   "sourcesByFixture": {
     "fifa-world-cup-2026-match-99": [
       {
@@ -36,6 +36,12 @@
       }
     ],
     "fifa-world-cup-2026-match-101": [
+      {
+        "format": "short",
+        "id": "fifa-world-cup-2026-match-101-reddit-short",
+        "provider": "reddit",
+        "url": "https://www.reddit.com/r/footballhighlights/comments/1uwof51/spain_v_france_highlights_fifa_world_cup_2026/"
+      },
       {
         "format": "extended",
         "id": "fifa-world-cup-2026-match-101-reddit-extended",
