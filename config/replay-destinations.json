@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-15T22:15:02.023Z",
+  "checkedAt": "2026-07-15T22:45:02.293Z",
   "sourcesByFixture": {
     "fifa-world-cup-2026-match-99": [
       {
@@ -57,16 +57,16 @@
     ],
     "fifa-world-cup-2026-match-102": [
       {
+        "format": "short",
+        "id": "fifa-world-cup-2026-match-102-reddit-short",
+        "provider": "reddit",
+        "url": "https://www.reddit.com/r/footballhighlights/comments/1uxkp67/england_v_argentina_highlights_20260715/"
+      },
+      {
         "format": "extended",
         "id": "fifa-world-cup-2026-match-102-reddit-extended",
         "provider": "reddit",
         "url": "https://www.reddit.com/r/footballhighlights/comments/1uxjw4x/england_v_argentina_extended_highlights_15jul2026/"
-      },
-      {
-        "format": "short",
-        "id": "fifa-world-cup-2026-match-102-reddit-short",
-        "provider": "reddit",
-        "url": "https://www.reddit.com/r/footballhighlights/comments/1uwzdo0/request_fifa_wc_2026_england_v_argentina_itv/"
       },
       {
         "format": "extended",
