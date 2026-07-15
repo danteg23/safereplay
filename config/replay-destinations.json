@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-15T06:45:01.903Z",
+  "checkedAt": "2026-07-15T21:15:02.184Z",
   "sourcesByFixture": {
     "fifa-world-cup-2026-match-99": [
       {
@@ -53,6 +53,20 @@
         "id": "fifa-world-cup-2026-match-101-footreplays-full",
         "provider": "footreplays",
         "url": "https://www.footreplays.com/international/world-cup-2026/france-vs-spain-14-07-2026/"
+      }
+    ],
+    "fifa-world-cup-2026-match-102": [
+      {
+        "format": "short",
+        "id": "fifa-world-cup-2026-match-102-reddit-short",
+        "provider": "reddit",
+        "url": "https://www.reddit.com/r/footballhighlights/comments/1uwzdo0/request_fifa_wc_2026_england_v_argentina_itv/"
+      },
+      {
+        "format": "extended",
+        "id": "fifa-world-cup-2026-match-102-footreplays-extended",
+        "provider": "footreplays",
+        "url": "https://www.footreplays.com/international/world-cup-2026/england-vs-argentina-15-07-2026/"
       }
     ]
   }
