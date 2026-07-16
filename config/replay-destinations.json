@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-15T22:45:02.293Z",
+  "checkedAt": "2026-07-16T00:00:02.151Z",
   "sourcesByFixture": {
     "fifa-world-cup-2026-match-99": [
       {
@@ -60,7 +60,7 @@
         "format": "short",
         "id": "fifa-world-cup-2026-match-102-reddit-short",
         "provider": "reddit",
-        "url": "https://www.reddit.com/r/footballhighlights/comments/1uxkp67/england_v_argentina_highlights_20260715/"
+        "url": "https://www.reddit.com/r/footballhighlights/comments/1uxmp9k/france_v_spain_and_england_v_argentina_semifinal/"
       },
       {
         "format": "extended",
